@@ -1,0 +1,16 @@
+---
+production:
+  administration_service: https://adcenterapi.microsoft.com/Api/Advertiser/v7/Administration/AdministrationService.svc?wsdl
+  campaign_management_service: https://adcenterapi.microsoft.com/Api/Advertiser/v7/CampaignManagement/CampaignManagementService.svc?wsdl
+  customer_billing_service: https://sharedservices.adcenterapi.microsoft.com/Api/Billing/v7/CustomerBillingService.svc?wsdl
+  customer_management_service: https://sharedservices.adcenterapi.microsoft.com/Api/CustomerManagement/v7/CustomerManagementService.svc?wsdl
+  notification_management: https://adcenterapi.microsoft.com/Api/Advertiser/v6/NotificationManagement/NotificationManagement.asmx?wsdl
+  reporting_service: https://adcenterapi.microsoft.com/Api/Advertiser/v7/Reporting/ReportingService.svc?wsdl
+  secure_data_management_service: https://securityservices.adcenterapi.microsoft.com/Api/SecureDataManagement/v7/SecureDataManagementService.svc?wsdl
+sandbox:
+  administration_service: https://sandboxapi.adcenter.microsoft.com/Api/Advertiser/v7/Administration/AdministrationService.svc?wsdl
+  campaign_management_service: https://sandboxapi.adcenter.microsoft.com/Api/Advertiser/v7/CampaignManagement/CampaignManagementService.svc?wsdl
+  customer_billing_service: https://sharedservices-sbx.adcenterapi.microsoft.com/Api/Billing/v7/CustomerBillingService.svc?wsdl
+  customer_management_service: https://sharedservices-sbx.adcenterapi.microsoft.com/Api/CustomerManagement/v7/CustomerManagementService.svc?wsdl
+  notification_management: https://sandboxapi.adcenter.microsoft.com/Api/Advertiser/v6/NotificationManagement/NotificationManagement.asmx?wsdl
+  secure_data_management_service: https://securityservices-sbx.adcenterapi.microsoft.com/Api/SecureDataManagement/v7/SecureDataManagementService.svc?wsdl
