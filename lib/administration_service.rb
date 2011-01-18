@@ -1,0 +1,2 @@
+class AdministrationService < AdCenterService
+end
