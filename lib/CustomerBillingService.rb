@@ -111,54 +111,54 @@ end
 class ArrayOfOperationError < ::Array
 end
 
-# {https://adcenter.microsoft.com/api/customermanagement/Exception}OperationError
-#   code - SOAP::SOAPInt
-#   details - SOAP::SOAPString
-#   message - SOAP::SOAPString
-class OperationError
-  attr_accessor :code
-  attr_accessor :details
-  attr_accessor :message
-
-  def initialize(code = nil, details = nil, message = nil)
-    @code = code
-    @details = details
-    @message = message
-  end
-end
+# # {https://adcenter.microsoft.com/api/customermanagement/Exception}OperationError
+# #   code - SOAP::SOAPInt
+# #   details - SOAP::SOAPString
+# #   message - SOAP::SOAPString
+# class OperationError
+#   attr_accessor :code
+#   attr_accessor :details
+#   attr_accessor :message
+# 
+#   def initialize(code = nil, details = nil, message = nil)
+#     @code = code
+#     @details = details
+#     @message = message
+#   end
+# end
 
 # {https://adcenter.microsoft.com/api/customermanagement/Exception}ArrayOfBatchError
 class ArrayOfBatchError < ::Array
 end
 
-# {https://adcenter.microsoft.com/api/customermanagement/Exception}BatchError
-#   code - SOAP::SOAPInt
-#   details - SOAP::SOAPString
-#   index - SOAP::SOAPInt
-#   message - SOAP::SOAPString
-class BatchError
-  attr_accessor :code
-  attr_accessor :details
-  attr_accessor :index
-  attr_accessor :message
+# # {https://adcenter.microsoft.com/api/customermanagement/Exception}BatchError
+# #   code - SOAP::SOAPInt
+# #   details - SOAP::SOAPString
+# #   index - SOAP::SOAPInt
+# #   message - SOAP::SOAPString
+# class BatchError
+#   attr_accessor :code
+#   attr_accessor :details
+#   attr_accessor :index
+#   attr_accessor :message
+# 
+#   def initialize(code = nil, details = nil, index = nil, message = nil)
+#     @code = code
+#     @details = details
+#     @index = index
+#     @message = message
+#   end
+# end
 
-  def initialize(code = nil, details = nil, index = nil, message = nil)
-    @code = code
-    @details = details
-    @index = index
-    @message = message
-  end
-end
-
-# {https://adapi.microsoft.com}ApplicationFault
-#   trackingId - SOAP::SOAPString
-class ApplicationFault
-  attr_accessor :trackingId
-
-  def initialize(trackingId = nil)
-    @trackingId = trackingId
-  end
-end
+# # {https://adapi.microsoft.com}ApplicationFault
+# #   trackingId - SOAP::SOAPString
+# class ApplicationFault
+#   attr_accessor :trackingId
+# 
+#   def initialize(trackingId = nil)
+#     @trackingId = trackingId
+#   end
+# end
 
 # {https://adcenter.microsoft.com/api/customermanagement/Exception}ApiFault
 #   trackingId - SOAP::SOAPString
@@ -189,41 +189,41 @@ class ApiBatchFault < ::StandardError
   end
 end
 
-# {https://adapi.microsoft.com}AdApiFaultDetail
-#   trackingId - SOAP::SOAPString
-#   errors - ArrayOfAdApiError
-class AdApiFaultDetail < ::StandardError
-  attr_accessor :trackingId
-  attr_accessor :errors
-
-  def initialize(trackingId = nil, errors = nil)
-    @trackingId = trackingId
-    @errors = errors
-  end
-end
+# # {https://adapi.microsoft.com}AdApiFaultDetail
+# #   trackingId - SOAP::SOAPString
+# #   errors - ArrayOfAdApiError
+# class AdApiFaultDetail < ::StandardError
+#   attr_accessor :trackingId
+#   attr_accessor :errors
+# 
+#   def initialize(trackingId = nil, errors = nil)
+#     @trackingId = trackingId
+#     @errors = errors
+#   end
+# end
 
 # {https://adapi.microsoft.com}ArrayOfAdApiError
 class ArrayOfAdApiError < ::Array
 end
 
-# {https://adapi.microsoft.com}AdApiError
-#   code - SOAP::SOAPInt
-#   detail - SOAP::SOAPString
-#   errorCode - SOAP::SOAPString
-#   message - SOAP::SOAPString
-class AdApiError
-  attr_accessor :code
-  attr_accessor :detail
-  attr_accessor :errorCode
-  attr_accessor :message
-
-  def initialize(code = nil, detail = nil, errorCode = nil, message = nil)
-    @code = code
-    @detail = detail
-    @errorCode = errorCode
-    @message = message
-  end
-end
+# # {https://adapi.microsoft.com}AdApiError
+# #   code - SOAP::SOAPInt
+# #   detail - SOAP::SOAPString
+# #   errorCode - SOAP::SOAPString
+# #   message - SOAP::SOAPString
+# class AdApiError
+#   attr_accessor :code
+#   attr_accessor :detail
+#   attr_accessor :errorCode
+#   attr_accessor :message
+# 
+#   def initialize(code = nil, detail = nil, errorCode = nil, message = nil)
+#     @code = code
+#     @detail = detail
+#     @errorCode = errorCode
+#     @message = message
+#   end
+# end
 
 # {https://adcenter.microsoft.com/api/customermanagement/Entities}DataType
 class DataType < ::String

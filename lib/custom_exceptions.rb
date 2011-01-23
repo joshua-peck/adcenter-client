@@ -1,0 +1,1 @@
+class AdCenterClientException < Exception; end
