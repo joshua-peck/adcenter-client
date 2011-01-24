@@ -46,7 +46,6 @@ lib/notification_management.rb
 lib/reporting_service.rb
 lib/secure_data_management_service.rb
 tasks/doctask.rake
-tasks/gemspec.rake
 tasks/testtask.rake
 test/adcenter_client_test.rb
 test/administration_service_test.rb
