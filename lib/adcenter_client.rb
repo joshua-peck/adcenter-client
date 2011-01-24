@@ -20,18 +20,26 @@ require 'reporting_service'
 require 'secure_data_management_service'
 
 class AdCenterClient
+  VERSION = '7.0.0'
   include SOAP::RPC
 
-  attr_accessor :endpoint_url
   attr_accessor :options
+  # connection to administration service
   attr_accessor :administration_service 
+  # connection to campaign management service
   attr_accessor :campaign_management_service
+  # connection to customer billing service
   attr_accessor :customer_billing_service 
+  # connection to customer management service
   attr_accessor :customer_management_service 
+  # connection to notification management 
   attr_accessor :notification_management
+  # connection to reporting service
   attr_accessor :reporting_service 
+  # connection to secure data management service
   attr_accessor :secure_data_management_service
 
+  # endpoints to be used in production
   ENDPOINTS_PRODUCTION = {
     :administration_service => "https://adcenterapi.microsoft.com/Api/Advertiser/v7/Administration/AdministrationService.svc?wsdl",
     :campaign_management_service => "https://adcenterapi.microsoft.com/Api/Advertiser/v7/CampaignManagement/CampaignManagementService.svc?wsdl",
@@ -42,6 +50,7 @@ class AdCenterClient
     :secure_data_management_service => "https://securityservices.adcenterapi.microsoft.com/Api/SecureDataManagement/v7/SecureDataManagementService.svc?wsdl",
   }
 
+  # endpoints to be used in sandbox
   ENDPOINTS_SANDBOX = {
     :administration_service => "https://sandboxapi.adcenter.microsoft.com/Api/Advertiser/v7/Administration/AdministrationService.svc?wsdl",
     :campaign_management_service => "https://sandboxapi.adcenter.microsoft.com/Api/Advertiser/v7/CampaignManagement/CampaignManagementService.svc?wsdl",
@@ -52,6 +61,9 @@ class AdCenterClient
     :secure_data_management_service => "https://securityservices-sbx.adcenterapi.microsoft.com/Api/SecureDataManagement/v7/SecureDataManagementService.svc?wsdl",
   }
   
+  # credentials:: Hash of credential data
+  # opts:: unused
+  # sandbox_flag:: bool value
   def initialize(credentials, opts={}, sandbox_flag=false)
     unless credentials_valid?(credentials)
       warn "*** credentials appear invalid"
@@ -66,7 +78,6 @@ class AdCenterClient
     @reporting_service = ReportingService.new(select_endpoint('reporting_service', sandbox_flag), credentials)
     @secure_data_management_service = SecureDataManagementService.new(select_endpoint('secure_data_management_service', sandbox_flag), credentials)
   end
-  
 
   private
 

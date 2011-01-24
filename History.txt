@@ -1,0 +1,6 @@
+=== 7.0.0 / 2011-01-23
+
+* Initial Release
+
+  * seems to work for adCenter API v7
+

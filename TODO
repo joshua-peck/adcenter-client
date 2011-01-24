@@ -1,0 +1,12 @@
+= TODO
+
+== Automated Testing of Services
+
+* add sandbox to test suite to permit destructive tests
+* test all AdministrationService operations
+* test all CampaignManagementService operations
+* test all CustomerBillingService operations
+* test all CustomerManagementService operations
+* test all NotificationManagement operations
+* test all ReportingService operations
+* test all SecureDataManagementService operations
