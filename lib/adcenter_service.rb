@@ -3,13 +3,27 @@ require 'soap/header/simplehandler'
 class AdCenterService
   attr_accessor :endpoint
   attr_accessor :service
+  attr_accessor :service_namespace
+  attr_accessor :required_credentials
+  
+  DEFAULT_REQUIRED_CREDENTIALS = %w[ ApplicationToken CustomerAccountId CustomerId UserName Password DeveloperToken ]
+  DEFAULT_SERVICE_NAMESPACE = %w[ ApplicationToken UserName Password DeveloperToken ]
 
-  def initialize(endpoint)
+  def initialize(endpoint, credentials)
+    @service_namespace = 'https://adcenter.microsoft.com/v7'
+    @required_credentials = DEFAULT_REQUIRED_CREDENTIALS
     @endpoint = endpoint
     initialize_service(@endpoint)
+    initialize_authentication_headers(credentials)
     # set options on service after it is built
     @service.wiredump_dev = STDERR if $DEBUG
     @service.options["protocol.http.ssl_config.verify_mode"] = nil
+  end
+
+  def initialize_authentication_headers(creds)
+    @required_credentials.each do |key|
+      self.headerhandler << HeaderHandler.new(@service_namespace, key, creds[key])
+    end
   end
 
   def method_missing(method, *args)
@@ -38,6 +52,19 @@ class AdCenterService
       end
     end
     res
+  end
+  
+  class HeaderHandler < SOAP::Header::SimpleHandler
+    attr_reader :element
+    attr_writer :value
+    def initialize(ns, element, value)
+      super(XSD::QName.new(ns, element))
+      @element = element
+      @value = value
+    end
+    def on_simple_outbound
+      @value
+    end
   end
 
 end

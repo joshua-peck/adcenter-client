@@ -21,7 +21,6 @@ require 'secure_data_management_service'
 
 class AdCenterClient
   include SOAP::RPC
-  NS_SHARED = 'https://adcenter.microsoft.com/v7'
 
   attr_accessor :endpoint_url
   attr_accessor :options
@@ -59,55 +58,15 @@ class AdCenterClient
       warn credentials.to_yaml
     end
     @options = opts
-    @administration_service = AdministrationService.new(select_endpoint('administration_service', sandbox_flag))
-    @campaign_management_service = CampaignManagementService.new(select_endpoint('campaign_management_service', sandbox_flag))
-    @customer_billing_service = CustomerBillingService.new(select_endpoint('customer_billing_service', sandbox_flag))
-    @customer_management_service = CustomerManagementService.new(select_endpoint('customer_management_service', sandbox_flag))
-    @notification_management = NotificationManagementSoap.new(select_endpoint('notification_management', sandbox_flag))
-    @reporting_service = ReportingService.new(select_endpoint('reporting_service', sandbox_flag))
-    @secure_data_management_service = SecureDataManagementService.new(select_endpoint('secure_data_management_service', sandbox_flag))
-    @credentials = Credentials.new(credentials)
-    @credentials.handlers.each do |h|
-      
-      @administration_service.headerhandler << h
-      @customer_billing_service.headerhandler << h
-      @customer_management_service.headerhandler << h
-      @notification_management.headerhandler << h
-      @reporting_service.headerhandler << h
-      @secure_data_management_service.headerhandler << h
-      @campaign_management_service.headerhandler << h
-    end
+    @administration_service = AdministrationService.new(select_endpoint('administration_service', sandbox_flag), credentials)
+    @campaign_management_service = CampaignManagementService.new(select_endpoint('campaign_management_service', sandbox_flag), credentials)
+    @customer_billing_service = CustomerBillingService.new(select_endpoint('customer_billing_service', sandbox_flag), credentials)
+    @customer_management_service = CustomerManagementService.new(select_endpoint('customer_management_service', sandbox_flag), credentials)
+    @notification_management = NotificationManagement.new(select_endpoint('notification_management', sandbox_flag), credentials)
+    @reporting_service = ReportingService.new(select_endpoint('reporting_service', sandbox_flag), credentials)
+    @secure_data_management_service = SecureDataManagementService.new(select_endpoint('secure_data_management_service', sandbox_flag), credentials)
   end
   
-  class HeaderHandler < SOAP::Header::SimpleHandler
-    attr_reader :element
-    attr_writer :value
-    def initialize(element, value)
-      super(XSD::QName.new(NS_SHARED, element))
-      @element = element
-      @value = value
-    end
-    def on_simple_outbound
-      @value
-    end
-  end
-
-  class Credentials
-    attr_reader :handlers
-    def initialize(credentials)
-      @handlers = Array.new
-      credentials.each_pair do |key, value|
-        @handlers << HeaderHandler.new(key, value.to_s) 
-      end
-    end
-    def setHeader(header, value)
-      handlers.each do |handler|
-        if handler.element == header then
-          handler.value = value.to_s
-        end
-      end
-    end
-  end  
 
   private
 

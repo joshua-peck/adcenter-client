@@ -6,4 +6,3 @@ require 'custom_assertions'
 
 test_credentials_file = File.expand_path(File.dirname(__FILE__) + "/test_credentials.yml")
 TEST_CREDENTIALS = YAML::load_file(test_credentials_file)
-p TEST_CREDENTIALS

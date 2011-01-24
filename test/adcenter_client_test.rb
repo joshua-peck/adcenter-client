@@ -10,5 +10,4 @@ class AdCenterClientTest < Test::Unit::TestCase
   def test_init
     assert(@acc)
   end
-  
 end
