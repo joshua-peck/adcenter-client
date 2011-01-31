@@ -22,5 +22,5 @@ wsdl_file = options[:wsdl_file] ? options[:wsdl_file].to_s : DEFAULT_WSDL_FILE
 wsdls = YAML::load_file(wsdl_file)
 wsdls['production'].each do |service, endpoint|
   puts "Working on #{service} [#{endpoint}]..."
-  `mkdir -p #{destination_dir} && cd #{destination_dir} && wsdl2ruby.rb --type client --wsdl '#{endpoint}'`
+  `mkdir -p #{destination_dir} && cd #{destination_dir} && wsdl2ruby.rb --module_path AdCenterWrapper --type client --wsdl '#{endpoint}'`
 end
