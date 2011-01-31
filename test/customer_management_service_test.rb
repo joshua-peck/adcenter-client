@@ -7,14 +7,14 @@ class CustomerManagementServiceTest < Test::Unit::TestCase
     # $DEBUG = true
     # assert_sandboxed(TEST_CREDENTIALS)
     @acc = AdCenterClient.new(TEST_CREDENTIALS, nil, false)
-    @svc = @acc.administration_service
+    @svc = @acc.customer_management_service
+    @entities = @acc.entities
   end
 
   def test_get_accounts_info
-    @svc = @acc.customer_management_service
-    req = GetAccountsInfoRequest.new(TEST_CREDENTIALS['CustomerId'].to_s)
+    req = @entities::GetAccountsInfoRequest.new(TEST_CREDENTIALS['CustomerId'].to_s)
     res = @svc.getAccountsInfo(req)
-    assert_equal GetAccountsInfoResponse, res.class
+    assert_equal @entities::GetAccountsInfoResponse, res.class
     assert res.accountsInfo
   end
 end

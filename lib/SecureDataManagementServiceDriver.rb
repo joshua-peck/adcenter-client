@@ -1,6 +1,8 @@
-require 'SecureDataManagementService.rb'
+require 'adcenter_wrapper_entities'
 require 'SecureDataManagementServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
+
+module AdCenterWrapper
 
 class ISecureDataManagementService < ::SOAP::RPC::Driver
   DefaultEndpointUrl = "https://securityservices.adcenterapi.microsoft.com/Api/SecureDataManagement/v7/SecureDataManagementService.svc"
@@ -12,7 +14,7 @@ class ISecureDataManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/securedatamanagement", "AddPaymentMethodResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/securedatamanagement"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/securedatamanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/securedatamanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/securedatamanagement"}} }
     ]
   ]
 
@@ -45,3 +47,5 @@ private
   end
 end
 
+
+end

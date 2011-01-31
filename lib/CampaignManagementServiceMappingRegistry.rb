@@ -1,5 +1,7 @@
-require 'CampaignManagementService.rb'
+require 'adcenter_wrapper_entities'
 require 'soap/mapping'
+
+module AdCenterWrapper
 
 module CampaignManagementServiceMappingRegistry
   EncodedRegistry = ::SOAP::Mapping::EncodedRegistry.new
@@ -10,14 +12,14 @@ module CampaignManagementServiceMappingRegistry
   NsV7 = "https://adcenter.microsoft.com/v7"
 
   EncodedRegistry.register(
-    :class => MobileAd,
+    :class => AdCenterWrapper::MobileAd,
     :schema_type => XSD::QName.new(NsV7, "MobileAd"),
     :schema_basetype => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
       ["businessName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "BusinessName")], [0, 1]],
       ["destinationUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DestinationUrl")], [0, 1]],
       ["displayUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DisplayUrl")], [0, 1]],
@@ -28,25 +30,25 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => Ad,
+    :class => AdCenterWrapper::Ad,
     :schema_type => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]]
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => TextAd,
+    :class => AdCenterWrapper::TextAd,
     :schema_type => XSD::QName.new(NsV7, "TextAd"),
     :schema_basetype => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
       ["destinationUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DestinationUrl")], [0, 1]],
       ["displayUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DisplayUrl")]],
       ["text", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Text")]],
@@ -55,27 +57,27 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfBehavioralBid,
+    :class => AdCenterWrapper::ArrayOfBehavioralBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBehavioralBid"),
     :schema_element => [
-      ["behavioralBid", ["BehavioralBid[]", XSD::QName.new(NsV7, "BehavioralBid")], [0, nil]]
+      ["behavioralBid", ["AdCenterWrapper::BehavioralBid[]", XSD::QName.new(NsV7, "BehavioralBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BehavioralBid,
+    :class => AdCenterWrapper::BehavioralBid,
     :schema_type => XSD::QName.new(NsV7, "BehavioralBid"),
     :schema_element => [
-      ["bid", ["Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
+      ["bid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
       ["segmentId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "SegmentId")], [0, 1]],
-      ["status", ["BehavioralBidStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["status", ["AdCenterWrapper::BehavioralBidStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Bid,
+    :class => AdCenterWrapper::Bid,
     :schema_type => XSD::QName.new(NsV7, "Bid"),
     :schema_element => [
       ["amount", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "Amount")], [0, 1]]
@@ -83,26 +85,26 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ApiFaultDetail,
+    :class => AdCenterWrapper::ApiFaultDetail,
     :schema_type => XSD::QName.new(NsV7, "ApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["batchErrors", ["ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfBatchError,
+    :class => AdCenterWrapper::ArrayOfBatchError,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBatchError"),
     :schema_element => [
-      ["batchError", ["BatchError[]", XSD::QName.new(NsV7, "BatchError")], [0, nil]]
+      ["batchError", ["AdCenterWrapper::BatchError[]", XSD::QName.new(NsV7, "BatchError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BatchError,
+    :class => AdCenterWrapper::BatchError,
     :schema_type => XSD::QName.new(NsV7, "BatchError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Code")], [0, 1]],
@@ -114,15 +116,15 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfOperationError,
+    :class => AdCenterWrapper::ArrayOfOperationError,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfOperationError"),
     :schema_element => [
-      ["operationError", ["OperationError[]", XSD::QName.new(NsV7, "OperationError")], [0, nil]]
+      ["operationError", ["AdCenterWrapper::OperationError[]", XSD::QName.new(NsV7, "OperationError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => OperationError,
+    :class => AdCenterWrapper::OperationError,
     :schema_type => XSD::QName.new(NsV7, "OperationError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Code")], [0, 1]],
@@ -133,15 +135,15 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfSegment,
+    :class => AdCenterWrapper::ArrayOfSegment,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfSegment"),
     :schema_element => [
-      ["segment", ["Segment[]", XSD::QName.new(NsV7, "Segment")], [0, nil]]
+      ["segment", ["AdCenterWrapper::Segment[]", XSD::QName.new(NsV7, "Segment")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Segment,
+    :class => AdCenterWrapper::Segment,
     :schema_type => XSD::QName.new(NsV7, "Segment"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -150,70 +152,70 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfEditorialReasonCollection,
+    :class => AdCenterWrapper::ArrayOfEditorialReasonCollection,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfEditorialReasonCollection"),
     :schema_element => [
-      ["editorialReasonCollection", ["EditorialReasonCollection[]", XSD::QName.new(NsV7, "EditorialReasonCollection")], [0, nil]]
+      ["editorialReasonCollection", ["AdCenterWrapper::EditorialReasonCollection[]", XSD::QName.new(NsV7, "EditorialReasonCollection")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => EditorialReasonCollection,
+    :class => AdCenterWrapper::EditorialReasonCollection,
     :schema_type => XSD::QName.new(NsV7, "EditorialReasonCollection"),
     :schema_element => [
       ["adOrKeywordId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdOrKeywordId")], [0, 1]],
-      ["reasons", ["ArrayOfEditorialReason", XSD::QName.new(NsV7, "Reasons")], [0, 1]]
+      ["reasons", ["AdCenterWrapper::ArrayOfEditorialReason", XSD::QName.new(NsV7, "Reasons")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfEditorialReason,
+    :class => AdCenterWrapper::ArrayOfEditorialReason,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfEditorialReason"),
     :schema_element => [
-      ["editorialReason", ["EditorialReason[]", XSD::QName.new(NsV7, "EditorialReason")], [0, nil]]
+      ["editorialReason", ["AdCenterWrapper::EditorialReason[]", XSD::QName.new(NsV7, "EditorialReason")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => EditorialReason,
+    :class => AdCenterWrapper::EditorialReason,
     :schema_type => XSD::QName.new(NsV7, "EditorialReason"),
     :schema_element => [
-      ["location", ["AdComponent", XSD::QName.new(NsV7, "Location")], [0, 1]],
+      ["location", ["AdCenterWrapper::AdComponent", XSD::QName.new(NsV7, "Location")], [0, 1]],
       ["reasonCode", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "ReasonCode")], [0, 1]],
       ["term", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Term")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAd,
+    :class => AdCenterWrapper::ArrayOfAd,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAd"),
     :schema_element => [
-      ["ad", ["Ad[]", XSD::QName.new(NsV7, "Ad")], [0, nil]]
+      ["ad", ["AdCenterWrapper::Ad[]", XSD::QName.new(NsV7, "Ad")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => EditorialApiFaultDetail,
+    :class => AdCenterWrapper::EditorialApiFaultDetail,
     :schema_type => XSD::QName.new(NsV7, "EditorialApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["batchErrors", ["ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
-      ["editorialErrors", ["ArrayOfEditorialError", XSD::QName.new(NsV7, "EditorialErrors")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
+      ["editorialErrors", ["AdCenterWrapper::ArrayOfEditorialError", XSD::QName.new(NsV7, "EditorialErrors")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfEditorialError,
+    :class => AdCenterWrapper::ArrayOfEditorialError,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfEditorialError"),
     :schema_element => [
-      ["editorialError", ["EditorialError[]", XSD::QName.new(NsV7, "EditorialError")], [0, nil]]
+      ["editorialError", ["AdCenterWrapper::EditorialError[]", XSD::QName.new(NsV7, "EditorialError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => EditorialError,
+    :class => AdCenterWrapper::EditorialError,
     :schema_type => XSD::QName.new(NsV7, "EditorialError"),
     :schema_element => [
       ["appealable", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "Appealable")], [0, 1]],
@@ -226,54 +228,54 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfKeyword,
+    :class => AdCenterWrapper::ArrayOfKeyword,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfKeyword"),
     :schema_element => [
-      ["keyword", ["Keyword[]", XSD::QName.new(NsV7, "Keyword")], [0, nil]]
+      ["keyword", ["AdCenterWrapper::Keyword[]", XSD::QName.new(NsV7, "Keyword")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Keyword,
+    :class => AdCenterWrapper::Keyword,
     :schema_type => XSD::QName.new(NsV7, "Keyword"),
     :schema_element => [
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["editorialStatus", ["KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["overridePriority", ["OverridePriority", XSD::QName.new(NsV7, "OverridePriority")], [0, 1]],
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["overridePriority", ["AdCenterWrapper::OverridePriority", XSD::QName.new(NsV7, "OverridePriority")], [0, 1]],
       ["param1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param1")], [0, 1]],
       ["param2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param2")], [0, 1]],
       ["param3", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param3")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["status", ["KeywordStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["status", ["AdCenterWrapper::KeywordStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["text", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Text")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CashBackInfo,
+    :class => AdCenterWrapper::CashBackInfo,
     :schema_type => XSD::QName.new(NsV7, "CashBackInfo"),
     :schema_element => [
       ["cashBackAmount", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "CashBackAmount")], [0, 1]],
-      ["cashBackStatus", ["CashBackStatus", XSD::QName.new(NsV7, "CashBackStatus")], [0, 1]],
+      ["cashBackStatus", ["AdCenterWrapper::CashBackStatus", XSD::QName.new(NsV7, "CashBackStatus")], [0, 1]],
       ["cashBackText", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CashBackText")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfKeywordBid,
+    :class => AdCenterWrapper::ArrayOfKeywordBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfKeywordBid"),
     :schema_element => [
-      ["keywordBid", ["KeywordBid[]", XSD::QName.new(NsV7, "KeywordBid")], [0, nil]]
+      ["keywordBid", ["AdCenterWrapper::KeywordBid[]", XSD::QName.new(NsV7, "KeywordBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => KeywordBid,
+    :class => AdCenterWrapper::KeywordBid,
     :schema_type => XSD::QName.new(NsV7, "KeywordBid"),
     :schema_element => [
       ["broadMatchBid", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
@@ -284,28 +286,28 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfKeywordEstimate,
+    :class => AdCenterWrapper::ArrayOfKeywordEstimate,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfKeywordEstimate"),
     :schema_element => [
-      ["keywordEstimate", ["KeywordEstimate[]", XSD::QName.new(NsV7, "KeywordEstimate")], [0, nil]]
+      ["keywordEstimate", ["AdCenterWrapper::KeywordEstimate[]", XSD::QName.new(NsV7, "KeywordEstimate")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => KeywordEstimate,
+    :class => AdCenterWrapper::KeywordEstimate,
     :schema_type => XSD::QName.new(NsV7, "KeywordEstimate"),
     :schema_element => [
       ["averageMonthlyCost", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "AverageMonthlyCost")], [0, 1]],
       ["averageMonthlyPosition", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "AverageMonthlyPosition")], [0, 1]],
-      ["broadKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "BroadKeywordEstimate")], [0, 1]],
+      ["broadKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "BroadKeywordEstimate")], [0, 1]],
       ["estimatedTotalMonthlyImpressions", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "EstimatedTotalMonthlyImpressions")], [0, 1]],
-      ["exactKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "ExactKeywordEstimate")], [0, 1]],
-      ["phraseKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "PhraseKeywordEstimate")], [0, 1]]
+      ["exactKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "ExactKeywordEstimate")], [0, 1]],
+      ["phraseKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "PhraseKeywordEstimate")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => MatchTypeEstimate,
+    :class => AdCenterWrapper::MatchTypeEstimate,
     :schema_type => XSD::QName.new(NsV7, "MatchTypeEstimate"),
     :schema_element => [
       ["monthlyCost", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyCost")], [0, 1]],
@@ -315,79 +317,79 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfBusiness,
+    :class => AdCenterWrapper::ArrayOfBusiness,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBusiness"),
     :schema_element => [
-      ["business", ["Business[]", XSD::QName.new(NsV7, "Business")], [0, nil]]
+      ["business", ["AdCenterWrapper::Business[]", XSD::QName.new(NsV7, "Business")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Business,
+    :class => AdCenterWrapper::Business,
     :schema_type => XSD::QName.new(NsV7, "Business"),
     :schema_element => [
       ["addressLine1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "AddressLine1")], [0, 1]],
       ["addressLine2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "AddressLine2")], [0, 1]],
-      ["businessImageIcon", ["BusinessImageIcon", XSD::QName.new(NsV7, "BusinessImageIcon")], [0, 1]],
+      ["businessImageIcon", ["AdCenterWrapper::BusinessImageIcon", XSD::QName.new(NsV7, "BusinessImageIcon")], [0, 1]],
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsV7, "City")], [0, 1]],
       ["countryOrRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CountryOrRegion")], [0, 1]],
       ["description", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Description")]],
       ["email", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Email")], [0, 1]],
-      ["geoCodeStatus", ["BusinessGeoCodeStatus", XSD::QName.new(NsV7, "GeoCodeStatus")], [0, 1]],
-      ["hrsOfOperation", ["ArrayOfHoursOfOperation", XSD::QName.new(NsV7, "HrsOfOperation")], [0, 1]],
+      ["geoCodeStatus", ["AdCenterWrapper::BusinessGeoCodeStatus", XSD::QName.new(NsV7, "GeoCodeStatus")], [0, 1]],
+      ["hrsOfOperation", ["AdCenterWrapper::ArrayOfHoursOfOperation", XSD::QName.new(NsV7, "HrsOfOperation")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["isOpen24Hours", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "IsOpen24Hours")], [0, 1]],
       ["latitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LatitudeDegrees")], [0, 1]],
       ["longitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LongitudeDegrees")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")]],
       ["otherPaymentTypeDesc", ["SOAP::SOAPString", XSD::QName.new(NsV7, "OtherPaymentTypeDesc")], [0, 1]],
-      ["payment", ["ArrayOfPaymentType", XSD::QName.new(NsV7, "Payment")], [0, 1]],
+      ["payment", ["AdCenterWrapper::ArrayOfPaymentType", XSD::QName.new(NsV7, "Payment")], [0, 1]],
       ["phone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Phone")], [0, 1]],
       ["stateOrProvince", ["SOAP::SOAPString", XSD::QName.new(NsV7, "StateOrProvince")], [0, 1]],
-      ["status", ["BusinessStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::BusinessStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["uRL", ["SOAP::SOAPString", XSD::QName.new(NsV7, "URL")], [0, 1]],
       ["zipOrPostalCode", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ZipOrPostalCode")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BusinessImageIcon,
+    :class => AdCenterWrapper::BusinessImageIcon,
     :schema_type => XSD::QName.new(NsV7, "BusinessImageIcon"),
     :schema_element => [
       ["customIconAssetId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CustomIconAssetId")], [0, 1]],
-      ["standardBusinessIcon", ["StandardBusinessIcon", XSD::QName.new(NsV7, "StandardBusinessIcon")], [0, 1]]
+      ["standardBusinessIcon", ["AdCenterWrapper::StandardBusinessIcon", XSD::QName.new(NsV7, "StandardBusinessIcon")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfHoursOfOperation,
+    :class => AdCenterWrapper::ArrayOfHoursOfOperation,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfHoursOfOperation"),
     :schema_element => [
-      ["hoursOfOperation", ["HoursOfOperation[]", XSD::QName.new(NsV7, "HoursOfOperation")], [0, nil]]
+      ["hoursOfOperation", ["AdCenterWrapper::HoursOfOperation[]", XSD::QName.new(NsV7, "HoursOfOperation")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => HoursOfOperation,
+    :class => AdCenterWrapper::HoursOfOperation,
     :schema_type => XSD::QName.new(NsV7, "HoursOfOperation"),
     :schema_element => [
-      ["day", ["Day", XSD::QName.new(NsV7, "Day")], [0, 1]],
-      ["openTime1", "DayTimeInterval", [0, 1]],
-      ["openTime2", "DayTimeInterval", [0, 1]]
+      ["day", ["AdCenterWrapper::Day", XSD::QName.new(NsV7, "Day")], [0, 1]],
+      ["openTime1", "AdCenterWrapper::DayTimeInterval", [0, 1]],
+      ["openTime2", "AdCenterWrapper::DayTimeInterval", [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => DayTimeInterval,
+    :class => AdCenterWrapper::DayTimeInterval,
     :schema_type => XSD::QName.new(NsV7, "DayTimeInterval"),
     :schema_element => [
-      ["v_begin", ["TimeOfTheDay", XSD::QName.new(NsV7, "Begin")], [0, 1]],
-      ["v_end", ["TimeOfTheDay", XSD::QName.new(NsV7, "End")], [0, 1]]
+      ["v_begin", ["AdCenterWrapper::TimeOfTheDay", XSD::QName.new(NsV7, "Begin")], [0, 1]],
+      ["v_end", ["AdCenterWrapper::TimeOfTheDay", XSD::QName.new(NsV7, "End")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => TimeOfTheDay,
+    :class => AdCenterWrapper::TimeOfTheDay,
     :schema_type => XSD::QName.new(NsV7, "TimeOfTheDay"),
     :schema_element => [
       ["hour", ["SOAP::SOAPShort", XSD::QName.new(NsV7, "Hour")], [0, 1]],
@@ -396,23 +398,23 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfPaymentType,
+    :class => AdCenterWrapper::ArrayOfPaymentType,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfPaymentType"),
     :schema_element => [
-      ["paymentType", ["PaymentType[]", XSD::QName.new(NsV7, "PaymentType")], [0, nil]]
+      ["paymentType", ["AdCenterWrapper::PaymentType[]", XSD::QName.new(NsV7, "PaymentType")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfBusinessInfo,
+    :class => AdCenterWrapper::ArrayOfBusinessInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBusinessInfo"),
     :schema_element => [
-      ["businessInfo", ["BusinessInfo[]", XSD::QName.new(NsV7, "BusinessInfo")], [0, nil]]
+      ["businessInfo", ["AdCenterWrapper::BusinessInfo[]", XSD::QName.new(NsV7, "BusinessInfo")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BusinessInfo,
+    :class => AdCenterWrapper::BusinessInfo,
     :schema_type => XSD::QName.new(NsV7, "BusinessInfo"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -421,54 +423,54 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfSitePlacement,
+    :class => AdCenterWrapper::ArrayOfSitePlacement,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfSitePlacement"),
     :schema_element => [
-      ["sitePlacement", ["SitePlacement[]", XSD::QName.new(NsV7, "SitePlacement")], [0, nil]]
+      ["sitePlacement", ["AdCenterWrapper::SitePlacement[]", XSD::QName.new(NsV7, "SitePlacement")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => SitePlacement,
+    :class => AdCenterWrapper::SitePlacement,
     :schema_type => XSD::QName.new(NsV7, "SitePlacement"),
     :schema_element => [
-      ["bid", ["Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
+      ["bid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["placementId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "PlacementId")], [0, 1]],
-      ["status", ["SitePlacementStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::SitePlacementStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["url", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Url")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfArrayOfPlacementDetail,
+    :class => AdCenterWrapper::ArrayOfArrayOfPlacementDetail,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfArrayOfPlacementDetail"),
     :schema_element => [
-      ["arrayOfPlacementDetail", ["ArrayOfPlacementDetail[]", XSD::QName.new(NsV7, "ArrayOfPlacementDetail")], [0, nil]]
+      ["arrayOfPlacementDetail", ["AdCenterWrapper::ArrayOfPlacementDetail[]", XSD::QName.new(NsV7, "ArrayOfPlacementDetail")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfPlacementDetail,
+    :class => AdCenterWrapper::ArrayOfPlacementDetail,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfPlacementDetail"),
     :schema_element => [
-      ["placementDetail", ["PlacementDetail[]", XSD::QName.new(NsV7, "PlacementDetail")], [0, nil]]
+      ["placementDetail", ["AdCenterWrapper::PlacementDetail[]", XSD::QName.new(NsV7, "PlacementDetail")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => PlacementDetail,
+    :class => AdCenterWrapper::PlacementDetail,
     :schema_type => XSD::QName.new(NsV7, "PlacementDetail"),
     :schema_element => [
-      ["impressionsRangePerDay", ["ImpressionsPerDayRange", XSD::QName.new(NsV7, "ImpressionsRangePerDay")], [0, 1]],
+      ["impressionsRangePerDay", ["AdCenterWrapper::ImpressionsPerDayRange", XSD::QName.new(NsV7, "ImpressionsRangePerDay")], [0, 1]],
       ["pathName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "PathName")], [0, 1]],
       ["placementId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "PlacementId")], [0, 1]],
-      ["supportedMediaTypes", ["ArrayOfMediaType", XSD::QName.new(NsV7, "SupportedMediaTypes")], [0, 1]]
+      ["supportedMediaTypes", ["AdCenterWrapper::ArrayOfMediaType", XSD::QName.new(NsV7, "SupportedMediaTypes")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ImpressionsPerDayRange,
+    :class => AdCenterWrapper::ImpressionsPerDayRange,
     :schema_type => XSD::QName.new(NsV7, "ImpressionsPerDayRange"),
     :schema_element => [
       ["maximum", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Maximum")], [0, 1]],
@@ -477,32 +479,32 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfMediaType,
+    :class => AdCenterWrapper::ArrayOfMediaType,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfMediaType"),
     :schema_element => [
-      ["mediaType", ["MediaType[]", XSD::QName.new(NsV7, "MediaType")], [0, nil]]
+      ["mediaType", ["AdCenterWrapper::MediaType[]", XSD::QName.new(NsV7, "MediaType")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => MediaType,
+    :class => AdCenterWrapper::MediaType,
     :schema_type => XSD::QName.new(NsV7, "MediaType"),
     :schema_element => [
-      ["dimensions", ["ArrayOfDimension", XSD::QName.new(NsV7, "Dimensions")], [0, 1]],
+      ["dimensions", ["AdCenterWrapper::ArrayOfDimension", XSD::QName.new(NsV7, "Dimensions")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfDimension,
+    :class => AdCenterWrapper::ArrayOfDimension,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfDimension"),
     :schema_element => [
-      ["dimension", ["Dimension[]", XSD::QName.new(NsV7, "Dimension")], [0, nil]]
+      ["dimension", ["AdCenterWrapper::Dimension[]", XSD::QName.new(NsV7, "Dimension")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Dimension,
+    :class => AdCenterWrapper::Dimension,
     :schema_type => XSD::QName.new(NsV7, "Dimension"),
     :schema_element => [
       ["height", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Height")], [0, 1]],
@@ -511,19 +513,19 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfCampaign,
+    :class => AdCenterWrapper::ArrayOfCampaign,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCampaign"),
     :schema_element => [
-      ["campaign", ["Campaign[]", XSD::QName.new(NsV7, "Campaign")], [0, nil]]
+      ["campaign", ["AdCenterWrapper::Campaign[]", XSD::QName.new(NsV7, "Campaign")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Campaign,
+    :class => AdCenterWrapper::Campaign,
     :schema_type => XSD::QName.new(NsV7, "Campaign"),
     :schema_element => [
-      ["budgetType", ["BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["budgetType", ["AdCenterWrapper::BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
       ["conversionTrackingEnabled", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "ConversionTrackingEnabled")], [0, 1]],
       ["conversionTrackingScript", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ConversionTrackingScript")], [0, 1]],
       ["dailyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "DailyBudget")], [0, 1]],
@@ -532,27 +534,27 @@ module CampaignManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["monthlyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyBudget")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["negativeSiteUrls", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
-      ["status", ["CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["negativeSiteUrls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
+      ["status", ["AdCenterWrapper::CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["timeZone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "TimeZone")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfCampaignInfo,
+    :class => AdCenterWrapper::ArrayOfCampaignInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCampaignInfo"),
     :schema_element => [
-      ["campaignInfo", ["CampaignInfo[]", XSD::QName.new(NsV7, "CampaignInfo")], [0, nil]]
+      ["campaignInfo", ["AdCenterWrapper::CampaignInfo[]", XSD::QName.new(NsV7, "CampaignInfo")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CampaignInfo,
+    :class => AdCenterWrapper::CampaignInfo,
     :schema_type => XSD::QName.new(NsV7, "CampaignInfo"),
     :schema_element => [
-      ["budgetType", ["BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["budgetType", ["AdCenterWrapper::BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
       ["conversionTrackingEnabled", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "ConversionTrackingEnabled")], [0, 1]],
       ["conversionTrackingScript", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ConversionTrackingScript")], [0, 1]],
       ["dailyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "DailyBudget")], [0, 1]],
@@ -561,61 +563,61 @@ module CampaignManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["monthlyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyBudget")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["status", ["CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["timeZone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "TimeZone")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfCampaignNegativeKeywords,
+    :class => AdCenterWrapper::ArrayOfCampaignNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCampaignNegativeKeywords"),
     :schema_element => [
-      ["campaignNegativeKeywords", ["CampaignNegativeKeywords[]", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, nil]]
+      ["campaignNegativeKeywords", ["AdCenterWrapper::CampaignNegativeKeywords[]", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CampaignNegativeKeywords,
+    :class => AdCenterWrapper::CampaignNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "CampaignNegativeKeywords"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdGroup,
+    :class => AdCenterWrapper::ArrayOfAdGroup,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAdGroup"),
     :schema_element => [
-      ["adGroup", ["AdGroup[]", XSD::QName.new(NsV7, "AdGroup")], [0, nil]]
+      ["adGroup", ["AdCenterWrapper::AdGroup[]", XSD::QName.new(NsV7, "AdGroup")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdGroup,
+    :class => AdCenterWrapper::AdGroup,
     :schema_type => XSD::QName.new(NsV7, "AdGroup"),
     :schema_element => [
       ["adDistribution", [nil, XSD::QName.new(NsV7, "AdDistribution")], [0, 1]],
-      ["biddingModel", ["BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["endDate", ["Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["biddingModel", ["AdCenterWrapper::BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["endDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["negativeSiteUrls", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
-      ["startDate", ["Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
-      ["status", ["AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["negativeSiteUrls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
+      ["startDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Date,
+    :class => AdCenterWrapper::Date,
     :schema_type => XSD::QName.new(NsV7, "Date"),
     :schema_element => [
       ["day", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Day")]],
@@ -625,348 +627,348 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdGroupInfo,
+    :class => AdCenterWrapper::ArrayOfAdGroupInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAdGroupInfo"),
     :schema_element => [
-      ["adGroupInfo", ["AdGroupInfo[]", XSD::QName.new(NsV7, "AdGroupInfo")], [0, nil]]
+      ["adGroupInfo", ["AdCenterWrapper::AdGroupInfo[]", XSD::QName.new(NsV7, "AdGroupInfo")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdGroupInfo,
+    :class => AdCenterWrapper::AdGroupInfo,
     :schema_type => XSD::QName.new(NsV7, "AdGroupInfo"),
     :schema_element => [
       ["adDistribution", [nil, XSD::QName.new(NsV7, "AdDistribution")], [0, 1]],
-      ["biddingModel", ["BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["endDate", ["Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["biddingModel", ["AdCenterWrapper::BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["endDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
-      ["startDate", ["Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
-      ["status", ["AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
+      ["startDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdGroupNegativeKeywords,
+    :class => AdCenterWrapper::ArrayOfAdGroupNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAdGroupNegativeKeywords"),
     :schema_element => [
-      ["adGroupNegativeKeywords", ["AdGroupNegativeKeywords[]", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, nil]]
+      ["adGroupNegativeKeywords", ["AdCenterWrapper::AdGroupNegativeKeywords[]", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdGroupNegativeKeywords,
+    :class => AdCenterWrapper::AdGroupNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "AdGroupNegativeKeywords"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => Target,
+    :class => AdCenterWrapper::Target,
     :schema_type => XSD::QName.new(NsV7, "Target"),
     :schema_element => [
-      ["age", ["AgeTarget", XSD::QName.new(NsV7, "Age")], [0, 1]],
-      ["behavior", ["BehavioralTarget", XSD::QName.new(NsV7, "Behavior")], [0, 1]],
-      ["day", ["DayTarget", XSD::QName.new(NsV7, "Day")], [0, 1]],
-      ["device", ["DeviceTarget", XSD::QName.new(NsV7, "Device")], [0, 1]],
-      ["gender", ["GenderTarget", XSD::QName.new(NsV7, "Gender")], [0, 1]],
-      ["hour", ["HourTarget", XSD::QName.new(NsV7, "Hour")], [0, 1]],
+      ["age", ["AdCenterWrapper::AgeTarget", XSD::QName.new(NsV7, "Age")], [0, 1]],
+      ["behavior", ["AdCenterWrapper::BehavioralTarget", XSD::QName.new(NsV7, "Behavior")], [0, 1]],
+      ["day", ["AdCenterWrapper::DayTarget", XSD::QName.new(NsV7, "Day")], [0, 1]],
+      ["device", ["AdCenterWrapper::DeviceTarget", XSD::QName.new(NsV7, "Device")], [0, 1]],
+      ["gender", ["AdCenterWrapper::GenderTarget", XSD::QName.new(NsV7, "Gender")], [0, 1]],
+      ["hour", ["AdCenterWrapper::HourTarget", XSD::QName.new(NsV7, "Hour")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["isLibraryTarget", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "IsLibraryTarget")], [0, 1]],
-      ["location", ["LocationTarget", XSD::QName.new(NsV7, "Location")], [0, 1]],
+      ["location", ["AdCenterWrapper::LocationTarget", XSD::QName.new(NsV7, "Location")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["segment", ["SegmentTarget", XSD::QName.new(NsV7, "Segment")], [0, 1]]
+      ["segment", ["AdCenterWrapper::SegmentTarget", XSD::QName.new(NsV7, "Segment")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AgeTarget,
+    :class => AdCenterWrapper::AgeTarget,
     :schema_type => XSD::QName.new(NsV7, "AgeTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfAgeTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfAgeTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAgeTargetBid,
+    :class => AdCenterWrapper::ArrayOfAgeTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAgeTargetBid"),
     :schema_element => [
-      ["ageTargetBid", ["AgeTargetBid[]", XSD::QName.new(NsV7, "AgeTargetBid")], [0, nil]]
+      ["ageTargetBid", ["AdCenterWrapper::AgeTargetBid[]", XSD::QName.new(NsV7, "AgeTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AgeTargetBid,
+    :class => AdCenterWrapper::AgeTargetBid,
     :schema_type => XSD::QName.new(NsV7, "AgeTargetBid"),
     :schema_element => [
-      ["age", ["AgeRange", XSD::QName.new(NsV7, "Age")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["age", ["AdCenterWrapper::AgeRange", XSD::QName.new(NsV7, "Age")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BehavioralTarget,
+    :class => AdCenterWrapper::BehavioralTarget,
     :schema_type => XSD::QName.new(NsV7, "BehavioralTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfBehavioralTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfBehavioralTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfBehavioralTargetBid,
+    :class => AdCenterWrapper::ArrayOfBehavioralTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBehavioralTargetBid"),
     :schema_element => [
-      ["behavioralTargetBid", ["BehavioralTargetBid[]", XSD::QName.new(NsV7, "BehavioralTargetBid")], [0, nil]]
+      ["behavioralTargetBid", ["AdCenterWrapper::BehavioralTargetBid[]", XSD::QName.new(NsV7, "BehavioralTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BehavioralTargetBid,
+    :class => AdCenterWrapper::BehavioralTargetBid,
     :schema_type => XSD::QName.new(NsV7, "BehavioralTargetBid"),
     :schema_element => [
       ["behavioralName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "BehavioralName")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => DayTarget,
+    :class => AdCenterWrapper::DayTarget,
     :schema_type => XSD::QName.new(NsV7, "DayTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfDayTargetBid", XSD::QName.new(NsV7, "Bids")]],
+      ["bids", ["AdCenterWrapper::ArrayOfDayTargetBid", XSD::QName.new(NsV7, "Bids")]],
       ["targetAllDays", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllDays")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfDayTargetBid,
+    :class => AdCenterWrapper::ArrayOfDayTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfDayTargetBid"),
     :schema_element => [
-      ["dayTargetBid", ["DayTargetBid[]", XSD::QName.new(NsV7, "DayTargetBid")], [0, nil]]
+      ["dayTargetBid", ["AdCenterWrapper::DayTargetBid[]", XSD::QName.new(NsV7, "DayTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => DayTargetBid,
+    :class => AdCenterWrapper::DayTargetBid,
     :schema_type => XSD::QName.new(NsV7, "DayTargetBid"),
     :schema_element => [
-      ["day", ["Day", XSD::QName.new(NsV7, "Day")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["day", ["AdCenterWrapper::Day", XSD::QName.new(NsV7, "Day")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => DeviceTarget,
+    :class => AdCenterWrapper::DeviceTarget,
     :schema_type => XSD::QName.new(NsV7, "DeviceTarget"),
     :schema_element => [
-      ["devices", ["ArrayOfDeviceType", XSD::QName.new(NsV7, "Devices")]]
+      ["devices", ["AdCenterWrapper::ArrayOfDeviceType", XSD::QName.new(NsV7, "Devices")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfDeviceType,
+    :class => AdCenterWrapper::ArrayOfDeviceType,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfDeviceType"),
     :schema_element => [
-      ["deviceType", ["DeviceType[]", XSD::QName.new(NsV7, "DeviceType")], [0, nil]]
+      ["deviceType", ["AdCenterWrapper::DeviceType[]", XSD::QName.new(NsV7, "DeviceType")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => GenderTarget,
+    :class => AdCenterWrapper::GenderTarget,
     :schema_type => XSD::QName.new(NsV7, "GenderTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfGenderTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfGenderTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfGenderTargetBid,
+    :class => AdCenterWrapper::ArrayOfGenderTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfGenderTargetBid"),
     :schema_element => [
-      ["genderTargetBid", ["GenderTargetBid[]", XSD::QName.new(NsV7, "GenderTargetBid")], [0, nil]]
+      ["genderTargetBid", ["AdCenterWrapper::GenderTargetBid[]", XSD::QName.new(NsV7, "GenderTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => GenderTargetBid,
+    :class => AdCenterWrapper::GenderTargetBid,
     :schema_type => XSD::QName.new(NsV7, "GenderTargetBid"),
     :schema_element => [
-      ["gender", ["GenderType", XSD::QName.new(NsV7, "Gender")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["gender", ["AdCenterWrapper::GenderType", XSD::QName.new(NsV7, "Gender")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => HourTarget,
+    :class => AdCenterWrapper::HourTarget,
     :schema_type => XSD::QName.new(NsV7, "HourTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfHourTargetBid", XSD::QName.new(NsV7, "Bids")]],
+      ["bids", ["AdCenterWrapper::ArrayOfHourTargetBid", XSD::QName.new(NsV7, "Bids")]],
       ["targetAllHours", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllHours")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfHourTargetBid,
+    :class => AdCenterWrapper::ArrayOfHourTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfHourTargetBid"),
     :schema_element => [
-      ["hourTargetBid", ["HourTargetBid[]", XSD::QName.new(NsV7, "HourTargetBid")], [0, nil]]
+      ["hourTargetBid", ["AdCenterWrapper::HourTargetBid[]", XSD::QName.new(NsV7, "HourTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => HourTargetBid,
+    :class => AdCenterWrapper::HourTargetBid,
     :schema_type => XSD::QName.new(NsV7, "HourTargetBid"),
     :schema_element => [
-      ["hour", ["HourRange", XSD::QName.new(NsV7, "Hour")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["hour", ["AdCenterWrapper::HourRange", XSD::QName.new(NsV7, "Hour")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => LocationTarget,
+    :class => AdCenterWrapper::LocationTarget,
     :schema_type => XSD::QName.new(NsV7, "LocationTarget"),
     :schema_element => [
-      ["businessTarget", ["BusinessTarget", XSD::QName.new(NsV7, "BusinessTarget")], [0, 1]],
-      ["cityTarget", ["CityTarget", XSD::QName.new(NsV7, "CityTarget")], [0, 1]],
-      ["countryTarget", ["CountryTarget", XSD::QName.new(NsV7, "CountryTarget")], [0, 1]],
-      ["metroAreaTarget", ["MetroAreaTarget", XSD::QName.new(NsV7, "MetroAreaTarget")], [0, 1]],
-      ["radiusTarget", ["RadiusTarget", XSD::QName.new(NsV7, "RadiusTarget")], [0, 1]],
-      ["stateTarget", ["StateTarget", XSD::QName.new(NsV7, "StateTarget")], [0, 1]],
+      ["businessTarget", ["AdCenterWrapper::BusinessTarget", XSD::QName.new(NsV7, "BusinessTarget")], [0, 1]],
+      ["cityTarget", ["AdCenterWrapper::CityTarget", XSD::QName.new(NsV7, "CityTarget")], [0, 1]],
+      ["countryTarget", ["AdCenterWrapper::CountryTarget", XSD::QName.new(NsV7, "CountryTarget")], [0, 1]],
+      ["metroAreaTarget", ["AdCenterWrapper::MetroAreaTarget", XSD::QName.new(NsV7, "MetroAreaTarget")], [0, 1]],
+      ["radiusTarget", ["AdCenterWrapper::RadiusTarget", XSD::QName.new(NsV7, "RadiusTarget")], [0, 1]],
+      ["stateTarget", ["AdCenterWrapper::StateTarget", XSD::QName.new(NsV7, "StateTarget")], [0, 1]],
       ["targetAllLocations", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllLocations")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BusinessTarget,
+    :class => AdCenterWrapper::BusinessTarget,
     :schema_type => XSD::QName.new(NsV7, "BusinessTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfBusinessTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfBusinessTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfBusinessTargetBid,
+    :class => AdCenterWrapper::ArrayOfBusinessTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBusinessTargetBid"),
     :schema_element => [
-      ["businessTargetBid", ["BusinessTargetBid[]", XSD::QName.new(NsV7, "BusinessTargetBid")], [0, nil]]
+      ["businessTargetBid", ["AdCenterWrapper::BusinessTargetBid[]", XSD::QName.new(NsV7, "BusinessTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => BusinessTargetBid,
+    :class => AdCenterWrapper::BusinessTargetBid,
     :schema_type => XSD::QName.new(NsV7, "BusinessTargetBid"),
     :schema_element => [
       ["businessId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "BusinessId")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["radius", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Radius")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CityTarget,
+    :class => AdCenterWrapper::CityTarget,
     :schema_type => XSD::QName.new(NsV7, "CityTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfCityTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfCityTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfCityTargetBid,
+    :class => AdCenterWrapper::ArrayOfCityTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCityTargetBid"),
     :schema_element => [
-      ["cityTargetBid", ["CityTargetBid[]", XSD::QName.new(NsV7, "CityTargetBid")], [0, nil]]
+      ["cityTargetBid", ["AdCenterWrapper::CityTargetBid[]", XSD::QName.new(NsV7, "CityTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CityTargetBid,
+    :class => AdCenterWrapper::CityTargetBid,
     :schema_type => XSD::QName.new(NsV7, "CityTargetBid"),
     :schema_element => [
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsV7, "City")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CountryTarget,
+    :class => AdCenterWrapper::CountryTarget,
     :schema_type => XSD::QName.new(NsV7, "CountryTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfCountryTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfCountryTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfCountryTargetBid,
+    :class => AdCenterWrapper::ArrayOfCountryTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCountryTargetBid"),
     :schema_element => [
-      ["countryTargetBid", ["CountryTargetBid[]", XSD::QName.new(NsV7, "CountryTargetBid")], [0, nil]]
+      ["countryTargetBid", ["AdCenterWrapper::CountryTargetBid[]", XSD::QName.new(NsV7, "CountryTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => CountryTargetBid,
+    :class => AdCenterWrapper::CountryTargetBid,
     :schema_type => XSD::QName.new(NsV7, "CountryTargetBid"),
     :schema_element => [
       ["countryAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CountryAndRegion")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => MetroAreaTarget,
+    :class => AdCenterWrapper::MetroAreaTarget,
     :schema_type => XSD::QName.new(NsV7, "MetroAreaTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfMetroAreaTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfMetroAreaTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfMetroAreaTargetBid,
+    :class => AdCenterWrapper::ArrayOfMetroAreaTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfMetroAreaTargetBid"),
     :schema_element => [
-      ["metroAreaTargetBid", ["MetroAreaTargetBid[]", XSD::QName.new(NsV7, "MetroAreaTargetBid")], [0, nil]]
+      ["metroAreaTargetBid", ["AdCenterWrapper::MetroAreaTargetBid[]", XSD::QName.new(NsV7, "MetroAreaTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => MetroAreaTargetBid,
+    :class => AdCenterWrapper::MetroAreaTargetBid,
     :schema_type => XSD::QName.new(NsV7, "MetroAreaTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["metroArea", ["SOAP::SOAPString", XSD::QName.new(NsV7, "MetroArea")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => RadiusTarget,
+    :class => AdCenterWrapper::RadiusTarget,
     :schema_type => XSD::QName.new(NsV7, "RadiusTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfRadiusTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfRadiusTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfRadiusTargetBid,
+    :class => AdCenterWrapper::ArrayOfRadiusTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfRadiusTargetBid"),
     :schema_element => [
-      ["radiusTargetBid", ["RadiusTargetBid[]", XSD::QName.new(NsV7, "RadiusTargetBid")], [0, nil]]
+      ["radiusTargetBid", ["AdCenterWrapper::RadiusTargetBid[]", XSD::QName.new(NsV7, "RadiusTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => RadiusTargetBid,
+    :class => AdCenterWrapper::RadiusTargetBid,
     :schema_type => XSD::QName.new(NsV7, "RadiusTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["latitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LatitudeDegrees")]],
       ["longitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LongitudeDegrees")]],
       ["radius", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Radius")]]
@@ -974,52 +976,52 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => StateTarget,
+    :class => AdCenterWrapper::StateTarget,
     :schema_type => XSD::QName.new(NsV7, "StateTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfStateTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfStateTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfStateTargetBid,
+    :class => AdCenterWrapper::ArrayOfStateTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfStateTargetBid"),
     :schema_element => [
-      ["stateTargetBid", ["StateTargetBid[]", XSD::QName.new(NsV7, "StateTargetBid")], [0, nil]]
+      ["stateTargetBid", ["AdCenterWrapper::StateTargetBid[]", XSD::QName.new(NsV7, "StateTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => StateTargetBid,
+    :class => AdCenterWrapper::StateTargetBid,
     :schema_type => XSD::QName.new(NsV7, "StateTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["state", ["SOAP::SOAPString", XSD::QName.new(NsV7, "State")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => SegmentTarget,
+    :class => AdCenterWrapper::SegmentTarget,
     :schema_type => XSD::QName.new(NsV7, "SegmentTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfSegmentTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfSegmentTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfSegmentTargetBid,
+    :class => AdCenterWrapper::ArrayOfSegmentTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfSegmentTargetBid"),
     :schema_element => [
-      ["segmentTargetBid", ["SegmentTargetBid[]", XSD::QName.new(NsV7, "SegmentTargetBid")], [0, nil]]
+      ["segmentTargetBid", ["AdCenterWrapper::SegmentTargetBid[]", XSD::QName.new(NsV7, "SegmentTargetBid")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => SegmentTargetBid,
+    :class => AdCenterWrapper::SegmentTargetBid,
     :schema_type => XSD::QName.new(NsV7, "SegmentTargetBid"),
     :schema_element => [
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["param1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param1")], [0, 1]],
       ["param2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param2")], [0, 1]],
       ["param3", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param3")], [0, 1]],
@@ -1030,23 +1032,23 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfTarget,
+    :class => AdCenterWrapper::ArrayOfTarget,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfTarget"),
     :schema_element => [
-      ["target", ["Target[]", XSD::QName.new(NsV7, "Target")], [0, nil]]
+      ["target", ["AdCenterWrapper::Target[]", XSD::QName.new(NsV7, "Target")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfTargetInfo,
+    :class => AdCenterWrapper::ArrayOfTargetInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfTargetInfo"),
     :schema_element => [
-      ["targetInfo", ["TargetInfo[]", XSD::QName.new(NsV7, "TargetInfo")], [0, nil]]
+      ["targetInfo", ["AdCenterWrapper::TargetInfo[]", XSD::QName.new(NsV7, "TargetInfo")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => TargetInfo,
+    :class => AdCenterWrapper::TargetInfo,
     :schema_type => XSD::QName.new(NsV7, "TargetInfo"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -1055,7 +1057,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -1063,25 +1065,25 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -1092,7 +1094,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOflong,
+    :class => AdCenterWrapper::ArrayOflong,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
       ["long", "SOAP::SOAPLong[]", [0, nil]]
@@ -1100,7 +1102,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfbase64Binary,
+    :class => AdCenterWrapper::ArrayOfbase64Binary,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOfbase64Binary"),
     :schema_element => [
       ["base64Binary", "SOAP::SOAPBase64[]", [0, nil]]
@@ -1108,7 +1110,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfstring,
+    :class => AdCenterWrapper::ArrayOfstring,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOfstring"),
     :schema_element => [
       ["string", "SOAP::SOAPString[]", [0, nil]]
@@ -1116,166 +1118,166 @@ module CampaignManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdGroupNetwork,
+    :class => AdCenterWrapper::ArrayOfAdGroupNetwork,
     :schema_type => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "ArrayOfAdGroupNetwork"),
     :schema_element => [
-      ["adGroupNetwork", ["AdGroupNetwork[]", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork")], [0, nil]]
+      ["adGroupNetwork", ["AdCenterWrapper::AdGroupNetwork[]", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdGroupNetwork,
+    :class => AdCenterWrapper::AdGroupNetwork,
     :schema_type => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupId")], [0, 1]],
-      ["network", ["Network", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "Network")], [0, 1]]
+      ["network", ["AdCenterWrapper::Network", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "Network")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdEditorialStatus,
+    :class => AdCenterWrapper::AdEditorialStatus,
     :schema_type => XSD::QName.new(NsV7, "AdEditorialStatus")
   )
 
   EncodedRegistry.register(
-    :class => AdStatus,
+    :class => AdCenterWrapper::AdStatus,
     :schema_type => XSD::QName.new(NsV7, "AdStatus")
   )
 
   EncodedRegistry.register(
-    :class => AdType,
+    :class => AdCenterWrapper::AdType,
     :schema_type => XSD::QName.new(NsV7, "AdType")
   )
 
   EncodedRegistry.register(
-    :class => BehavioralBidStatus,
+    :class => AdCenterWrapper::BehavioralBidStatus,
     :schema_type => XSD::QName.new(NsV7, "BehavioralBidStatus")
   )
 
   EncodedRegistry.register(
-    :class => Language,
+    :class => AdCenterWrapper::Language,
     :schema_type => XSD::QName.new(NsV7, "Language")
   )
 
   EncodedRegistry.register(
-    :class => Network,
+    :class => AdCenterWrapper::Network,
     :schema_type => XSD::QName.new(NsV7, "Network")
   )
 
   EncodedRegistry.register(
-    :class => CashBackStatus,
+    :class => AdCenterWrapper::CashBackStatus,
     :schema_type => XSD::QName.new(NsV7, "CashBackStatus")
   )
 
   EncodedRegistry.register(
-    :class => KeywordEditorialStatus,
+    :class => AdCenterWrapper::KeywordEditorialStatus,
     :schema_type => XSD::QName.new(NsV7, "KeywordEditorialStatus")
   )
 
   EncodedRegistry.register(
-    :class => OverridePriority,
+    :class => AdCenterWrapper::OverridePriority,
     :schema_type => XSD::QName.new(NsV7, "OverridePriority")
   )
 
   EncodedRegistry.register(
-    :class => KeywordStatus,
+    :class => AdCenterWrapper::KeywordStatus,
     :schema_type => XSD::QName.new(NsV7, "KeywordStatus")
   )
 
   EncodedRegistry.register(
-    :class => PricingModel,
+    :class => AdCenterWrapper::PricingModel,
     :schema_type => XSD::QName.new(NsV7, "PricingModel")
   )
 
   EncodedRegistry.register(
-    :class => StandardBusinessIcon,
+    :class => AdCenterWrapper::StandardBusinessIcon,
     :schema_type => XSD::QName.new(NsV7, "StandardBusinessIcon")
   )
 
   EncodedRegistry.register(
-    :class => BusinessGeoCodeStatus,
+    :class => AdCenterWrapper::BusinessGeoCodeStatus,
     :schema_type => XSD::QName.new(NsV7, "BusinessGeoCodeStatus")
   )
 
   EncodedRegistry.register(
-    :class => Day,
+    :class => AdCenterWrapper::Day,
     :schema_type => XSD::QName.new(NsV7, "Day")
   )
 
   EncodedRegistry.register(
-    :class => PaymentType,
+    :class => AdCenterWrapper::PaymentType,
     :schema_type => XSD::QName.new(NsV7, "PaymentType")
   )
 
   EncodedRegistry.register(
-    :class => BusinessStatus,
+    :class => AdCenterWrapper::BusinessStatus,
     :schema_type => XSD::QName.new(NsV7, "BusinessStatus")
   )
 
   EncodedRegistry.register(
-    :class => SitePlacementStatus,
+    :class => AdCenterWrapper::SitePlacementStatus,
     :schema_type => XSD::QName.new(NsV7, "SitePlacementStatus")
   )
 
   EncodedRegistry.register(
-    :class => BudgetLimitType,
+    :class => AdCenterWrapper::BudgetLimitType,
     :schema_type => XSD::QName.new(NsV7, "BudgetLimitType")
   )
 
   EncodedRegistry.register(
-    :class => CampaignStatus,
+    :class => AdCenterWrapper::CampaignStatus,
     :schema_type => XSD::QName.new(NsV7, "CampaignStatus")
   )
 
   EncodedRegistry.register(
-    :class => BiddingModel,
+    :class => AdCenterWrapper::BiddingModel,
     :schema_type => XSD::QName.new(NsV7, "BiddingModel")
   )
 
   EncodedRegistry.register(
-    :class => AdGroupStatus,
+    :class => AdCenterWrapper::AdGroupStatus,
     :schema_type => XSD::QName.new(NsV7, "AdGroupStatus")
   )
 
   EncodedRegistry.register(
-    :class => AgeRange,
+    :class => AdCenterWrapper::AgeRange,
     :schema_type => XSD::QName.new(NsV7, "AgeRange")
   )
 
   EncodedRegistry.register(
-    :class => IncrementalBidPercentage,
+    :class => AdCenterWrapper::IncrementalBidPercentage,
     :schema_type => XSD::QName.new(NsV7, "IncrementalBidPercentage")
   )
 
   EncodedRegistry.register(
-    :class => DeviceType,
+    :class => AdCenterWrapper::DeviceType,
     :schema_type => XSD::QName.new(NsV7, "DeviceType")
   )
 
   EncodedRegistry.register(
-    :class => GenderType,
+    :class => AdCenterWrapper::GenderType,
     :schema_type => XSD::QName.new(NsV7, "GenderType")
   )
 
   EncodedRegistry.register(
-    :class => HourRange,
+    :class => AdCenterWrapper::HourRange,
     :schema_type => XSD::QName.new(NsV7, "HourRange")
   )
 
   EncodedRegistry.register(
-    :class => AdComponent,
+    :class => AdCenterWrapper::AdComponent,
     :schema_type => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdComponent")
   )
 
   LiteralRegistry.register(
-    :class => MobileAd,
+    :class => AdCenterWrapper::MobileAd,
     :schema_type => XSD::QName.new(NsV7, "MobileAd"),
     :schema_basetype => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
       ["businessName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "BusinessName")], [0, 1]],
       ["destinationUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DestinationUrl")], [0, 1]],
       ["displayUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DisplayUrl")], [0, 1]],
@@ -1286,25 +1288,25 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => Ad,
+    :class => AdCenterWrapper::Ad,
     :schema_type => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]]
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => TextAd,
+    :class => AdCenterWrapper::TextAd,
     :schema_type => XSD::QName.new(NsV7, "TextAd"),
     :schema_basetype => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
       ["destinationUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DestinationUrl")], [0, 1]],
       ["displayUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DisplayUrl")]],
       ["text", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Text")]],
@@ -1313,27 +1315,27 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBehavioralBid,
+    :class => AdCenterWrapper::ArrayOfBehavioralBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBehavioralBid"),
     :schema_element => [
-      ["behavioralBid", ["BehavioralBid[]", XSD::QName.new(NsV7, "BehavioralBid")], [0, nil]]
+      ["behavioralBid", ["AdCenterWrapper::BehavioralBid[]", XSD::QName.new(NsV7, "BehavioralBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BehavioralBid,
+    :class => AdCenterWrapper::BehavioralBid,
     :schema_type => XSD::QName.new(NsV7, "BehavioralBid"),
     :schema_element => [
-      ["bid", ["Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
+      ["bid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
       ["segmentId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "SegmentId")], [0, 1]],
-      ["status", ["BehavioralBidStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["status", ["AdCenterWrapper::BehavioralBidStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Bid,
+    :class => AdCenterWrapper::Bid,
     :schema_type => XSD::QName.new(NsV7, "Bid"),
     :schema_element => [
       ["amount", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "Amount")], [0, 1]]
@@ -1341,26 +1343,26 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ApiFaultDetail,
+    :class => AdCenterWrapper::ApiFaultDetail,
     :schema_type => XSD::QName.new(NsV7, "ApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["batchErrors", ["ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBatchError,
+    :class => AdCenterWrapper::ArrayOfBatchError,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBatchError"),
     :schema_element => [
-      ["batchError", ["BatchError[]", XSD::QName.new(NsV7, "BatchError")], [0, nil]]
+      ["batchError", ["AdCenterWrapper::BatchError[]", XSD::QName.new(NsV7, "BatchError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BatchError,
+    :class => AdCenterWrapper::BatchError,
     :schema_type => XSD::QName.new(NsV7, "BatchError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Code")], [0, 1]],
@@ -1372,15 +1374,15 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfOperationError,
+    :class => AdCenterWrapper::ArrayOfOperationError,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfOperationError"),
     :schema_element => [
-      ["operationError", ["OperationError[]", XSD::QName.new(NsV7, "OperationError")], [0, nil]]
+      ["operationError", ["AdCenterWrapper::OperationError[]", XSD::QName.new(NsV7, "OperationError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => OperationError,
+    :class => AdCenterWrapper::OperationError,
     :schema_type => XSD::QName.new(NsV7, "OperationError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Code")], [0, 1]],
@@ -1391,15 +1393,15 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfSegment,
+    :class => AdCenterWrapper::ArrayOfSegment,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfSegment"),
     :schema_element => [
-      ["segment", ["Segment[]", XSD::QName.new(NsV7, "Segment")], [0, nil]]
+      ["segment", ["AdCenterWrapper::Segment[]", XSD::QName.new(NsV7, "Segment")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Segment,
+    :class => AdCenterWrapper::Segment,
     :schema_type => XSD::QName.new(NsV7, "Segment"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -1408,70 +1410,70 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfEditorialReasonCollection,
+    :class => AdCenterWrapper::ArrayOfEditorialReasonCollection,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfEditorialReasonCollection"),
     :schema_element => [
-      ["editorialReasonCollection", ["EditorialReasonCollection[]", XSD::QName.new(NsV7, "EditorialReasonCollection")], [0, nil]]
+      ["editorialReasonCollection", ["AdCenterWrapper::EditorialReasonCollection[]", XSD::QName.new(NsV7, "EditorialReasonCollection")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialReasonCollection,
+    :class => AdCenterWrapper::EditorialReasonCollection,
     :schema_type => XSD::QName.new(NsV7, "EditorialReasonCollection"),
     :schema_element => [
       ["adOrKeywordId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdOrKeywordId")], [0, 1]],
-      ["reasons", ["ArrayOfEditorialReason", XSD::QName.new(NsV7, "Reasons")], [0, 1]]
+      ["reasons", ["AdCenterWrapper::ArrayOfEditorialReason", XSD::QName.new(NsV7, "Reasons")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfEditorialReason,
+    :class => AdCenterWrapper::ArrayOfEditorialReason,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfEditorialReason"),
     :schema_element => [
-      ["editorialReason", ["EditorialReason[]", XSD::QName.new(NsV7, "EditorialReason")], [0, nil]]
+      ["editorialReason", ["AdCenterWrapper::EditorialReason[]", XSD::QName.new(NsV7, "EditorialReason")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialReason,
+    :class => AdCenterWrapper::EditorialReason,
     :schema_type => XSD::QName.new(NsV7, "EditorialReason"),
     :schema_element => [
-      ["location", ["AdComponent", XSD::QName.new(NsV7, "Location")], [0, 1]],
+      ["location", ["AdCenterWrapper::AdComponent", XSD::QName.new(NsV7, "Location")], [0, 1]],
       ["reasonCode", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "ReasonCode")], [0, 1]],
       ["term", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Term")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAd,
+    :class => AdCenterWrapper::ArrayOfAd,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAd"),
     :schema_element => [
-      ["ad", ["Ad[]", XSD::QName.new(NsV7, "Ad")], [0, nil]]
+      ["ad", ["AdCenterWrapper::Ad[]", XSD::QName.new(NsV7, "Ad")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialApiFaultDetail,
+    :class => AdCenterWrapper::EditorialApiFaultDetail,
     :schema_type => XSD::QName.new(NsV7, "EditorialApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["batchErrors", ["ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
-      ["editorialErrors", ["ArrayOfEditorialError", XSD::QName.new(NsV7, "EditorialErrors")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
+      ["editorialErrors", ["AdCenterWrapper::ArrayOfEditorialError", XSD::QName.new(NsV7, "EditorialErrors")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfEditorialError,
+    :class => AdCenterWrapper::ArrayOfEditorialError,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfEditorialError"),
     :schema_element => [
-      ["editorialError", ["EditorialError[]", XSD::QName.new(NsV7, "EditorialError")], [0, nil]]
+      ["editorialError", ["AdCenterWrapper::EditorialError[]", XSD::QName.new(NsV7, "EditorialError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialError,
+    :class => AdCenterWrapper::EditorialError,
     :schema_type => XSD::QName.new(NsV7, "EditorialError"),
     :schema_element => [
       ["appealable", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "Appealable")], [0, 1]],
@@ -1484,54 +1486,54 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfKeyword,
+    :class => AdCenterWrapper::ArrayOfKeyword,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfKeyword"),
     :schema_element => [
-      ["keyword", ["Keyword[]", XSD::QName.new(NsV7, "Keyword")], [0, nil]]
+      ["keyword", ["AdCenterWrapper::Keyword[]", XSD::QName.new(NsV7, "Keyword")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Keyword,
+    :class => AdCenterWrapper::Keyword,
     :schema_type => XSD::QName.new(NsV7, "Keyword"),
     :schema_element => [
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["editorialStatus", ["KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["overridePriority", ["OverridePriority", XSD::QName.new(NsV7, "OverridePriority")], [0, 1]],
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["overridePriority", ["AdCenterWrapper::OverridePriority", XSD::QName.new(NsV7, "OverridePriority")], [0, 1]],
       ["param1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param1")], [0, 1]],
       ["param2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param2")], [0, 1]],
       ["param3", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param3")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["status", ["KeywordStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["status", ["AdCenterWrapper::KeywordStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["text", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Text")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CashBackInfo,
+    :class => AdCenterWrapper::CashBackInfo,
     :schema_type => XSD::QName.new(NsV7, "CashBackInfo"),
     :schema_element => [
       ["cashBackAmount", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "CashBackAmount")], [0, 1]],
-      ["cashBackStatus", ["CashBackStatus", XSD::QName.new(NsV7, "CashBackStatus")], [0, 1]],
+      ["cashBackStatus", ["AdCenterWrapper::CashBackStatus", XSD::QName.new(NsV7, "CashBackStatus")], [0, 1]],
       ["cashBackText", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CashBackText")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfKeywordBid,
+    :class => AdCenterWrapper::ArrayOfKeywordBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfKeywordBid"),
     :schema_element => [
-      ["keywordBid", ["KeywordBid[]", XSD::QName.new(NsV7, "KeywordBid")], [0, nil]]
+      ["keywordBid", ["AdCenterWrapper::KeywordBid[]", XSD::QName.new(NsV7, "KeywordBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => KeywordBid,
+    :class => AdCenterWrapper::KeywordBid,
     :schema_type => XSD::QName.new(NsV7, "KeywordBid"),
     :schema_element => [
       ["broadMatchBid", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
@@ -1542,28 +1544,28 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfKeywordEstimate,
+    :class => AdCenterWrapper::ArrayOfKeywordEstimate,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfKeywordEstimate"),
     :schema_element => [
-      ["keywordEstimate", ["KeywordEstimate[]", XSD::QName.new(NsV7, "KeywordEstimate")], [0, nil]]
+      ["keywordEstimate", ["AdCenterWrapper::KeywordEstimate[]", XSD::QName.new(NsV7, "KeywordEstimate")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => KeywordEstimate,
+    :class => AdCenterWrapper::KeywordEstimate,
     :schema_type => XSD::QName.new(NsV7, "KeywordEstimate"),
     :schema_element => [
       ["averageMonthlyCost", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "AverageMonthlyCost")], [0, 1]],
       ["averageMonthlyPosition", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "AverageMonthlyPosition")], [0, 1]],
-      ["broadKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "BroadKeywordEstimate")], [0, 1]],
+      ["broadKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "BroadKeywordEstimate")], [0, 1]],
       ["estimatedTotalMonthlyImpressions", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "EstimatedTotalMonthlyImpressions")], [0, 1]],
-      ["exactKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "ExactKeywordEstimate")], [0, 1]],
-      ["phraseKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "PhraseKeywordEstimate")], [0, 1]]
+      ["exactKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "ExactKeywordEstimate")], [0, 1]],
+      ["phraseKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "PhraseKeywordEstimate")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MatchTypeEstimate,
+    :class => AdCenterWrapper::MatchTypeEstimate,
     :schema_type => XSD::QName.new(NsV7, "MatchTypeEstimate"),
     :schema_element => [
       ["monthlyCost", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyCost")], [0, 1]],
@@ -1573,79 +1575,79 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBusiness,
+    :class => AdCenterWrapper::ArrayOfBusiness,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBusiness"),
     :schema_element => [
-      ["business", ["Business[]", XSD::QName.new(NsV7, "Business")], [0, nil]]
+      ["business", ["AdCenterWrapper::Business[]", XSD::QName.new(NsV7, "Business")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Business,
+    :class => AdCenterWrapper::Business,
     :schema_type => XSD::QName.new(NsV7, "Business"),
     :schema_element => [
       ["addressLine1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "AddressLine1")], [0, 1]],
       ["addressLine2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "AddressLine2")], [0, 1]],
-      ["businessImageIcon", ["BusinessImageIcon", XSD::QName.new(NsV7, "BusinessImageIcon")], [0, 1]],
+      ["businessImageIcon", ["AdCenterWrapper::BusinessImageIcon", XSD::QName.new(NsV7, "BusinessImageIcon")], [0, 1]],
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsV7, "City")], [0, 1]],
       ["countryOrRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CountryOrRegion")], [0, 1]],
       ["description", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Description")]],
       ["email", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Email")], [0, 1]],
-      ["geoCodeStatus", ["BusinessGeoCodeStatus", XSD::QName.new(NsV7, "GeoCodeStatus")], [0, 1]],
-      ["hrsOfOperation", ["ArrayOfHoursOfOperation", XSD::QName.new(NsV7, "HrsOfOperation")], [0, 1]],
+      ["geoCodeStatus", ["AdCenterWrapper::BusinessGeoCodeStatus", XSD::QName.new(NsV7, "GeoCodeStatus")], [0, 1]],
+      ["hrsOfOperation", ["AdCenterWrapper::ArrayOfHoursOfOperation", XSD::QName.new(NsV7, "HrsOfOperation")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["isOpen24Hours", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "IsOpen24Hours")], [0, 1]],
       ["latitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LatitudeDegrees")], [0, 1]],
       ["longitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LongitudeDegrees")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")]],
       ["otherPaymentTypeDesc", ["SOAP::SOAPString", XSD::QName.new(NsV7, "OtherPaymentTypeDesc")], [0, 1]],
-      ["payment", ["ArrayOfPaymentType", XSD::QName.new(NsV7, "Payment")], [0, 1]],
+      ["payment", ["AdCenterWrapper::ArrayOfPaymentType", XSD::QName.new(NsV7, "Payment")], [0, 1]],
       ["phone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Phone")], [0, 1]],
       ["stateOrProvince", ["SOAP::SOAPString", XSD::QName.new(NsV7, "StateOrProvince")], [0, 1]],
-      ["status", ["BusinessStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::BusinessStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["uRL", ["SOAP::SOAPString", XSD::QName.new(NsV7, "URL")], [0, 1]],
       ["zipOrPostalCode", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ZipOrPostalCode")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessImageIcon,
+    :class => AdCenterWrapper::BusinessImageIcon,
     :schema_type => XSD::QName.new(NsV7, "BusinessImageIcon"),
     :schema_element => [
       ["customIconAssetId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CustomIconAssetId")], [0, 1]],
-      ["standardBusinessIcon", ["StandardBusinessIcon", XSD::QName.new(NsV7, "StandardBusinessIcon")], [0, 1]]
+      ["standardBusinessIcon", ["AdCenterWrapper::StandardBusinessIcon", XSD::QName.new(NsV7, "StandardBusinessIcon")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfHoursOfOperation,
+    :class => AdCenterWrapper::ArrayOfHoursOfOperation,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfHoursOfOperation"),
     :schema_element => [
-      ["hoursOfOperation", ["HoursOfOperation[]", XSD::QName.new(NsV7, "HoursOfOperation")], [0, nil]]
+      ["hoursOfOperation", ["AdCenterWrapper::HoursOfOperation[]", XSD::QName.new(NsV7, "HoursOfOperation")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => HoursOfOperation,
+    :class => AdCenterWrapper::HoursOfOperation,
     :schema_type => XSD::QName.new(NsV7, "HoursOfOperation"),
     :schema_element => [
-      ["day", ["Day", XSD::QName.new(NsV7, "Day")], [0, 1]],
-      ["openTime1", "DayTimeInterval", [0, 1]],
-      ["openTime2", "DayTimeInterval", [0, 1]]
+      ["day", ["AdCenterWrapper::Day", XSD::QName.new(NsV7, "Day")], [0, 1]],
+      ["openTime1", "AdCenterWrapper::DayTimeInterval", [0, 1]],
+      ["openTime2", "AdCenterWrapper::DayTimeInterval", [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DayTimeInterval,
+    :class => AdCenterWrapper::DayTimeInterval,
     :schema_type => XSD::QName.new(NsV7, "DayTimeInterval"),
     :schema_element => [
-      ["v_begin", ["TimeOfTheDay", XSD::QName.new(NsV7, "Begin")], [0, 1]],
-      ["v_end", ["TimeOfTheDay", XSD::QName.new(NsV7, "End")], [0, 1]]
+      ["v_begin", ["AdCenterWrapper::TimeOfTheDay", XSD::QName.new(NsV7, "Begin")], [0, 1]],
+      ["v_end", ["AdCenterWrapper::TimeOfTheDay", XSD::QName.new(NsV7, "End")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => TimeOfTheDay,
+    :class => AdCenterWrapper::TimeOfTheDay,
     :schema_type => XSD::QName.new(NsV7, "TimeOfTheDay"),
     :schema_element => [
       ["hour", ["SOAP::SOAPShort", XSD::QName.new(NsV7, "Hour")], [0, 1]],
@@ -1654,23 +1656,23 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfPaymentType,
+    :class => AdCenterWrapper::ArrayOfPaymentType,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfPaymentType"),
     :schema_element => [
-      ["paymentType", ["PaymentType[]", XSD::QName.new(NsV7, "PaymentType")], [0, nil]]
+      ["paymentType", ["AdCenterWrapper::PaymentType[]", XSD::QName.new(NsV7, "PaymentType")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBusinessInfo,
+    :class => AdCenterWrapper::ArrayOfBusinessInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBusinessInfo"),
     :schema_element => [
-      ["businessInfo", ["BusinessInfo[]", XSD::QName.new(NsV7, "BusinessInfo")], [0, nil]]
+      ["businessInfo", ["AdCenterWrapper::BusinessInfo[]", XSD::QName.new(NsV7, "BusinessInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessInfo,
+    :class => AdCenterWrapper::BusinessInfo,
     :schema_type => XSD::QName.new(NsV7, "BusinessInfo"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -1679,54 +1681,54 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfSitePlacement,
+    :class => AdCenterWrapper::ArrayOfSitePlacement,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfSitePlacement"),
     :schema_element => [
-      ["sitePlacement", ["SitePlacement[]", XSD::QName.new(NsV7, "SitePlacement")], [0, nil]]
+      ["sitePlacement", ["AdCenterWrapper::SitePlacement[]", XSD::QName.new(NsV7, "SitePlacement")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SitePlacement,
+    :class => AdCenterWrapper::SitePlacement,
     :schema_type => XSD::QName.new(NsV7, "SitePlacement"),
     :schema_element => [
-      ["bid", ["Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
+      ["bid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["placementId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "PlacementId")], [0, 1]],
-      ["status", ["SitePlacementStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::SitePlacementStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["url", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Url")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfArrayOfPlacementDetail,
+    :class => AdCenterWrapper::ArrayOfArrayOfPlacementDetail,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfArrayOfPlacementDetail"),
     :schema_element => [
-      ["arrayOfPlacementDetail", ["ArrayOfPlacementDetail[]", XSD::QName.new(NsV7, "ArrayOfPlacementDetail")], [0, nil]]
+      ["arrayOfPlacementDetail", ["AdCenterWrapper::ArrayOfPlacementDetail[]", XSD::QName.new(NsV7, "ArrayOfPlacementDetail")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfPlacementDetail,
+    :class => AdCenterWrapper::ArrayOfPlacementDetail,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfPlacementDetail"),
     :schema_element => [
-      ["placementDetail", ["PlacementDetail[]", XSD::QName.new(NsV7, "PlacementDetail")], [0, nil]]
+      ["placementDetail", ["AdCenterWrapper::PlacementDetail[]", XSD::QName.new(NsV7, "PlacementDetail")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PlacementDetail,
+    :class => AdCenterWrapper::PlacementDetail,
     :schema_type => XSD::QName.new(NsV7, "PlacementDetail"),
     :schema_element => [
-      ["impressionsRangePerDay", ["ImpressionsPerDayRange", XSD::QName.new(NsV7, "ImpressionsRangePerDay")], [0, 1]],
+      ["impressionsRangePerDay", ["AdCenterWrapper::ImpressionsPerDayRange", XSD::QName.new(NsV7, "ImpressionsRangePerDay")], [0, 1]],
       ["pathName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "PathName")], [0, 1]],
       ["placementId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "PlacementId")], [0, 1]],
-      ["supportedMediaTypes", ["ArrayOfMediaType", XSD::QName.new(NsV7, "SupportedMediaTypes")], [0, 1]]
+      ["supportedMediaTypes", ["AdCenterWrapper::ArrayOfMediaType", XSD::QName.new(NsV7, "SupportedMediaTypes")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ImpressionsPerDayRange,
+    :class => AdCenterWrapper::ImpressionsPerDayRange,
     :schema_type => XSD::QName.new(NsV7, "ImpressionsPerDayRange"),
     :schema_element => [
       ["maximum", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Maximum")], [0, 1]],
@@ -1735,32 +1737,32 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfMediaType,
+    :class => AdCenterWrapper::ArrayOfMediaType,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfMediaType"),
     :schema_element => [
-      ["mediaType", ["MediaType[]", XSD::QName.new(NsV7, "MediaType")], [0, nil]]
+      ["mediaType", ["AdCenterWrapper::MediaType[]", XSD::QName.new(NsV7, "MediaType")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MediaType,
+    :class => AdCenterWrapper::MediaType,
     :schema_type => XSD::QName.new(NsV7, "MediaType"),
     :schema_element => [
-      ["dimensions", ["ArrayOfDimension", XSD::QName.new(NsV7, "Dimensions")], [0, 1]],
+      ["dimensions", ["AdCenterWrapper::ArrayOfDimension", XSD::QName.new(NsV7, "Dimensions")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfDimension,
+    :class => AdCenterWrapper::ArrayOfDimension,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfDimension"),
     :schema_element => [
-      ["dimension", ["Dimension[]", XSD::QName.new(NsV7, "Dimension")], [0, nil]]
+      ["dimension", ["AdCenterWrapper::Dimension[]", XSD::QName.new(NsV7, "Dimension")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Dimension,
+    :class => AdCenterWrapper::Dimension,
     :schema_type => XSD::QName.new(NsV7, "Dimension"),
     :schema_element => [
       ["height", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Height")], [0, 1]],
@@ -1769,19 +1771,19 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCampaign,
+    :class => AdCenterWrapper::ArrayOfCampaign,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCampaign"),
     :schema_element => [
-      ["campaign", ["Campaign[]", XSD::QName.new(NsV7, "Campaign")], [0, nil]]
+      ["campaign", ["AdCenterWrapper::Campaign[]", XSD::QName.new(NsV7, "Campaign")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Campaign,
+    :class => AdCenterWrapper::Campaign,
     :schema_type => XSD::QName.new(NsV7, "Campaign"),
     :schema_element => [
-      ["budgetType", ["BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["budgetType", ["AdCenterWrapper::BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
       ["conversionTrackingEnabled", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "ConversionTrackingEnabled")], [0, 1]],
       ["conversionTrackingScript", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ConversionTrackingScript")], [0, 1]],
       ["dailyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "DailyBudget")], [0, 1]],
@@ -1790,27 +1792,27 @@ module CampaignManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["monthlyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyBudget")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["negativeSiteUrls", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
-      ["status", ["CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["negativeSiteUrls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
+      ["status", ["AdCenterWrapper::CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["timeZone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "TimeZone")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCampaignInfo,
+    :class => AdCenterWrapper::ArrayOfCampaignInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCampaignInfo"),
     :schema_element => [
-      ["campaignInfo", ["CampaignInfo[]", XSD::QName.new(NsV7, "CampaignInfo")], [0, nil]]
+      ["campaignInfo", ["AdCenterWrapper::CampaignInfo[]", XSD::QName.new(NsV7, "CampaignInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CampaignInfo,
+    :class => AdCenterWrapper::CampaignInfo,
     :schema_type => XSD::QName.new(NsV7, "CampaignInfo"),
     :schema_element => [
-      ["budgetType", ["BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["budgetType", ["AdCenterWrapper::BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
       ["conversionTrackingEnabled", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "ConversionTrackingEnabled")], [0, 1]],
       ["conversionTrackingScript", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ConversionTrackingScript")], [0, 1]],
       ["dailyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "DailyBudget")], [0, 1]],
@@ -1819,61 +1821,61 @@ module CampaignManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["monthlyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyBudget")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["status", ["CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["timeZone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "TimeZone")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCampaignNegativeKeywords,
+    :class => AdCenterWrapper::ArrayOfCampaignNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCampaignNegativeKeywords"),
     :schema_element => [
-      ["campaignNegativeKeywords", ["CampaignNegativeKeywords[]", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, nil]]
+      ["campaignNegativeKeywords", ["AdCenterWrapper::CampaignNegativeKeywords[]", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CampaignNegativeKeywords,
+    :class => AdCenterWrapper::CampaignNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "CampaignNegativeKeywords"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroup,
+    :class => AdCenterWrapper::ArrayOfAdGroup,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAdGroup"),
     :schema_element => [
-      ["adGroup", ["AdGroup[]", XSD::QName.new(NsV7, "AdGroup")], [0, nil]]
+      ["adGroup", ["AdCenterWrapper::AdGroup[]", XSD::QName.new(NsV7, "AdGroup")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroup,
+    :class => AdCenterWrapper::AdGroup,
     :schema_type => XSD::QName.new(NsV7, "AdGroup"),
     :schema_element => [
       ["adDistribution", [nil, XSD::QName.new(NsV7, "AdDistribution")], [0, 1]],
-      ["biddingModel", ["BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["endDate", ["Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["biddingModel", ["AdCenterWrapper::BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["endDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["negativeSiteUrls", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
-      ["startDate", ["Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
-      ["status", ["AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["negativeSiteUrls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
+      ["startDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Date,
+    :class => AdCenterWrapper::Date,
     :schema_type => XSD::QName.new(NsV7, "Date"),
     :schema_element => [
       ["day", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Day")]],
@@ -1883,348 +1885,348 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroupInfo,
+    :class => AdCenterWrapper::ArrayOfAdGroupInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAdGroupInfo"),
     :schema_element => [
-      ["adGroupInfo", ["AdGroupInfo[]", XSD::QName.new(NsV7, "AdGroupInfo")], [0, nil]]
+      ["adGroupInfo", ["AdCenterWrapper::AdGroupInfo[]", XSD::QName.new(NsV7, "AdGroupInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroupInfo,
+    :class => AdCenterWrapper::AdGroupInfo,
     :schema_type => XSD::QName.new(NsV7, "AdGroupInfo"),
     :schema_element => [
       ["adDistribution", [nil, XSD::QName.new(NsV7, "AdDistribution")], [0, 1]],
-      ["biddingModel", ["BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["endDate", ["Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["biddingModel", ["AdCenterWrapper::BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["endDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
-      ["startDate", ["Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
-      ["status", ["AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
+      ["startDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroupNegativeKeywords,
+    :class => AdCenterWrapper::ArrayOfAdGroupNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAdGroupNegativeKeywords"),
     :schema_element => [
-      ["adGroupNegativeKeywords", ["AdGroupNegativeKeywords[]", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, nil]]
+      ["adGroupNegativeKeywords", ["AdCenterWrapper::AdGroupNegativeKeywords[]", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroupNegativeKeywords,
+    :class => AdCenterWrapper::AdGroupNegativeKeywords,
     :schema_type => XSD::QName.new(NsV7, "AdGroupNegativeKeywords"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Target,
+    :class => AdCenterWrapper::Target,
     :schema_type => XSD::QName.new(NsV7, "Target"),
     :schema_element => [
-      ["age", ["AgeTarget", XSD::QName.new(NsV7, "Age")], [0, 1]],
-      ["behavior", ["BehavioralTarget", XSD::QName.new(NsV7, "Behavior")], [0, 1]],
-      ["day", ["DayTarget", XSD::QName.new(NsV7, "Day")], [0, 1]],
-      ["device", ["DeviceTarget", XSD::QName.new(NsV7, "Device")], [0, 1]],
-      ["gender", ["GenderTarget", XSD::QName.new(NsV7, "Gender")], [0, 1]],
-      ["hour", ["HourTarget", XSD::QName.new(NsV7, "Hour")], [0, 1]],
+      ["age", ["AdCenterWrapper::AgeTarget", XSD::QName.new(NsV7, "Age")], [0, 1]],
+      ["behavior", ["AdCenterWrapper::BehavioralTarget", XSD::QName.new(NsV7, "Behavior")], [0, 1]],
+      ["day", ["AdCenterWrapper::DayTarget", XSD::QName.new(NsV7, "Day")], [0, 1]],
+      ["device", ["AdCenterWrapper::DeviceTarget", XSD::QName.new(NsV7, "Device")], [0, 1]],
+      ["gender", ["AdCenterWrapper::GenderTarget", XSD::QName.new(NsV7, "Gender")], [0, 1]],
+      ["hour", ["AdCenterWrapper::HourTarget", XSD::QName.new(NsV7, "Hour")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["isLibraryTarget", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "IsLibraryTarget")], [0, 1]],
-      ["location", ["LocationTarget", XSD::QName.new(NsV7, "Location")], [0, 1]],
+      ["location", ["AdCenterWrapper::LocationTarget", XSD::QName.new(NsV7, "Location")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["segment", ["SegmentTarget", XSD::QName.new(NsV7, "Segment")], [0, 1]]
+      ["segment", ["AdCenterWrapper::SegmentTarget", XSD::QName.new(NsV7, "Segment")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AgeTarget,
+    :class => AdCenterWrapper::AgeTarget,
     :schema_type => XSD::QName.new(NsV7, "AgeTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfAgeTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfAgeTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAgeTargetBid,
+    :class => AdCenterWrapper::ArrayOfAgeTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfAgeTargetBid"),
     :schema_element => [
-      ["ageTargetBid", ["AgeTargetBid[]", XSD::QName.new(NsV7, "AgeTargetBid")], [0, nil]]
+      ["ageTargetBid", ["AdCenterWrapper::AgeTargetBid[]", XSD::QName.new(NsV7, "AgeTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AgeTargetBid,
+    :class => AdCenterWrapper::AgeTargetBid,
     :schema_type => XSD::QName.new(NsV7, "AgeTargetBid"),
     :schema_element => [
-      ["age", ["AgeRange", XSD::QName.new(NsV7, "Age")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["age", ["AdCenterWrapper::AgeRange", XSD::QName.new(NsV7, "Age")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BehavioralTarget,
+    :class => AdCenterWrapper::BehavioralTarget,
     :schema_type => XSD::QName.new(NsV7, "BehavioralTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfBehavioralTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfBehavioralTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBehavioralTargetBid,
+    :class => AdCenterWrapper::ArrayOfBehavioralTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBehavioralTargetBid"),
     :schema_element => [
-      ["behavioralTargetBid", ["BehavioralTargetBid[]", XSD::QName.new(NsV7, "BehavioralTargetBid")], [0, nil]]
+      ["behavioralTargetBid", ["AdCenterWrapper::BehavioralTargetBid[]", XSD::QName.new(NsV7, "BehavioralTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BehavioralTargetBid,
+    :class => AdCenterWrapper::BehavioralTargetBid,
     :schema_type => XSD::QName.new(NsV7, "BehavioralTargetBid"),
     :schema_element => [
       ["behavioralName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "BehavioralName")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DayTarget,
+    :class => AdCenterWrapper::DayTarget,
     :schema_type => XSD::QName.new(NsV7, "DayTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfDayTargetBid", XSD::QName.new(NsV7, "Bids")]],
+      ["bids", ["AdCenterWrapper::ArrayOfDayTargetBid", XSD::QName.new(NsV7, "Bids")]],
       ["targetAllDays", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllDays")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfDayTargetBid,
+    :class => AdCenterWrapper::ArrayOfDayTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfDayTargetBid"),
     :schema_element => [
-      ["dayTargetBid", ["DayTargetBid[]", XSD::QName.new(NsV7, "DayTargetBid")], [0, nil]]
+      ["dayTargetBid", ["AdCenterWrapper::DayTargetBid[]", XSD::QName.new(NsV7, "DayTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DayTargetBid,
+    :class => AdCenterWrapper::DayTargetBid,
     :schema_type => XSD::QName.new(NsV7, "DayTargetBid"),
     :schema_element => [
-      ["day", ["Day", XSD::QName.new(NsV7, "Day")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["day", ["AdCenterWrapper::Day", XSD::QName.new(NsV7, "Day")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeviceTarget,
+    :class => AdCenterWrapper::DeviceTarget,
     :schema_type => XSD::QName.new(NsV7, "DeviceTarget"),
     :schema_element => [
-      ["devices", ["ArrayOfDeviceType", XSD::QName.new(NsV7, "Devices")]]
+      ["devices", ["AdCenterWrapper::ArrayOfDeviceType", XSD::QName.new(NsV7, "Devices")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfDeviceType,
+    :class => AdCenterWrapper::ArrayOfDeviceType,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfDeviceType"),
     :schema_element => [
-      ["deviceType", ["DeviceType[]", XSD::QName.new(NsV7, "DeviceType")], [0, nil]]
+      ["deviceType", ["AdCenterWrapper::DeviceType[]", XSD::QName.new(NsV7, "DeviceType")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GenderTarget,
+    :class => AdCenterWrapper::GenderTarget,
     :schema_type => XSD::QName.new(NsV7, "GenderTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfGenderTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfGenderTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfGenderTargetBid,
+    :class => AdCenterWrapper::ArrayOfGenderTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfGenderTargetBid"),
     :schema_element => [
-      ["genderTargetBid", ["GenderTargetBid[]", XSD::QName.new(NsV7, "GenderTargetBid")], [0, nil]]
+      ["genderTargetBid", ["AdCenterWrapper::GenderTargetBid[]", XSD::QName.new(NsV7, "GenderTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GenderTargetBid,
+    :class => AdCenterWrapper::GenderTargetBid,
     :schema_type => XSD::QName.new(NsV7, "GenderTargetBid"),
     :schema_element => [
-      ["gender", ["GenderType", XSD::QName.new(NsV7, "Gender")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["gender", ["AdCenterWrapper::GenderType", XSD::QName.new(NsV7, "Gender")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => HourTarget,
+    :class => AdCenterWrapper::HourTarget,
     :schema_type => XSD::QName.new(NsV7, "HourTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfHourTargetBid", XSD::QName.new(NsV7, "Bids")]],
+      ["bids", ["AdCenterWrapper::ArrayOfHourTargetBid", XSD::QName.new(NsV7, "Bids")]],
       ["targetAllHours", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllHours")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfHourTargetBid,
+    :class => AdCenterWrapper::ArrayOfHourTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfHourTargetBid"),
     :schema_element => [
-      ["hourTargetBid", ["HourTargetBid[]", XSD::QName.new(NsV7, "HourTargetBid")], [0, nil]]
+      ["hourTargetBid", ["AdCenterWrapper::HourTargetBid[]", XSD::QName.new(NsV7, "HourTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => HourTargetBid,
+    :class => AdCenterWrapper::HourTargetBid,
     :schema_type => XSD::QName.new(NsV7, "HourTargetBid"),
     :schema_element => [
-      ["hour", ["HourRange", XSD::QName.new(NsV7, "Hour")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["hour", ["AdCenterWrapper::HourRange", XSD::QName.new(NsV7, "Hour")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => LocationTarget,
+    :class => AdCenterWrapper::LocationTarget,
     :schema_type => XSD::QName.new(NsV7, "LocationTarget"),
     :schema_element => [
-      ["businessTarget", ["BusinessTarget", XSD::QName.new(NsV7, "BusinessTarget")], [0, 1]],
-      ["cityTarget", ["CityTarget", XSD::QName.new(NsV7, "CityTarget")], [0, 1]],
-      ["countryTarget", ["CountryTarget", XSD::QName.new(NsV7, "CountryTarget")], [0, 1]],
-      ["metroAreaTarget", ["MetroAreaTarget", XSD::QName.new(NsV7, "MetroAreaTarget")], [0, 1]],
-      ["radiusTarget", ["RadiusTarget", XSD::QName.new(NsV7, "RadiusTarget")], [0, 1]],
-      ["stateTarget", ["StateTarget", XSD::QName.new(NsV7, "StateTarget")], [0, 1]],
+      ["businessTarget", ["AdCenterWrapper::BusinessTarget", XSD::QName.new(NsV7, "BusinessTarget")], [0, 1]],
+      ["cityTarget", ["AdCenterWrapper::CityTarget", XSD::QName.new(NsV7, "CityTarget")], [0, 1]],
+      ["countryTarget", ["AdCenterWrapper::CountryTarget", XSD::QName.new(NsV7, "CountryTarget")], [0, 1]],
+      ["metroAreaTarget", ["AdCenterWrapper::MetroAreaTarget", XSD::QName.new(NsV7, "MetroAreaTarget")], [0, 1]],
+      ["radiusTarget", ["AdCenterWrapper::RadiusTarget", XSD::QName.new(NsV7, "RadiusTarget")], [0, 1]],
+      ["stateTarget", ["AdCenterWrapper::StateTarget", XSD::QName.new(NsV7, "StateTarget")], [0, 1]],
       ["targetAllLocations", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllLocations")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessTarget,
+    :class => AdCenterWrapper::BusinessTarget,
     :schema_type => XSD::QName.new(NsV7, "BusinessTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfBusinessTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfBusinessTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBusinessTargetBid,
+    :class => AdCenterWrapper::ArrayOfBusinessTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfBusinessTargetBid"),
     :schema_element => [
-      ["businessTargetBid", ["BusinessTargetBid[]", XSD::QName.new(NsV7, "BusinessTargetBid")], [0, nil]]
+      ["businessTargetBid", ["AdCenterWrapper::BusinessTargetBid[]", XSD::QName.new(NsV7, "BusinessTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessTargetBid,
+    :class => AdCenterWrapper::BusinessTargetBid,
     :schema_type => XSD::QName.new(NsV7, "BusinessTargetBid"),
     :schema_element => [
       ["businessId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "BusinessId")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["radius", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Radius")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CityTarget,
+    :class => AdCenterWrapper::CityTarget,
     :schema_type => XSD::QName.new(NsV7, "CityTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfCityTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfCityTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCityTargetBid,
+    :class => AdCenterWrapper::ArrayOfCityTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCityTargetBid"),
     :schema_element => [
-      ["cityTargetBid", ["CityTargetBid[]", XSD::QName.new(NsV7, "CityTargetBid")], [0, nil]]
+      ["cityTargetBid", ["AdCenterWrapper::CityTargetBid[]", XSD::QName.new(NsV7, "CityTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CityTargetBid,
+    :class => AdCenterWrapper::CityTargetBid,
     :schema_type => XSD::QName.new(NsV7, "CityTargetBid"),
     :schema_element => [
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsV7, "City")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CountryTarget,
+    :class => AdCenterWrapper::CountryTarget,
     :schema_type => XSD::QName.new(NsV7, "CountryTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfCountryTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfCountryTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCountryTargetBid,
+    :class => AdCenterWrapper::ArrayOfCountryTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfCountryTargetBid"),
     :schema_element => [
-      ["countryTargetBid", ["CountryTargetBid[]", XSD::QName.new(NsV7, "CountryTargetBid")], [0, nil]]
+      ["countryTargetBid", ["AdCenterWrapper::CountryTargetBid[]", XSD::QName.new(NsV7, "CountryTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CountryTargetBid,
+    :class => AdCenterWrapper::CountryTargetBid,
     :schema_type => XSD::QName.new(NsV7, "CountryTargetBid"),
     :schema_element => [
       ["countryAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CountryAndRegion")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MetroAreaTarget,
+    :class => AdCenterWrapper::MetroAreaTarget,
     :schema_type => XSD::QName.new(NsV7, "MetroAreaTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfMetroAreaTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfMetroAreaTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfMetroAreaTargetBid,
+    :class => AdCenterWrapper::ArrayOfMetroAreaTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfMetroAreaTargetBid"),
     :schema_element => [
-      ["metroAreaTargetBid", ["MetroAreaTargetBid[]", XSD::QName.new(NsV7, "MetroAreaTargetBid")], [0, nil]]
+      ["metroAreaTargetBid", ["AdCenterWrapper::MetroAreaTargetBid[]", XSD::QName.new(NsV7, "MetroAreaTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MetroAreaTargetBid,
+    :class => AdCenterWrapper::MetroAreaTargetBid,
     :schema_type => XSD::QName.new(NsV7, "MetroAreaTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["metroArea", ["SOAP::SOAPString", XSD::QName.new(NsV7, "MetroArea")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => RadiusTarget,
+    :class => AdCenterWrapper::RadiusTarget,
     :schema_type => XSD::QName.new(NsV7, "RadiusTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfRadiusTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfRadiusTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfRadiusTargetBid,
+    :class => AdCenterWrapper::ArrayOfRadiusTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfRadiusTargetBid"),
     :schema_element => [
-      ["radiusTargetBid", ["RadiusTargetBid[]", XSD::QName.new(NsV7, "RadiusTargetBid")], [0, nil]]
+      ["radiusTargetBid", ["AdCenterWrapper::RadiusTargetBid[]", XSD::QName.new(NsV7, "RadiusTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => RadiusTargetBid,
+    :class => AdCenterWrapper::RadiusTargetBid,
     :schema_type => XSD::QName.new(NsV7, "RadiusTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["latitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LatitudeDegrees")]],
       ["longitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LongitudeDegrees")]],
       ["radius", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Radius")]]
@@ -2232,52 +2234,52 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => StateTarget,
+    :class => AdCenterWrapper::StateTarget,
     :schema_type => XSD::QName.new(NsV7, "StateTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfStateTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfStateTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfStateTargetBid,
+    :class => AdCenterWrapper::ArrayOfStateTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfStateTargetBid"),
     :schema_element => [
-      ["stateTargetBid", ["StateTargetBid[]", XSD::QName.new(NsV7, "StateTargetBid")], [0, nil]]
+      ["stateTargetBid", ["AdCenterWrapper::StateTargetBid[]", XSD::QName.new(NsV7, "StateTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => StateTargetBid,
+    :class => AdCenterWrapper::StateTargetBid,
     :schema_type => XSD::QName.new(NsV7, "StateTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["state", ["SOAP::SOAPString", XSD::QName.new(NsV7, "State")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SegmentTarget,
+    :class => AdCenterWrapper::SegmentTarget,
     :schema_type => XSD::QName.new(NsV7, "SegmentTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfSegmentTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfSegmentTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfSegmentTargetBid,
+    :class => AdCenterWrapper::ArrayOfSegmentTargetBid,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfSegmentTargetBid"),
     :schema_element => [
-      ["segmentTargetBid", ["SegmentTargetBid[]", XSD::QName.new(NsV7, "SegmentTargetBid")], [0, nil]]
+      ["segmentTargetBid", ["AdCenterWrapper::SegmentTargetBid[]", XSD::QName.new(NsV7, "SegmentTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SegmentTargetBid,
+    :class => AdCenterWrapper::SegmentTargetBid,
     :schema_type => XSD::QName.new(NsV7, "SegmentTargetBid"),
     :schema_element => [
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["param1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param1")], [0, 1]],
       ["param2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param2")], [0, 1]],
       ["param3", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param3")], [0, 1]],
@@ -2288,23 +2290,23 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfTarget,
+    :class => AdCenterWrapper::ArrayOfTarget,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfTarget"),
     :schema_element => [
-      ["target", ["Target[]", XSD::QName.new(NsV7, "Target")], [0, nil]]
+      ["target", ["AdCenterWrapper::Target[]", XSD::QName.new(NsV7, "Target")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfTargetInfo,
+    :class => AdCenterWrapper::ArrayOfTargetInfo,
     :schema_type => XSD::QName.new(NsV7, "ArrayOfTargetInfo"),
     :schema_element => [
-      ["targetInfo", ["TargetInfo[]", XSD::QName.new(NsV7, "TargetInfo")], [0, nil]]
+      ["targetInfo", ["AdCenterWrapper::TargetInfo[]", XSD::QName.new(NsV7, "TargetInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => TargetInfo,
+    :class => AdCenterWrapper::TargetInfo,
     :schema_type => XSD::QName.new(NsV7, "TargetInfo"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -2313,7 +2315,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -2321,25 +2323,25 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -2350,7 +2352,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOflong,
+    :class => AdCenterWrapper::ArrayOflong,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
       ["long", "SOAP::SOAPLong[]", [0, nil]]
@@ -2358,7 +2360,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfbase64Binary,
+    :class => AdCenterWrapper::ArrayOfbase64Binary,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOfbase64Binary"),
     :schema_element => [
       ["base64Binary", "SOAP::SOAPBase64[]", [0, nil]]
@@ -2366,7 +2368,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfstring,
+    :class => AdCenterWrapper::ArrayOfstring,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOfstring"),
     :schema_element => [
       ["string", "SOAP::SOAPString[]", [0, nil]]
@@ -2374,165 +2376,165 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroupNetwork,
+    :class => AdCenterWrapper::ArrayOfAdGroupNetwork,
     :schema_type => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "ArrayOfAdGroupNetwork"),
     :schema_element => [
-      ["adGroupNetwork", ["AdGroupNetwork[]", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork")], [0, nil]]
+      ["adGroupNetwork", ["AdCenterWrapper::AdGroupNetwork[]", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroupNetwork,
+    :class => AdCenterWrapper::AdGroupNetwork,
     :schema_type => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupId")], [0, 1]],
-      ["network", ["Network", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "Network")], [0, 1]]
+      ["network", ["AdCenterWrapper::Network", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "Network")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdEditorialStatus,
+    :class => AdCenterWrapper::AdEditorialStatus,
     :schema_type => XSD::QName.new(NsV7, "AdEditorialStatus")
   )
 
   LiteralRegistry.register(
-    :class => AdStatus,
+    :class => AdCenterWrapper::AdStatus,
     :schema_type => XSD::QName.new(NsV7, "AdStatus")
   )
 
   LiteralRegistry.register(
-    :class => AdType,
+    :class => AdCenterWrapper::AdType,
     :schema_type => XSD::QName.new(NsV7, "AdType")
   )
 
   LiteralRegistry.register(
-    :class => BehavioralBidStatus,
+    :class => AdCenterWrapper::BehavioralBidStatus,
     :schema_type => XSD::QName.new(NsV7, "BehavioralBidStatus")
   )
 
   LiteralRegistry.register(
-    :class => Language,
+    :class => AdCenterWrapper::Language,
     :schema_type => XSD::QName.new(NsV7, "Language")
   )
 
   LiteralRegistry.register(
-    :class => Network,
+    :class => AdCenterWrapper::Network,
     :schema_type => XSD::QName.new(NsV7, "Network")
   )
 
   LiteralRegistry.register(
-    :class => CashBackStatus,
+    :class => AdCenterWrapper::CashBackStatus,
     :schema_type => XSD::QName.new(NsV7, "CashBackStatus")
   )
 
   LiteralRegistry.register(
-    :class => KeywordEditorialStatus,
+    :class => AdCenterWrapper::KeywordEditorialStatus,
     :schema_type => XSD::QName.new(NsV7, "KeywordEditorialStatus")
   )
 
   LiteralRegistry.register(
-    :class => OverridePriority,
+    :class => AdCenterWrapper::OverridePriority,
     :schema_type => XSD::QName.new(NsV7, "OverridePriority")
   )
 
   LiteralRegistry.register(
-    :class => KeywordStatus,
+    :class => AdCenterWrapper::KeywordStatus,
     :schema_type => XSD::QName.new(NsV7, "KeywordStatus")
   )
 
   LiteralRegistry.register(
-    :class => PricingModel,
+    :class => AdCenterWrapper::PricingModel,
     :schema_type => XSD::QName.new(NsV7, "PricingModel")
   )
 
   LiteralRegistry.register(
-    :class => StandardBusinessIcon,
+    :class => AdCenterWrapper::StandardBusinessIcon,
     :schema_type => XSD::QName.new(NsV7, "StandardBusinessIcon")
   )
 
   LiteralRegistry.register(
-    :class => BusinessGeoCodeStatus,
+    :class => AdCenterWrapper::BusinessGeoCodeStatus,
     :schema_type => XSD::QName.new(NsV7, "BusinessGeoCodeStatus")
   )
 
   LiteralRegistry.register(
-    :class => Day,
+    :class => AdCenterWrapper::Day,
     :schema_type => XSD::QName.new(NsV7, "Day")
   )
 
   LiteralRegistry.register(
-    :class => PaymentType,
+    :class => AdCenterWrapper::PaymentType,
     :schema_type => XSD::QName.new(NsV7, "PaymentType")
   )
 
   LiteralRegistry.register(
-    :class => BusinessStatus,
+    :class => AdCenterWrapper::BusinessStatus,
     :schema_type => XSD::QName.new(NsV7, "BusinessStatus")
   )
 
   LiteralRegistry.register(
-    :class => SitePlacementStatus,
+    :class => AdCenterWrapper::SitePlacementStatus,
     :schema_type => XSD::QName.new(NsV7, "SitePlacementStatus")
   )
 
   LiteralRegistry.register(
-    :class => BudgetLimitType,
+    :class => AdCenterWrapper::BudgetLimitType,
     :schema_type => XSD::QName.new(NsV7, "BudgetLimitType")
   )
 
   LiteralRegistry.register(
-    :class => CampaignStatus,
+    :class => AdCenterWrapper::CampaignStatus,
     :schema_type => XSD::QName.new(NsV7, "CampaignStatus")
   )
 
   LiteralRegistry.register(
-    :class => BiddingModel,
+    :class => AdCenterWrapper::BiddingModel,
     :schema_type => XSD::QName.new(NsV7, "BiddingModel")
   )
 
   LiteralRegistry.register(
-    :class => AdGroupStatus,
+    :class => AdCenterWrapper::AdGroupStatus,
     :schema_type => XSD::QName.new(NsV7, "AdGroupStatus")
   )
 
   LiteralRegistry.register(
-    :class => AgeRange,
+    :class => AdCenterWrapper::AgeRange,
     :schema_type => XSD::QName.new(NsV7, "AgeRange")
   )
 
   LiteralRegistry.register(
-    :class => IncrementalBidPercentage,
+    :class => AdCenterWrapper::IncrementalBidPercentage,
     :schema_type => XSD::QName.new(NsV7, "IncrementalBidPercentage")
   )
 
   LiteralRegistry.register(
-    :class => DeviceType,
+    :class => AdCenterWrapper::DeviceType,
     :schema_type => XSD::QName.new(NsV7, "DeviceType")
   )
 
   LiteralRegistry.register(
-    :class => GenderType,
+    :class => AdCenterWrapper::GenderType,
     :schema_type => XSD::QName.new(NsV7, "GenderType")
   )
 
   LiteralRegistry.register(
-    :class => HourRange,
+    :class => AdCenterWrapper::HourRange,
     :schema_type => XSD::QName.new(NsV7, "HourRange")
   )
 
   LiteralRegistry.register(
-    :class => AdComponent,
+    :class => AdCenterWrapper::AdComponent,
     :schema_type => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdComponent")
   )
 
   LiteralRegistry.register(
-    :class => MobileAd,
+    :class => AdCenterWrapper::MobileAd,
     :schema_name => XSD::QName.new(NsV7, "MobileAd"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
       ["businessName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "BusinessName")], [0, 1]],
       ["destinationUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DestinationUrl")], [0, 1]],
       ["displayUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DisplayUrl")], [0, 1]],
@@ -2543,39 +2545,39 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => Ad,
+    :class => AdCenterWrapper::Ad,
     :schema_name => XSD::QName.new(NsV7, "Ad"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]]
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdEditorialStatus,
+    :class => AdCenterWrapper::AdEditorialStatus,
     :schema_name => XSD::QName.new(NsV7, "AdEditorialStatus")
   )
 
   LiteralRegistry.register(
-    :class => AdStatus,
+    :class => AdCenterWrapper::AdStatus,
     :schema_name => XSD::QName.new(NsV7, "AdStatus")
   )
 
   LiteralRegistry.register(
-    :class => AdType,
+    :class => AdCenterWrapper::AdType,
     :schema_name => XSD::QName.new(NsV7, "AdType")
   )
 
   LiteralRegistry.register(
-    :class => TextAd,
+    :class => AdCenterWrapper::TextAd,
     :schema_name => XSD::QName.new(NsV7, "TextAd"),
     :schema_element => [
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["status", ["AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
-      ["type", ["AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["type", ["AdCenterWrapper::AdType", XSD::QName.new(NsV7, "Type")], [0, 1]],
       ["destinationUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DestinationUrl")], [0, 1]],
       ["displayUrl", ["SOAP::SOAPString", XSD::QName.new(NsV7, "DisplayUrl")]],
       ["text", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Text")]],
@@ -2584,36 +2586,36 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => UpdateBehavioralBidsRequest,
+    :class => AdCenterWrapper::UpdateBehavioralBidsRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateBehavioralBidsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["behavioralBids", ["ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
+      ["behavioralBids", ["AdCenterWrapper::ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBehavioralBid,
+    :class => AdCenterWrapper::ArrayOfBehavioralBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfBehavioralBid"),
     :schema_element => [
-      ["behavioralBid", ["BehavioralBid[]", XSD::QName.new(NsV7, "BehavioralBid")], [0, nil]]
+      ["behavioralBid", ["AdCenterWrapper::BehavioralBid[]", XSD::QName.new(NsV7, "BehavioralBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BehavioralBid,
+    :class => AdCenterWrapper::BehavioralBid,
     :schema_name => XSD::QName.new(NsV7, "BehavioralBid"),
     :schema_element => [
-      ["bid", ["Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
+      ["bid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
       ["segmentId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "SegmentId")], [0, 1]],
-      ["status", ["BehavioralBidStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["status", ["AdCenterWrapper::BehavioralBidStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Bid,
+    :class => AdCenterWrapper::Bid,
     :schema_name => XSD::QName.new(NsV7, "Bid"),
     :schema_element => [
       ["amount", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "Amount")], [0, 1]]
@@ -2621,36 +2623,36 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => BehavioralBidStatus,
+    :class => AdCenterWrapper::BehavioralBidStatus,
     :schema_name => XSD::QName.new(NsV7, "BehavioralBidStatus")
   )
 
   LiteralRegistry.register(
-    :class => UpdateBehavioralBidsResponse,
+    :class => AdCenterWrapper::UpdateBehavioralBidsResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateBehavioralBidsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ApiFaultDetail,
+    :class => AdCenterWrapper::ApiFaultDetail,
     :schema_name => XSD::QName.new(NsV7, "ApiFaultDetail"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["batchErrors", ["ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBatchError,
+    :class => AdCenterWrapper::ArrayOfBatchError,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfBatchError"),
     :schema_element => [
-      ["batchError", ["BatchError[]", XSD::QName.new(NsV7, "BatchError")], [0, nil]]
+      ["batchError", ["AdCenterWrapper::BatchError[]", XSD::QName.new(NsV7, "BatchError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BatchError,
+    :class => AdCenterWrapper::BatchError,
     :schema_name => XSD::QName.new(NsV7, "BatchError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Code")], [0, 1]],
@@ -2662,15 +2664,15 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfOperationError,
+    :class => AdCenterWrapper::ArrayOfOperationError,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfOperationError"),
     :schema_element => [
-      ["operationError", ["OperationError[]", XSD::QName.new(NsV7, "OperationError")], [0, nil]]
+      ["operationError", ["AdCenterWrapper::OperationError[]", XSD::QName.new(NsV7, "OperationError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => OperationError,
+    :class => AdCenterWrapper::OperationError,
     :schema_name => XSD::QName.new(NsV7, "OperationError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Code")], [0, 1]],
@@ -2681,29 +2683,29 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetCustomSegmentsRequest,
+    :class => AdCenterWrapper::GetCustomSegmentsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetCustomSegmentsRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetCustomSegmentsResponse,
+    :class => AdCenterWrapper::GetCustomSegmentsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetCustomSegmentsResponse"),
     :schema_element => [
-      ["customSegments", ["ArrayOfSegment", XSD::QName.new(NsV7, "CustomSegments")], [0, 1]]
+      ["customSegments", ["AdCenterWrapper::ArrayOfSegment", XSD::QName.new(NsV7, "CustomSegments")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfSegment,
+    :class => AdCenterWrapper::ArrayOfSegment,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfSegment"),
     :schema_element => [
-      ["segment", ["Segment[]", XSD::QName.new(NsV7, "Segment")], [0, nil]]
+      ["segment", ["AdCenterWrapper::Segment[]", XSD::QName.new(NsV7, "Segment")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Segment,
+    :class => AdCenterWrapper::Segment,
     :schema_name => XSD::QName.new(NsV7, "Segment"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -2712,268 +2714,268 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AddSegmentsRequest,
+    :class => AdCenterWrapper::AddSegmentsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddSegmentsRequest"),
     :schema_element => [
-      ["segments", ["ArrayOfSegment", XSD::QName.new(NsV7, "Segments")], [0, 1]]
+      ["segments", ["AdCenterWrapper::ArrayOfSegment", XSD::QName.new(NsV7, "Segments")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AddSegmentsResponse,
+    :class => AdCenterWrapper::AddSegmentsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddSegmentsResponse"),
     :schema_element => [
-      ["segmentIds", ["ArrayOflong", XSD::QName.new(NsV7, "SegmentIds")], [0, 1]]
+      ["segmentIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SegmentIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteSegmentsRequest,
+    :class => AdCenterWrapper::DeleteSegmentsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteSegmentsRequest"),
     :schema_element => [
-      ["segmentIds", ["ArrayOflong", XSD::QName.new(NsV7, "SegmentIds")], [0, 1]]
+      ["segmentIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SegmentIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteSegmentsResponse,
+    :class => AdCenterWrapper::DeleteSegmentsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteSegmentsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetSegmentsByIdsRequest,
+    :class => AdCenterWrapper::GetSegmentsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetSegmentsByIdsRequest"),
     :schema_element => [
-      ["segmentIds", ["ArrayOflong", XSD::QName.new(NsV7, "SegmentIds")], [0, 1]]
+      ["segmentIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SegmentIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetSegmentsByIdsResponse,
+    :class => AdCenterWrapper::GetSegmentsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetSegmentsByIdsResponse"),
     :schema_element => [
-      ["segments", ["ArrayOfSegment", XSD::QName.new(NsV7, "Segments")], [0, 1]]
+      ["segments", ["AdCenterWrapper::ArrayOfSegment", XSD::QName.new(NsV7, "Segments")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetSegmentsRequest,
+    :class => AdCenterWrapper::GetSegmentsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetSegmentsRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetSegmentsResponse,
+    :class => AdCenterWrapper::GetSegmentsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetSegmentsResponse"),
     :schema_element => [
-      ["segments", ["ArrayOfSegment", XSD::QName.new(NsV7, "Segments")], [0, 1]]
+      ["segments", ["AdCenterWrapper::ArrayOfSegment", XSD::QName.new(NsV7, "Segments")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetUsersToSegmentsRequest,
+    :class => AdCenterWrapper::SetUsersToSegmentsRequest,
     :schema_name => XSD::QName.new(NsV7, "SetUsersToSegmentsRequest"),
     :schema_element => [
       ["segmentId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "SegmentId")], [0, 1]],
-      ["userHash", ["ArrayOfbase64Binary", XSD::QName.new(NsV7, "UserHash")], [0, 1]]
+      ["userHash", ["AdCenterWrapper::ArrayOfbase64Binary", XSD::QName.new(NsV7, "UserHash")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetUsersToSegmentsResponse,
+    :class => AdCenterWrapper::SetUsersToSegmentsResponse,
     :schema_name => XSD::QName.new(NsV7, "SetUsersToSegmentsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => DeleteUsersFromSegmentRequest,
+    :class => AdCenterWrapper::DeleteUsersFromSegmentRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteUsersFromSegmentRequest"),
     :schema_element => [
-      ["userHash", ["ArrayOfbase64Binary", XSD::QName.new(NsV7, "UserHash")], [0, 1]]
+      ["userHash", ["AdCenterWrapper::ArrayOfbase64Binary", XSD::QName.new(NsV7, "UserHash")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteUsersFromSegmentResponse,
+    :class => AdCenterWrapper::DeleteUsersFromSegmentResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteUsersFromSegmentResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetNormalizedStringsRequest,
+    :class => AdCenterWrapper::GetNormalizedStringsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetNormalizedStringsRequest"),
     :schema_element => [
-      ["strings", ["ArrayOfstring", XSD::QName.new(NsV7, "Strings")], [0, 1]],
-      ["language", ["Language", XSD::QName.new(NsV7, "Language")], [0, 1]]
+      ["strings", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "Strings")], [0, 1]],
+      ["language", ["AdCenterWrapper::Language", XSD::QName.new(NsV7, "Language")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Language,
+    :class => AdCenterWrapper::Language,
     :schema_name => XSD::QName.new(NsV7, "Language")
   )
 
   LiteralRegistry.register(
-    :class => GetNormalizedStringsResponse,
+    :class => AdCenterWrapper::GetNormalizedStringsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetNormalizedStringsResponse"),
     :schema_element => [
-      ["normalizedStrings", ["ArrayOfstring", XSD::QName.new(NsV7, "NormalizedStrings")], [0, 1]]
+      ["normalizedStrings", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NormalizedStrings")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordEditorialReasonsByIdsRequest,
+    :class => AdCenterWrapper::GetKeywordEditorialReasonsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordEditorialReasonsByIdsRequest"),
     :schema_element => [
-      ["keywordIds", ["ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]],
+      ["keywordIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]],
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordEditorialReasonsByIdsResponse,
+    :class => AdCenterWrapper::GetKeywordEditorialReasonsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordEditorialReasonsByIdsResponse"),
     :schema_element => [
-      ["editorialReasons", ["ArrayOfEditorialReasonCollection", XSD::QName.new(NsV7, "EditorialReasons")], [0, 1]]
+      ["editorialReasons", ["AdCenterWrapper::ArrayOfEditorialReasonCollection", XSD::QName.new(NsV7, "EditorialReasons")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfEditorialReasonCollection,
+    :class => AdCenterWrapper::ArrayOfEditorialReasonCollection,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfEditorialReasonCollection"),
     :schema_element => [
-      ["editorialReasonCollection", ["EditorialReasonCollection[]", XSD::QName.new(NsV7, "EditorialReasonCollection")], [0, nil]]
+      ["editorialReasonCollection", ["AdCenterWrapper::EditorialReasonCollection[]", XSD::QName.new(NsV7, "EditorialReasonCollection")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialReasonCollection,
+    :class => AdCenterWrapper::EditorialReasonCollection,
     :schema_name => XSD::QName.new(NsV7, "EditorialReasonCollection"),
     :schema_element => [
       ["adOrKeywordId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdOrKeywordId")], [0, 1]],
-      ["reasons", ["ArrayOfEditorialReason", XSD::QName.new(NsV7, "Reasons")], [0, 1]]
+      ["reasons", ["AdCenterWrapper::ArrayOfEditorialReason", XSD::QName.new(NsV7, "Reasons")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfEditorialReason,
+    :class => AdCenterWrapper::ArrayOfEditorialReason,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfEditorialReason"),
     :schema_element => [
-      ["editorialReason", ["EditorialReason[]", XSD::QName.new(NsV7, "EditorialReason")], [0, nil]]
+      ["editorialReason", ["AdCenterWrapper::EditorialReason[]", XSD::QName.new(NsV7, "EditorialReason")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialReason,
+    :class => AdCenterWrapper::EditorialReason,
     :schema_name => XSD::QName.new(NsV7, "EditorialReason"),
     :schema_element => [
-      ["location", ["AdComponent", XSD::QName.new(NsV7, "Location")], [0, 1]],
+      ["location", ["AdCenterWrapper::AdComponent", XSD::QName.new(NsV7, "Location")], [0, 1]],
       ["reasonCode", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "ReasonCode")], [0, 1]],
       ["term", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Term")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdEditorialReasonsByIdsRequest,
+    :class => AdCenterWrapper::GetAdEditorialReasonsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdEditorialReasonsByIdsRequest"),
     :schema_element => [
-      ["adIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]],
+      ["adIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]],
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdEditorialReasonsByIdsResponse,
+    :class => AdCenterWrapper::GetAdEditorialReasonsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdEditorialReasonsByIdsResponse"),
     :schema_element => [
-      ["editorialReasons", ["ArrayOfEditorialReasonCollection", XSD::QName.new(NsV7, "EditorialReasons")], [0, 1]]
+      ["editorialReasons", ["AdCenterWrapper::ArrayOfEditorialReasonCollection", XSD::QName.new(NsV7, "EditorialReasons")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNetworksByAdGroupIdsRequest,
+    :class => AdCenterWrapper::GetNetworksByAdGroupIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetNetworksByAdGroupIdsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNetworksByAdGroupIdsResponse,
+    :class => AdCenterWrapper::GetNetworksByAdGroupIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetNetworksByAdGroupIdsResponse"),
     :schema_element => [
-      ["adGroupNetworks", ["ArrayOfAdGroupNetwork", XSD::QName.new(NsV7, "AdGroupNetworks")], [0, 1]]
+      ["adGroupNetworks", ["AdCenterWrapper::ArrayOfAdGroupNetwork", XSD::QName.new(NsV7, "AdGroupNetworks")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Network,
+    :class => AdCenterWrapper::Network,
     :schema_name => XSD::QName.new(NsV7, "Network")
   )
 
   LiteralRegistry.register(
-    :class => SetNetworksToAdGroupsRequest,
+    :class => AdCenterWrapper::SetNetworksToAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "SetNetworksToAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupNetworks", ["ArrayOfAdGroupNetwork", XSD::QName.new(NsV7, "AdGroupNetworks")], [0, 1]]
+      ["adGroupNetworks", ["AdCenterWrapper::ArrayOfAdGroupNetwork", XSD::QName.new(NsV7, "AdGroupNetworks")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetNetworksToAdGroupsResponse,
+    :class => AdCenterWrapper::SetNetworksToAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "SetNetworksToAdGroupsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => AddAdsRequest,
+    :class => AdCenterWrapper::AddAdsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddAdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["ads", ["ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
+      ["ads", ["AdCenterWrapper::ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAd,
+    :class => AdCenterWrapper::ArrayOfAd,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfAd"),
     :schema_element => [
-      ["ad", ["Ad[]", XSD::QName.new(NsV7, "Ad")], [0, nil]]
+      ["ad", ["AdCenterWrapper::Ad[]", XSD::QName.new(NsV7, "Ad")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AddAdsResponse,
+    :class => AdCenterWrapper::AddAdsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddAdsResponse"),
     :schema_element => [
-      ["adIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
+      ["adIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialApiFaultDetail,
+    :class => AdCenterWrapper::EditorialApiFaultDetail,
     :schema_name => XSD::QName.new(NsV7, "EditorialApiFaultDetail"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["batchErrors", ["ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
-      ["editorialErrors", ["ArrayOfEditorialError", XSD::QName.new(NsV7, "EditorialErrors")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsV7, "BatchErrors")], [0, 1]],
+      ["editorialErrors", ["AdCenterWrapper::ArrayOfEditorialError", XSD::QName.new(NsV7, "EditorialErrors")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsV7, "OperationErrors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfEditorialError,
+    :class => AdCenterWrapper::ArrayOfEditorialError,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfEditorialError"),
     :schema_element => [
-      ["editorialError", ["EditorialError[]", XSD::QName.new(NsV7, "EditorialError")], [0, nil]]
+      ["editorialError", ["AdCenterWrapper::EditorialError[]", XSD::QName.new(NsV7, "EditorialError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialError,
+    :class => AdCenterWrapper::EditorialError,
     :schema_name => XSD::QName.new(NsV7, "EditorialError"),
     :schema_element => [
       ["appealable", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "Appealable")], [0, 1]],
@@ -2986,56 +2988,56 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => DeleteAdsRequest,
+    :class => AdCenterWrapper::DeleteAdsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteAdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["adIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
+      ["adIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteAdsResponse,
+    :class => AdCenterWrapper::DeleteAdsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteAdsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetAdsByEditorialStatusRequest,
+    :class => AdCenterWrapper::GetAdsByEditorialStatusRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdsByEditorialStatusRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["editorialStatus", ["AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]]
+      ["editorialStatus", ["AdCenterWrapper::AdEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdsByEditorialStatusResponse,
+    :class => AdCenterWrapper::GetAdsByEditorialStatusResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdsByEditorialStatusResponse"),
     :schema_element => [
-      ["ads", ["ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
+      ["ads", ["AdCenterWrapper::ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdsByIdsRequest,
+    :class => AdCenterWrapper::GetAdsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdsByIdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["adIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
+      ["adIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdsByIdsResponse,
+    :class => AdCenterWrapper::GetAdsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdsByIdsResponse"),
     :schema_element => [
-      ["ads", ["ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
+      ["ads", ["AdCenterWrapper::ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdsByAdGroupIdRequest,
+    :class => AdCenterWrapper::GetAdsByAdGroupIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdsByAdGroupIdRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -3043,185 +3045,185 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetAdsByAdGroupIdResponse,
+    :class => AdCenterWrapper::GetAdsByAdGroupIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdsByAdGroupIdResponse"),
     :schema_element => [
-      ["ads", ["ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
+      ["ads", ["AdCenterWrapper::ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateAdsRequest,
+    :class => AdCenterWrapper::UpdateAdsRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateAdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["ads", ["ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
+      ["ads", ["AdCenterWrapper::ArrayOfAd", XSD::QName.new(NsV7, "Ads")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateAdsResponse,
+    :class => AdCenterWrapper::UpdateAdsResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateAdsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => PauseAdsRequest,
+    :class => AdCenterWrapper::PauseAdsRequest,
     :schema_name => XSD::QName.new(NsV7, "PauseAdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["adIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
+      ["adIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseAdsResponse,
+    :class => AdCenterWrapper::PauseAdsResponse,
     :schema_name => XSD::QName.new(NsV7, "PauseAdsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ResumeAdsRequest,
+    :class => AdCenterWrapper::ResumeAdsRequest,
     :schema_name => XSD::QName.new(NsV7, "ResumeAdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["adIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
+      ["adIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ResumeAdsResponse,
+    :class => AdCenterWrapper::ResumeAdsResponse,
     :schema_name => XSD::QName.new(NsV7, "ResumeAdsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => AddKeywordsRequest,
+    :class => AdCenterWrapper::AddKeywordsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddKeywordsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["keywords", ["ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
+      ["keywords", ["AdCenterWrapper::ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfKeyword,
+    :class => AdCenterWrapper::ArrayOfKeyword,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfKeyword"),
     :schema_element => [
-      ["keyword", ["Keyword[]", XSD::QName.new(NsV7, "Keyword")], [0, nil]]
+      ["keyword", ["AdCenterWrapper::Keyword[]", XSD::QName.new(NsV7, "Keyword")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Keyword,
+    :class => AdCenterWrapper::Keyword,
     :schema_name => XSD::QName.new(NsV7, "Keyword"),
     :schema_element => [
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["editorialStatus", ["KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["editorialStatus", ["AdCenterWrapper::KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["overridePriority", ["OverridePriority", XSD::QName.new(NsV7, "OverridePriority")], [0, 1]],
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["overridePriority", ["AdCenterWrapper::OverridePriority", XSD::QName.new(NsV7, "OverridePriority")], [0, 1]],
       ["param1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param1")], [0, 1]],
       ["param2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param2")], [0, 1]],
       ["param3", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param3")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["status", ["KeywordStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["status", ["AdCenterWrapper::KeywordStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["text", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Text")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CashBackInfo,
+    :class => AdCenterWrapper::CashBackInfo,
     :schema_name => XSD::QName.new(NsV7, "CashBackInfo"),
     :schema_element => [
       ["cashBackAmount", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "CashBackAmount")], [0, 1]],
-      ["cashBackStatus", ["CashBackStatus", XSD::QName.new(NsV7, "CashBackStatus")], [0, 1]],
+      ["cashBackStatus", ["AdCenterWrapper::CashBackStatus", XSD::QName.new(NsV7, "CashBackStatus")], [0, 1]],
       ["cashBackText", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CashBackText")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CashBackStatus,
+    :class => AdCenterWrapper::CashBackStatus,
     :schema_name => XSD::QName.new(NsV7, "CashBackStatus")
   )
 
   LiteralRegistry.register(
-    :class => KeywordEditorialStatus,
+    :class => AdCenterWrapper::KeywordEditorialStatus,
     :schema_name => XSD::QName.new(NsV7, "KeywordEditorialStatus")
   )
 
   LiteralRegistry.register(
-    :class => OverridePriority,
+    :class => AdCenterWrapper::OverridePriority,
     :schema_name => XSD::QName.new(NsV7, "OverridePriority")
   )
 
   LiteralRegistry.register(
-    :class => KeywordStatus,
+    :class => AdCenterWrapper::KeywordStatus,
     :schema_name => XSD::QName.new(NsV7, "KeywordStatus")
   )
 
   LiteralRegistry.register(
-    :class => AddKeywordsResponse,
+    :class => AdCenterWrapper::AddKeywordsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddKeywordsResponse"),
     :schema_element => [
-      ["keywordIds", ["ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
+      ["keywordIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteKeywordsRequest,
+    :class => AdCenterWrapper::DeleteKeywordsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteKeywordsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["keywordIds", ["ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
+      ["keywordIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteKeywordsResponse,
+    :class => AdCenterWrapper::DeleteKeywordsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteKeywordsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordsByEditorialStatusRequest,
+    :class => AdCenterWrapper::GetKeywordsByEditorialStatusRequest,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordsByEditorialStatusRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["editorialStatus", ["KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]]
+      ["editorialStatus", ["AdCenterWrapper::KeywordEditorialStatus", XSD::QName.new(NsV7, "EditorialStatus")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordsByEditorialStatusResponse,
+    :class => AdCenterWrapper::GetKeywordsByEditorialStatusResponse,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordsByEditorialStatusResponse"),
     :schema_element => [
-      ["keywords", ["ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
+      ["keywords", ["AdCenterWrapper::ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordsByIdsRequest,
+    :class => AdCenterWrapper::GetKeywordsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordsByIdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["keywordIds", ["ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
+      ["keywordIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordsByIdsResponse,
+    :class => AdCenterWrapper::GetKeywordsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordsByIdsResponse"),
     :schema_element => [
-      ["keywords", ["ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
+      ["keywords", ["AdCenterWrapper::ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordsByAdGroupIdRequest,
+    :class => AdCenterWrapper::GetKeywordsByAdGroupIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordsByAdGroupIdRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -3229,80 +3231,80 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordsByAdGroupIdResponse,
+    :class => AdCenterWrapper::GetKeywordsByAdGroupIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordsByAdGroupIdResponse"),
     :schema_element => [
-      ["keywords", ["ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
+      ["keywords", ["AdCenterWrapper::ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseKeywordsRequest,
+    :class => AdCenterWrapper::PauseKeywordsRequest,
     :schema_name => XSD::QName.new(NsV7, "PauseKeywordsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["keywordIds", ["ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
+      ["keywordIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseKeywordsResponse,
+    :class => AdCenterWrapper::PauseKeywordsResponse,
     :schema_name => XSD::QName.new(NsV7, "PauseKeywordsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ResumeKeywordsRequest,
+    :class => AdCenterWrapper::ResumeKeywordsRequest,
     :schema_name => XSD::QName.new(NsV7, "ResumeKeywordsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["keywordIds", ["ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
+      ["keywordIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "KeywordIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ResumeKeywordsResponse,
+    :class => AdCenterWrapper::ResumeKeywordsResponse,
     :schema_name => XSD::QName.new(NsV7, "ResumeKeywordsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => UpdateKeywordsRequest,
+    :class => AdCenterWrapper::UpdateKeywordsRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateKeywordsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["keywords", ["ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
+      ["keywords", ["AdCenterWrapper::ArrayOfKeyword", XSD::QName.new(NsV7, "Keywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateKeywordsResponse,
+    :class => AdCenterWrapper::UpdateKeywordsResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateKeywordsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordEstimatesByBidsRequest,
+    :class => AdCenterWrapper::GetKeywordEstimatesByBidsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordEstimatesByBidsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["currency", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Currency")], [0, 1]],
-      ["keywordBids", ["ArrayOfKeywordBid", XSD::QName.new(NsV7, "KeywordBids")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]]
+      ["keywordBids", ["AdCenterWrapper::ArrayOfKeywordBid", XSD::QName.new(NsV7, "KeywordBids")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfKeywordBid,
+    :class => AdCenterWrapper::ArrayOfKeywordBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfKeywordBid"),
     :schema_element => [
-      ["keywordBid", ["KeywordBid[]", XSD::QName.new(NsV7, "KeywordBid")], [0, nil]]
+      ["keywordBid", ["AdCenterWrapper::KeywordBid[]", XSD::QName.new(NsV7, "KeywordBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => KeywordBid,
+    :class => AdCenterWrapper::KeywordBid,
     :schema_name => XSD::QName.new(NsV7, "KeywordBid"),
     :schema_element => [
       ["broadMatchBid", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
@@ -3313,41 +3315,41 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => PricingModel,
+    :class => AdCenterWrapper::PricingModel,
     :schema_name => XSD::QName.new(NsV7, "PricingModel")
   )
 
   LiteralRegistry.register(
-    :class => GetKeywordEstimatesByBidsResponse,
+    :class => AdCenterWrapper::GetKeywordEstimatesByBidsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetKeywordEstimatesByBidsResponse"),
     :schema_element => [
-      ["keywordEstimates", ["ArrayOfKeywordEstimate", XSD::QName.new(NsV7, "KeywordEstimates")], [0, 1]]
+      ["keywordEstimates", ["AdCenterWrapper::ArrayOfKeywordEstimate", XSD::QName.new(NsV7, "KeywordEstimates")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfKeywordEstimate,
+    :class => AdCenterWrapper::ArrayOfKeywordEstimate,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfKeywordEstimate"),
     :schema_element => [
-      ["keywordEstimate", ["KeywordEstimate[]", XSD::QName.new(NsV7, "KeywordEstimate")], [0, nil]]
+      ["keywordEstimate", ["AdCenterWrapper::KeywordEstimate[]", XSD::QName.new(NsV7, "KeywordEstimate")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => KeywordEstimate,
+    :class => AdCenterWrapper::KeywordEstimate,
     :schema_name => XSD::QName.new(NsV7, "KeywordEstimate"),
     :schema_element => [
       ["averageMonthlyCost", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "AverageMonthlyCost")], [0, 1]],
       ["averageMonthlyPosition", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "AverageMonthlyPosition")], [0, 1]],
-      ["broadKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "BroadKeywordEstimate")], [0, 1]],
+      ["broadKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "BroadKeywordEstimate")], [0, 1]],
       ["estimatedTotalMonthlyImpressions", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "EstimatedTotalMonthlyImpressions")], [0, 1]],
-      ["exactKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "ExactKeywordEstimate")], [0, 1]],
-      ["phraseKeywordEstimate", ["MatchTypeEstimate", XSD::QName.new(NsV7, "PhraseKeywordEstimate")], [0, 1]]
+      ["exactKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "ExactKeywordEstimate")], [0, 1]],
+      ["phraseKeywordEstimate", ["AdCenterWrapper::MatchTypeEstimate", XSD::QName.new(NsV7, "PhraseKeywordEstimate")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MatchTypeEstimate,
+    :class => AdCenterWrapper::MatchTypeEstimate,
     :schema_name => XSD::QName.new(NsV7, "MatchTypeEstimate"),
     :schema_element => [
       ["monthlyCost", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyCost")], [0, 1]],
@@ -3357,102 +3359,102 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AddBusinessesRequest,
+    :class => AdCenterWrapper::AddBusinessesRequest,
     :schema_name => XSD::QName.new(NsV7, "AddBusinessesRequest"),
     :schema_element => [
-      ["businesses", ["ArrayOfBusiness", XSD::QName.new(NsV7, "Businesses")], [0, 1]]
+      ["businesses", ["AdCenterWrapper::ArrayOfBusiness", XSD::QName.new(NsV7, "Businesses")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBusiness,
+    :class => AdCenterWrapper::ArrayOfBusiness,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfBusiness"),
     :schema_element => [
-      ["business", ["Business[]", XSD::QName.new(NsV7, "Business")], [0, nil]]
+      ["business", ["AdCenterWrapper::Business[]", XSD::QName.new(NsV7, "Business")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Business,
+    :class => AdCenterWrapper::Business,
     :schema_name => XSD::QName.new(NsV7, "Business"),
     :schema_element => [
       ["addressLine1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "AddressLine1")], [0, 1]],
       ["addressLine2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "AddressLine2")], [0, 1]],
-      ["businessImageIcon", ["BusinessImageIcon", XSD::QName.new(NsV7, "BusinessImageIcon")], [0, 1]],
+      ["businessImageIcon", ["AdCenterWrapper::BusinessImageIcon", XSD::QName.new(NsV7, "BusinessImageIcon")], [0, 1]],
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsV7, "City")], [0, 1]],
       ["countryOrRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CountryOrRegion")], [0, 1]],
       ["description", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Description")]],
       ["email", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Email")], [0, 1]],
-      ["geoCodeStatus", ["BusinessGeoCodeStatus", XSD::QName.new(NsV7, "GeoCodeStatus")], [0, 1]],
-      ["hrsOfOperation", ["ArrayOfHoursOfOperation", XSD::QName.new(NsV7, "HrsOfOperation")], [0, 1]],
+      ["geoCodeStatus", ["AdCenterWrapper::BusinessGeoCodeStatus", XSD::QName.new(NsV7, "GeoCodeStatus")], [0, 1]],
+      ["hrsOfOperation", ["AdCenterWrapper::ArrayOfHoursOfOperation", XSD::QName.new(NsV7, "HrsOfOperation")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["isOpen24Hours", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "IsOpen24Hours")], [0, 1]],
       ["latitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LatitudeDegrees")], [0, 1]],
       ["longitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LongitudeDegrees")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")]],
       ["otherPaymentTypeDesc", ["SOAP::SOAPString", XSD::QName.new(NsV7, "OtherPaymentTypeDesc")], [0, 1]],
-      ["payment", ["ArrayOfPaymentType", XSD::QName.new(NsV7, "Payment")], [0, 1]],
+      ["payment", ["AdCenterWrapper::ArrayOfPaymentType", XSD::QName.new(NsV7, "Payment")], [0, 1]],
       ["phone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Phone")], [0, 1]],
       ["stateOrProvince", ["SOAP::SOAPString", XSD::QName.new(NsV7, "StateOrProvince")], [0, 1]],
-      ["status", ["BusinessStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::BusinessStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["uRL", ["SOAP::SOAPString", XSD::QName.new(NsV7, "URL")], [0, 1]],
       ["zipOrPostalCode", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ZipOrPostalCode")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessImageIcon,
+    :class => AdCenterWrapper::BusinessImageIcon,
     :schema_name => XSD::QName.new(NsV7, "BusinessImageIcon"),
     :schema_element => [
       ["customIconAssetId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CustomIconAssetId")], [0, 1]],
-      ["standardBusinessIcon", ["StandardBusinessIcon", XSD::QName.new(NsV7, "StandardBusinessIcon")], [0, 1]]
+      ["standardBusinessIcon", ["AdCenterWrapper::StandardBusinessIcon", XSD::QName.new(NsV7, "StandardBusinessIcon")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => StandardBusinessIcon,
+    :class => AdCenterWrapper::StandardBusinessIcon,
     :schema_name => XSD::QName.new(NsV7, "StandardBusinessIcon")
   )
 
   LiteralRegistry.register(
-    :class => BusinessGeoCodeStatus,
+    :class => AdCenterWrapper::BusinessGeoCodeStatus,
     :schema_name => XSD::QName.new(NsV7, "BusinessGeoCodeStatus")
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfHoursOfOperation,
+    :class => AdCenterWrapper::ArrayOfHoursOfOperation,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfHoursOfOperation"),
     :schema_element => [
-      ["hoursOfOperation", ["HoursOfOperation[]", XSD::QName.new(NsV7, "HoursOfOperation")], [0, nil]]
+      ["hoursOfOperation", ["AdCenterWrapper::HoursOfOperation[]", XSD::QName.new(NsV7, "HoursOfOperation")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => HoursOfOperation,
+    :class => AdCenterWrapper::HoursOfOperation,
     :schema_name => XSD::QName.new(NsV7, "HoursOfOperation"),
     :schema_element => [
-      ["day", ["Day", XSD::QName.new(NsV7, "Day")], [0, 1]],
-      ["openTime1", "DayTimeInterval", [0, 1]],
-      ["openTime2", "DayTimeInterval", [0, 1]]
+      ["day", ["AdCenterWrapper::Day", XSD::QName.new(NsV7, "Day")], [0, 1]],
+      ["openTime1", "AdCenterWrapper::DayTimeInterval", [0, 1]],
+      ["openTime2", "AdCenterWrapper::DayTimeInterval", [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Day,
+    :class => AdCenterWrapper::Day,
     :schema_name => XSD::QName.new(NsV7, "Day")
   )
 
   LiteralRegistry.register(
-    :class => DayTimeInterval,
+    :class => AdCenterWrapper::DayTimeInterval,
     :schema_name => XSD::QName.new(NsV7, "DayTimeInterval"),
     :schema_element => [
-      ["v_begin", ["TimeOfTheDay", XSD::QName.new(NsV7, "Begin")], [0, 1]],
-      ["v_end", ["TimeOfTheDay", XSD::QName.new(NsV7, "End")], [0, 1]]
+      ["v_begin", ["AdCenterWrapper::TimeOfTheDay", XSD::QName.new(NsV7, "Begin")], [0, 1]],
+      ["v_end", ["AdCenterWrapper::TimeOfTheDay", XSD::QName.new(NsV7, "End")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => TimeOfTheDay,
+    :class => AdCenterWrapper::TimeOfTheDay,
     :schema_name => XSD::QName.new(NsV7, "TimeOfTheDay"),
     :schema_element => [
       ["hour", ["SOAP::SOAPShort", XSD::QName.new(NsV7, "Hour")], [0, 1]],
@@ -3461,83 +3463,83 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfPaymentType,
+    :class => AdCenterWrapper::ArrayOfPaymentType,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfPaymentType"),
     :schema_element => [
-      ["paymentType", ["PaymentType[]", XSD::QName.new(NsV7, "PaymentType")], [0, nil]]
+      ["paymentType", ["AdCenterWrapper::PaymentType[]", XSD::QName.new(NsV7, "PaymentType")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PaymentType,
+    :class => AdCenterWrapper::PaymentType,
     :schema_name => XSD::QName.new(NsV7, "PaymentType")
   )
 
   LiteralRegistry.register(
-    :class => BusinessStatus,
+    :class => AdCenterWrapper::BusinessStatus,
     :schema_name => XSD::QName.new(NsV7, "BusinessStatus")
   )
 
   LiteralRegistry.register(
-    :class => AddBusinessesResponse,
+    :class => AdCenterWrapper::AddBusinessesResponse,
     :schema_name => XSD::QName.new(NsV7, "AddBusinessesResponse"),
     :schema_element => [
-      ["businessIds", ["ArrayOflong", XSD::QName.new(NsV7, "BusinessIds")], [0, 1]]
+      ["businessIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BusinessIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateBusinessesRequest,
+    :class => AdCenterWrapper::UpdateBusinessesRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateBusinessesRequest"),
     :schema_element => [
-      ["businesses", ["ArrayOfBusiness", XSD::QName.new(NsV7, "Businesses")], [0, 1]]
+      ["businesses", ["AdCenterWrapper::ArrayOfBusiness", XSD::QName.new(NsV7, "Businesses")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateBusinessesResponse,
+    :class => AdCenterWrapper::UpdateBusinessesResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateBusinessesResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => DeleteBusinessesRequest,
+    :class => AdCenterWrapper::DeleteBusinessesRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteBusinessesRequest"),
     :schema_element => [
-      ["businessIds", ["ArrayOflong", XSD::QName.new(NsV7, "BusinessIds")], [0, 1]]
+      ["businessIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BusinessIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteBusinessesResponse,
+    :class => AdCenterWrapper::DeleteBusinessesResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteBusinessesResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetBusinessesInfoRequest,
+    :class => AdCenterWrapper::GetBusinessesInfoRequest,
     :schema_name => XSD::QName.new(NsV7, "GetBusinessesInfoRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetBusinessesInfoResponse,
+    :class => AdCenterWrapper::GetBusinessesInfoResponse,
     :schema_name => XSD::QName.new(NsV7, "GetBusinessesInfoResponse"),
     :schema_element => [
-      ["businessesInfo", ["ArrayOfBusinessInfo", XSD::QName.new(NsV7, "BusinessesInfo")], [0, 1]]
+      ["businessesInfo", ["AdCenterWrapper::ArrayOfBusinessInfo", XSD::QName.new(NsV7, "BusinessesInfo")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBusinessInfo,
+    :class => AdCenterWrapper::ArrayOfBusinessInfo,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfBusinessInfo"),
     :schema_element => [
-      ["businessInfo", ["BusinessInfo[]", XSD::QName.new(NsV7, "BusinessInfo")], [0, nil]]
+      ["businessInfo", ["AdCenterWrapper::BusinessInfo[]", XSD::QName.new(NsV7, "BusinessInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessInfo,
+    :class => AdCenterWrapper::BusinessInfo,
     :schema_name => XSD::QName.new(NsV7, "BusinessInfo"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -3546,97 +3548,97 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetBusinessesByIdsRequest,
+    :class => AdCenterWrapper::GetBusinessesByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetBusinessesByIdsRequest"),
     :schema_element => [
-      ["businessIds", ["ArrayOflong", XSD::QName.new(NsV7, "BusinessIds")], [0, 1]]
+      ["businessIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BusinessIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetBusinessesByIdsResponse,
+    :class => AdCenterWrapper::GetBusinessesByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetBusinessesByIdsResponse"),
     :schema_element => [
-      ["businesses", ["ArrayOfBusiness", XSD::QName.new(NsV7, "Businesses")], [0, 1]]
+      ["businesses", ["AdCenterWrapper::ArrayOfBusiness", XSD::QName.new(NsV7, "Businesses")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AddSitePlacementsRequest,
+    :class => AdCenterWrapper::AddSitePlacementsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddSitePlacementsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["sitePlacements", ["ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
+      ["sitePlacements", ["AdCenterWrapper::ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfSitePlacement,
+    :class => AdCenterWrapper::ArrayOfSitePlacement,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfSitePlacement"),
     :schema_element => [
-      ["sitePlacement", ["SitePlacement[]", XSD::QName.new(NsV7, "SitePlacement")], [0, nil]]
+      ["sitePlacement", ["AdCenterWrapper::SitePlacement[]", XSD::QName.new(NsV7, "SitePlacement")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SitePlacement,
+    :class => AdCenterWrapper::SitePlacement,
     :schema_name => XSD::QName.new(NsV7, "SitePlacement"),
     :schema_element => [
-      ["bid", ["Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
+      ["bid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "Bid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["placementId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "PlacementId")], [0, 1]],
-      ["status", ["SitePlacementStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::SitePlacementStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["url", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Url")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SitePlacementStatus,
+    :class => AdCenterWrapper::SitePlacementStatus,
     :schema_name => XSD::QName.new(NsV7, "SitePlacementStatus")
   )
 
   LiteralRegistry.register(
-    :class => AddSitePlacementsResponse,
+    :class => AdCenterWrapper::AddSitePlacementsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddSitePlacementsResponse"),
     :schema_element => [
-      ["sitePlacementIds", ["ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
+      ["sitePlacementIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteSitePlacementsRequest,
+    :class => AdCenterWrapper::DeleteSitePlacementsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteSitePlacementsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["sitePlacementIds", ["ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
+      ["sitePlacementIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteSitePlacementsResponse,
+    :class => AdCenterWrapper::DeleteSitePlacementsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteSitePlacementsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetSitePlacementsByIdsRequest,
+    :class => AdCenterWrapper::GetSitePlacementsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetSitePlacementsByIdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["sitePlacementIds", ["ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
+      ["sitePlacementIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetSitePlacementsByIdsResponse,
+    :class => AdCenterWrapper::GetSitePlacementsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetSitePlacementsByIdsResponse"),
     :schema_element => [
-      ["sitePlacements", ["ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
+      ["sitePlacements", ["AdCenterWrapper::ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetSitePlacementsByAdGroupIdRequest,
+    :class => AdCenterWrapper::GetSitePlacementsByAdGroupIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetSitePlacementsByAdGroupIdRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -3644,103 +3646,103 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetSitePlacementsByAdGroupIdResponse,
+    :class => AdCenterWrapper::GetSitePlacementsByAdGroupIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetSitePlacementsByAdGroupIdResponse"),
     :schema_element => [
-      ["sitePlacements", ["ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
+      ["sitePlacements", ["AdCenterWrapper::ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseSitePlacementsRequest,
+    :class => AdCenterWrapper::PauseSitePlacementsRequest,
     :schema_name => XSD::QName.new(NsV7, "PauseSitePlacementsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["sitePlacementIds", ["ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
+      ["sitePlacementIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseSitePlacementsResponse,
+    :class => AdCenterWrapper::PauseSitePlacementsResponse,
     :schema_name => XSD::QName.new(NsV7, "PauseSitePlacementsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ResumeSitePlacementsRequest,
+    :class => AdCenterWrapper::ResumeSitePlacementsRequest,
     :schema_name => XSD::QName.new(NsV7, "ResumeSitePlacementsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["sitePlacementIds", ["ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
+      ["sitePlacementIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "SitePlacementIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ResumeSitePlacementsResponse,
+    :class => AdCenterWrapper::ResumeSitePlacementsResponse,
     :schema_name => XSD::QName.new(NsV7, "ResumeSitePlacementsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => UpdateSitePlacementsRequest,
+    :class => AdCenterWrapper::UpdateSitePlacementsRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateSitePlacementsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["sitePlacements", ["ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
+      ["sitePlacements", ["AdCenterWrapper::ArrayOfSitePlacement", XSD::QName.new(NsV7, "SitePlacements")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateSitePlacementsResponse,
+    :class => AdCenterWrapper::UpdateSitePlacementsResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateSitePlacementsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetPlacementDetailsForUrlsRequest,
+    :class => AdCenterWrapper::GetPlacementDetailsForUrlsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetPlacementDetailsForUrlsRequest"),
     :schema_element => [
-      ["urls", ["ArrayOfstring", XSD::QName.new(NsV7, "Urls")], [0, 1]]
+      ["urls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "Urls")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetPlacementDetailsForUrlsResponse,
+    :class => AdCenterWrapper::GetPlacementDetailsForUrlsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetPlacementDetailsForUrlsResponse"),
     :schema_element => [
-      ["placementDetails", ["ArrayOfArrayOfPlacementDetail", XSD::QName.new(NsV7, "PlacementDetails")], [0, 1]]
+      ["placementDetails", ["AdCenterWrapper::ArrayOfArrayOfPlacementDetail", XSD::QName.new(NsV7, "PlacementDetails")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfArrayOfPlacementDetail,
+    :class => AdCenterWrapper::ArrayOfArrayOfPlacementDetail,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfArrayOfPlacementDetail"),
     :schema_element => [
-      ["arrayOfPlacementDetail", ["ArrayOfPlacementDetail[]", XSD::QName.new(NsV7, "ArrayOfPlacementDetail")], [0, nil]]
+      ["arrayOfPlacementDetail", ["AdCenterWrapper::ArrayOfPlacementDetail[]", XSD::QName.new(NsV7, "ArrayOfPlacementDetail")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfPlacementDetail,
+    :class => AdCenterWrapper::ArrayOfPlacementDetail,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfPlacementDetail"),
     :schema_element => [
-      ["placementDetail", ["PlacementDetail[]", XSD::QName.new(NsV7, "PlacementDetail")], [0, nil]]
+      ["placementDetail", ["AdCenterWrapper::PlacementDetail[]", XSD::QName.new(NsV7, "PlacementDetail")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PlacementDetail,
+    :class => AdCenterWrapper::PlacementDetail,
     :schema_name => XSD::QName.new(NsV7, "PlacementDetail"),
     :schema_element => [
-      ["impressionsRangePerDay", ["ImpressionsPerDayRange", XSD::QName.new(NsV7, "ImpressionsRangePerDay")], [0, 1]],
+      ["impressionsRangePerDay", ["AdCenterWrapper::ImpressionsPerDayRange", XSD::QName.new(NsV7, "ImpressionsRangePerDay")], [0, 1]],
       ["pathName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "PathName")], [0, 1]],
       ["placementId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "PlacementId")], [0, 1]],
-      ["supportedMediaTypes", ["ArrayOfMediaType", XSD::QName.new(NsV7, "SupportedMediaTypes")], [0, 1]]
+      ["supportedMediaTypes", ["AdCenterWrapper::ArrayOfMediaType", XSD::QName.new(NsV7, "SupportedMediaTypes")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ImpressionsPerDayRange,
+    :class => AdCenterWrapper::ImpressionsPerDayRange,
     :schema_name => XSD::QName.new(NsV7, "ImpressionsPerDayRange"),
     :schema_element => [
       ["maximum", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Maximum")], [0, 1]],
@@ -3749,32 +3751,32 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfMediaType,
+    :class => AdCenterWrapper::ArrayOfMediaType,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfMediaType"),
     :schema_element => [
-      ["mediaType", ["MediaType[]", XSD::QName.new(NsV7, "MediaType")], [0, nil]]
+      ["mediaType", ["AdCenterWrapper::MediaType[]", XSD::QName.new(NsV7, "MediaType")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MediaType,
+    :class => AdCenterWrapper::MediaType,
     :schema_name => XSD::QName.new(NsV7, "MediaType"),
     :schema_element => [
-      ["dimensions", ["ArrayOfDimension", XSD::QName.new(NsV7, "Dimensions")], [0, 1]],
+      ["dimensions", ["AdCenterWrapper::ArrayOfDimension", XSD::QName.new(NsV7, "Dimensions")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfDimension,
+    :class => AdCenterWrapper::ArrayOfDimension,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfDimension"),
     :schema_element => [
-      ["dimension", ["Dimension[]", XSD::QName.new(NsV7, "Dimension")], [0, nil]]
+      ["dimension", ["AdCenterWrapper::Dimension[]", XSD::QName.new(NsV7, "Dimension")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Dimension,
+    :class => AdCenterWrapper::Dimension,
     :schema_name => XSD::QName.new(NsV7, "Dimension"),
     :schema_element => [
       ["height", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Height")], [0, 1]],
@@ -3783,56 +3785,56 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AddBehavioralBidsRequest,
+    :class => AdCenterWrapper::AddBehavioralBidsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddBehavioralBidsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["behavioralBids", ["ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
+      ["behavioralBids", ["AdCenterWrapper::ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AddBehavioralBidsResponse,
+    :class => AdCenterWrapper::AddBehavioralBidsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddBehavioralBidsResponse"),
     :schema_element => [
-      ["behavioralBidIds", ["ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
+      ["behavioralBidIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteBehavioralBidsRequest,
+    :class => AdCenterWrapper::DeleteBehavioralBidsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteBehavioralBidsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["behavioralBidIds", ["ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
+      ["behavioralBidIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteBehavioralBidsResponse,
+    :class => AdCenterWrapper::DeleteBehavioralBidsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteBehavioralBidsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetBehavioralBidsByIdsRequest,
+    :class => AdCenterWrapper::GetBehavioralBidsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetBehavioralBidsByIdsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["behavioralBidIds", ["ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
+      ["behavioralBidIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetBehavioralBidsByIdsResponse,
+    :class => AdCenterWrapper::GetBehavioralBidsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetBehavioralBidsByIdsResponse"),
     :schema_element => [
-      ["behavioralBids", ["ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
+      ["behavioralBids", ["AdCenterWrapper::ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetBehavioralBidsByAdGroupIdRequest,
+    :class => AdCenterWrapper::GetBehavioralBidsByAdGroupIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetBehavioralBidsByAdGroupIdRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -3840,66 +3842,66 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetBehavioralBidsByAdGroupIdResponse,
+    :class => AdCenterWrapper::GetBehavioralBidsByAdGroupIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetBehavioralBidsByAdGroupIdResponse"),
     :schema_element => [
-      ["behavioralBids", ["ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
+      ["behavioralBids", ["AdCenterWrapper::ArrayOfBehavioralBid", XSD::QName.new(NsV7, "BehavioralBids")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseBehavioralBidsRequest,
+    :class => AdCenterWrapper::PauseBehavioralBidsRequest,
     :schema_name => XSD::QName.new(NsV7, "PauseBehavioralBidsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["behavioralBidIds", ["ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
+      ["behavioralBidIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseBehavioralBidsResponse,
+    :class => AdCenterWrapper::PauseBehavioralBidsResponse,
     :schema_name => XSD::QName.new(NsV7, "PauseBehavioralBidsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ResumeBehavioralBidsRequest,
+    :class => AdCenterWrapper::ResumeBehavioralBidsRequest,
     :schema_name => XSD::QName.new(NsV7, "ResumeBehavioralBidsRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["behavioralBidIds", ["ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
+      ["behavioralBidIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "BehavioralBidIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ResumeBehavioralBidsResponse,
+    :class => AdCenterWrapper::ResumeBehavioralBidsResponse,
     :schema_name => XSD::QName.new(NsV7, "ResumeBehavioralBidsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => AddCampaignsRequest,
+    :class => AdCenterWrapper::AddCampaignsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddCampaignsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaigns", ["ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
+      ["campaigns", ["AdCenterWrapper::ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCampaign,
+    :class => AdCenterWrapper::ArrayOfCampaign,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfCampaign"),
     :schema_element => [
-      ["campaign", ["Campaign[]", XSD::QName.new(NsV7, "Campaign")], [0, nil]]
+      ["campaign", ["AdCenterWrapper::Campaign[]", XSD::QName.new(NsV7, "Campaign")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Campaign,
+    :class => AdCenterWrapper::Campaign,
     :schema_name => XSD::QName.new(NsV7, "Campaign"),
     :schema_element => [
-      ["budgetType", ["BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["budgetType", ["AdCenterWrapper::BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
       ["conversionTrackingEnabled", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "ConversionTrackingEnabled")], [0, 1]],
       ["conversionTrackingScript", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ConversionTrackingScript")], [0, 1]],
       ["dailyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "DailyBudget")], [0, 1]],
@@ -3908,33 +3910,33 @@ module CampaignManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["monthlyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyBudget")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["negativeSiteUrls", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
-      ["status", ["CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["negativeSiteUrls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
+      ["status", ["AdCenterWrapper::CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["timeZone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "TimeZone")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BudgetLimitType,
+    :class => AdCenterWrapper::BudgetLimitType,
     :schema_name => XSD::QName.new(NsV7, "BudgetLimitType")
   )
 
   LiteralRegistry.register(
-    :class => CampaignStatus,
+    :class => AdCenterWrapper::CampaignStatus,
     :schema_name => XSD::QName.new(NsV7, "CampaignStatus")
   )
 
   LiteralRegistry.register(
-    :class => AddCampaignsResponse,
+    :class => AdCenterWrapper::AddCampaignsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddCampaignsResponse"),
     :schema_element => [
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetCampaignsByAccountIdRequest,
+    :class => AdCenterWrapper::GetCampaignsByAccountIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetCampaignsByAccountIdRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]]
@@ -3942,92 +3944,92 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetCampaignsByAccountIdResponse,
+    :class => AdCenterWrapper::GetCampaignsByAccountIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetCampaignsByAccountIdResponse"),
     :schema_element => [
-      ["campaigns", ["ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
+      ["campaigns", ["AdCenterWrapper::ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetCampaignsByIdsRequest,
+    :class => AdCenterWrapper::GetCampaignsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetCampaignsByIdsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetCampaignsByIdsResponse,
+    :class => AdCenterWrapper::GetCampaignsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetCampaignsByIdsResponse"),
     :schema_element => [
-      ["campaigns", ["ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
+      ["campaigns", ["AdCenterWrapper::ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseCampaignsRequest,
+    :class => AdCenterWrapper::PauseCampaignsRequest,
     :schema_name => XSD::QName.new(NsV7, "PauseCampaignsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseCampaignsResponse,
+    :class => AdCenterWrapper::PauseCampaignsResponse,
     :schema_name => XSD::QName.new(NsV7, "PauseCampaignsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ResumeCampaignsRequest,
+    :class => AdCenterWrapper::ResumeCampaignsRequest,
     :schema_name => XSD::QName.new(NsV7, "ResumeCampaignsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ResumeCampaignsResponse,
+    :class => AdCenterWrapper::ResumeCampaignsResponse,
     :schema_name => XSD::QName.new(NsV7, "ResumeCampaignsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => DeleteCampaignsRequest,
+    :class => AdCenterWrapper::DeleteCampaignsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteCampaignsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteCampaignsResponse,
+    :class => AdCenterWrapper::DeleteCampaignsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteCampaignsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => UpdateCampaignsRequest,
+    :class => AdCenterWrapper::UpdateCampaignsRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateCampaignsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaigns", ["ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
+      ["campaigns", ["AdCenterWrapper::ArrayOfCampaign", XSD::QName.new(NsV7, "Campaigns")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateCampaignsResponse,
+    :class => AdCenterWrapper::UpdateCampaignsResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateCampaignsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetCampaignsInfoByAccountIdRequest,
+    :class => AdCenterWrapper::GetCampaignsInfoByAccountIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetCampaignsInfoByAccountIdRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]]
@@ -4035,27 +4037,27 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetCampaignsInfoByAccountIdResponse,
+    :class => AdCenterWrapper::GetCampaignsInfoByAccountIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetCampaignsInfoByAccountIdResponse"),
     :schema_element => [
-      ["campaignsInfo", ["ArrayOfCampaignInfo", XSD::QName.new(NsV7, "CampaignsInfo")], [0, 1]]
+      ["campaignsInfo", ["AdCenterWrapper::ArrayOfCampaignInfo", XSD::QName.new(NsV7, "CampaignsInfo")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCampaignInfo,
+    :class => AdCenterWrapper::ArrayOfCampaignInfo,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfCampaignInfo"),
     :schema_element => [
-      ["campaignInfo", ["CampaignInfo[]", XSD::QName.new(NsV7, "CampaignInfo")], [0, nil]]
+      ["campaignInfo", ["AdCenterWrapper::CampaignInfo[]", XSD::QName.new(NsV7, "CampaignInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CampaignInfo,
+    :class => AdCenterWrapper::CampaignInfo,
     :schema_name => XSD::QName.new(NsV7, "CampaignInfo"),
     :schema_element => [
-      ["budgetType", ["BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["budgetType", ["AdCenterWrapper::BudgetLimitType", XSD::QName.new(NsV7, "BudgetType")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
       ["conversionTrackingEnabled", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "ConversionTrackingEnabled")], [0, 1]],
       ["conversionTrackingScript", ["SOAP::SOAPString", XSD::QName.new(NsV7, "ConversionTrackingScript")], [0, 1]],
       ["dailyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "DailyBudget")], [0, 1]],
@@ -4064,107 +4066,107 @@ module CampaignManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["monthlyBudget", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "MonthlyBudget")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["status", ["CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
+      ["status", ["AdCenterWrapper::CampaignStatus", XSD::QName.new(NsV7, "Status")], [0, 1]],
       ["timeZone", ["SOAP::SOAPString", XSD::QName.new(NsV7, "TimeZone")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNegativeKeywordsByCampaignIdsRequest,
+    :class => AdCenterWrapper::GetNegativeKeywordsByCampaignIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetNegativeKeywordsByCampaignIdsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNegativeKeywordsByCampaignIdsResponse,
+    :class => AdCenterWrapper::GetNegativeKeywordsByCampaignIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetNegativeKeywordsByCampaignIdsResponse"),
     :schema_element => [
-      ["campaignNegativeKeywords", ["ArrayOfCampaignNegativeKeywords", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, 1]]
+      ["campaignNegativeKeywords", ["AdCenterWrapper::ArrayOfCampaignNegativeKeywords", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCampaignNegativeKeywords,
+    :class => AdCenterWrapper::ArrayOfCampaignNegativeKeywords,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfCampaignNegativeKeywords"),
     :schema_element => [
-      ["campaignNegativeKeywords", ["CampaignNegativeKeywords[]", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, nil]]
+      ["campaignNegativeKeywords", ["AdCenterWrapper::CampaignNegativeKeywords[]", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CampaignNegativeKeywords,
+    :class => AdCenterWrapper::CampaignNegativeKeywords,
     :schema_name => XSD::QName.new(NsV7, "CampaignNegativeKeywords"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetNegativeKeywordsToCampaignsRequest,
+    :class => AdCenterWrapper::SetNegativeKeywordsToCampaignsRequest,
     :schema_name => XSD::QName.new(NsV7, "SetNegativeKeywordsToCampaignsRequest"),
     :schema_element => [
       ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AccountId")], [0, 1]],
-      ["campaignNegativeKeywords", ["ArrayOfCampaignNegativeKeywords", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, 1]]
+      ["campaignNegativeKeywords", ["AdCenterWrapper::ArrayOfCampaignNegativeKeywords", XSD::QName.new(NsV7, "CampaignNegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetNegativeKeywordsToCampaignsResponse,
+    :class => AdCenterWrapper::SetNegativeKeywordsToCampaignsResponse,
     :schema_name => XSD::QName.new(NsV7, "SetNegativeKeywordsToCampaignsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => AddAdGroupsRequest,
+    :class => AdCenterWrapper::AddAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "AddAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroups", ["ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
+      ["adGroups", ["AdCenterWrapper::ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroup,
+    :class => AdCenterWrapper::ArrayOfAdGroup,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfAdGroup"),
     :schema_element => [
-      ["adGroup", ["AdGroup[]", XSD::QName.new(NsV7, "AdGroup")], [0, nil]]
+      ["adGroup", ["AdCenterWrapper::AdGroup[]", XSD::QName.new(NsV7, "AdGroup")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroup,
+    :class => AdCenterWrapper::AdGroup,
     :schema_name => XSD::QName.new(NsV7, "AdGroup"),
     :schema_element => [
       ["adDistribution", [nil, XSD::QName.new(NsV7, "AdDistribution")], [0, 1]],
-      ["biddingModel", ["BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["endDate", ["Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["biddingModel", ["AdCenterWrapper::BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["endDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
-      ["negativeSiteUrls", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
-      ["startDate", ["Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
-      ["status", ["AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]],
+      ["negativeSiteUrls", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeSiteUrls")], [0, 1]],
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
+      ["startDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BiddingModel,
+    :class => AdCenterWrapper::BiddingModel,
     :schema_name => XSD::QName.new(NsV7, "BiddingModel")
   )
 
   LiteralRegistry.register(
-    :class => Date,
+    :class => AdCenterWrapper::Date,
     :schema_name => XSD::QName.new(NsV7, "Date"),
     :schema_element => [
       ["day", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Day")]],
@@ -4174,52 +4176,52 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdGroupStatus,
+    :class => AdCenterWrapper::AdGroupStatus,
     :schema_name => XSD::QName.new(NsV7, "AdGroupStatus")
   )
 
   LiteralRegistry.register(
-    :class => AddAdGroupsResponse,
+    :class => AdCenterWrapper::AddAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "AddAdGroupsResponse"),
     :schema_element => [
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteAdGroupsRequest,
+    :class => AdCenterWrapper::DeleteAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteAdGroupsResponse,
+    :class => AdCenterWrapper::DeleteAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteAdGroupsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetAdGroupsByIdsRequest,
+    :class => AdCenterWrapper::GetAdGroupsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdGroupsByIdsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdGroupsByIdsResponse,
+    :class => AdCenterWrapper::GetAdGroupsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdGroupsByIdsResponse"),
     :schema_element => [
-      ["adGroups", ["ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
+      ["adGroups", ["AdCenterWrapper::ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetAdGroupsByCampaignIdRequest,
+    :class => AdCenterWrapper::GetAdGroupsByCampaignIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdGroupsByCampaignIdRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]]
@@ -4227,45 +4229,45 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetAdGroupsByCampaignIdResponse,
+    :class => AdCenterWrapper::GetAdGroupsByCampaignIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdGroupsByCampaignIdResponse"),
     :schema_element => [
-      ["adGroups", ["ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
+      ["adGroups", ["AdCenterWrapper::ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseAdGroupsRequest,
+    :class => AdCenterWrapper::PauseAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "PauseAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => PauseAdGroupsResponse,
+    :class => AdCenterWrapper::PauseAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "PauseAdGroupsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => ResumeAdGroupsRequest,
+    :class => AdCenterWrapper::ResumeAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "ResumeAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ResumeAdGroupsResponse,
+    :class => AdCenterWrapper::ResumeAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "ResumeAdGroupsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => SubmitAdGroupForApprovalRequest,
+    :class => AdCenterWrapper::SubmitAdGroupForApprovalRequest,
     :schema_name => XSD::QName.new(NsV7, "SubmitAdGroupForApprovalRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -4273,28 +4275,28 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => SubmitAdGroupForApprovalResponse,
+    :class => AdCenterWrapper::SubmitAdGroupForApprovalResponse,
     :schema_name => XSD::QName.new(NsV7, "SubmitAdGroupForApprovalResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => UpdateAdGroupsRequest,
+    :class => AdCenterWrapper::UpdateAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroups", ["ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
+      ["adGroups", ["AdCenterWrapper::ArrayOfAdGroup", XSD::QName.new(NsV7, "AdGroups")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateAdGroupsResponse,
+    :class => AdCenterWrapper::UpdateAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateAdGroupsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetAdGroupsInfoByCampaignIdRequest,
+    :class => AdCenterWrapper::GetAdGroupsInfoByCampaignIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAdGroupsInfoByCampaignIdRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]]
@@ -4302,422 +4304,422 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetAdGroupsInfoByCampaignIdResponse,
+    :class => AdCenterWrapper::GetAdGroupsInfoByCampaignIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAdGroupsInfoByCampaignIdResponse"),
     :schema_element => [
-      ["adGroupsInfo", ["ArrayOfAdGroupInfo", XSD::QName.new(NsV7, "AdGroupsInfo")], [0, 1]]
+      ["adGroupsInfo", ["AdCenterWrapper::ArrayOfAdGroupInfo", XSD::QName.new(NsV7, "AdGroupsInfo")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroupInfo,
+    :class => AdCenterWrapper::ArrayOfAdGroupInfo,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfAdGroupInfo"),
     :schema_element => [
-      ["adGroupInfo", ["AdGroupInfo[]", XSD::QName.new(NsV7, "AdGroupInfo")], [0, nil]]
+      ["adGroupInfo", ["AdCenterWrapper::AdGroupInfo[]", XSD::QName.new(NsV7, "AdGroupInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroupInfo,
+    :class => AdCenterWrapper::AdGroupInfo,
     :schema_name => XSD::QName.new(NsV7, "AdGroupInfo"),
     :schema_element => [
       ["adDistribution", [nil, XSD::QName.new(NsV7, "AdDistribution")], [0, 1]],
-      ["biddingModel", ["BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
-      ["broadMatchBid", ["Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["contentMatchBid", ["Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
-      ["endDate", ["Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
-      ["exactMatchBid", ["Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
+      ["biddingModel", ["AdCenterWrapper::BiddingModel", XSD::QName.new(NsV7, "BiddingModel")], [0, 1]],
+      ["broadMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "BroadMatchBid")], [0, 1]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["contentMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ContentMatchBid")], [0, 1]],
+      ["endDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "EndDate")], [0, 1]],
+      ["exactMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "ExactMatchBid")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["languageAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "LanguageAndRegion")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["phraseMatchBid", ["Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
-      ["pricingModel", ["PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
-      ["startDate", ["Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
-      ["status", ["AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
+      ["phraseMatchBid", ["AdCenterWrapper::Bid", XSD::QName.new(NsV7, "PhraseMatchBid")], [0, 1]],
+      ["pricingModel", ["AdCenterWrapper::PricingModel", XSD::QName.new(NsV7, "PricingModel")], [0, 1]],
+      ["startDate", ["AdCenterWrapper::Date", XSD::QName.new(NsV7, "StartDate")], [0, 1]],
+      ["status", ["AdCenterWrapper::AdGroupStatus", XSD::QName.new(NsV7, "Status")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNegativeKeywordsByAdGroupIdsRequest,
+    :class => AdCenterWrapper::GetNegativeKeywordsByAdGroupIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetNegativeKeywordsByAdGroupIdsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNegativeKeywordsByAdGroupIdsResponse,
+    :class => AdCenterWrapper::GetNegativeKeywordsByAdGroupIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetNegativeKeywordsByAdGroupIdsResponse"),
     :schema_element => [
-      ["adGroupNegativeKeywords", ["ArrayOfAdGroupNegativeKeywords", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, 1]]
+      ["adGroupNegativeKeywords", ["AdCenterWrapper::ArrayOfAdGroupNegativeKeywords", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroupNegativeKeywords,
+    :class => AdCenterWrapper::ArrayOfAdGroupNegativeKeywords,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfAdGroupNegativeKeywords"),
     :schema_element => [
-      ["adGroupNegativeKeywords", ["AdGroupNegativeKeywords[]", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, nil]]
+      ["adGroupNegativeKeywords", ["AdCenterWrapper::AdGroupNegativeKeywords[]", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroupNegativeKeywords,
+    :class => AdCenterWrapper::AdGroupNegativeKeywords,
     :schema_name => XSD::QName.new(NsV7, "AdGroupNegativeKeywords"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["negativeKeywords", ["ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
+      ["negativeKeywords", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsV7, "NegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetNegativeKeywordsToAdGroupsRequest,
+    :class => AdCenterWrapper::SetNegativeKeywordsToAdGroupsRequest,
     :schema_name => XSD::QName.new(NsV7, "SetNegativeKeywordsToAdGroupsRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
-      ["adGroupNegativeKeywords", ["ArrayOfAdGroupNegativeKeywords", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, 1]]
+      ["adGroupNegativeKeywords", ["AdCenterWrapper::ArrayOfAdGroupNegativeKeywords", XSD::QName.new(NsV7, "AdGroupNegativeKeywords")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetNegativeKeywordsToAdGroupsResponse,
+    :class => AdCenterWrapper::SetNegativeKeywordsToAdGroupsResponse,
     :schema_name => XSD::QName.new(NsV7, "SetNegativeKeywordsToAdGroupsResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => AddTargetRequest,
+    :class => AdCenterWrapper::AddTargetRequest,
     :schema_name => XSD::QName.new(NsV7, "AddTargetRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["target", ["Target", XSD::QName.new(NsV7, "Target")], [0, 1]]
+      ["target", ["AdCenterWrapper::Target", XSD::QName.new(NsV7, "Target")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => Target,
+    :class => AdCenterWrapper::Target,
     :schema_name => XSD::QName.new(NsV7, "Target"),
     :schema_element => [
-      ["age", ["AgeTarget", XSD::QName.new(NsV7, "Age")], [0, 1]],
-      ["behavior", ["BehavioralTarget", XSD::QName.new(NsV7, "Behavior")], [0, 1]],
-      ["day", ["DayTarget", XSD::QName.new(NsV7, "Day")], [0, 1]],
-      ["device", ["DeviceTarget", XSD::QName.new(NsV7, "Device")], [0, 1]],
-      ["gender", ["GenderTarget", XSD::QName.new(NsV7, "Gender")], [0, 1]],
-      ["hour", ["HourTarget", XSD::QName.new(NsV7, "Hour")], [0, 1]],
+      ["age", ["AdCenterWrapper::AgeTarget", XSD::QName.new(NsV7, "Age")], [0, 1]],
+      ["behavior", ["AdCenterWrapper::BehavioralTarget", XSD::QName.new(NsV7, "Behavior")], [0, 1]],
+      ["day", ["AdCenterWrapper::DayTarget", XSD::QName.new(NsV7, "Day")], [0, 1]],
+      ["device", ["AdCenterWrapper::DeviceTarget", XSD::QName.new(NsV7, "Device")], [0, 1]],
+      ["gender", ["AdCenterWrapper::GenderTarget", XSD::QName.new(NsV7, "Gender")], [0, 1]],
+      ["hour", ["AdCenterWrapper::HourTarget", XSD::QName.new(NsV7, "Hour")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
       ["isLibraryTarget", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "IsLibraryTarget")], [0, 1]],
-      ["location", ["LocationTarget", XSD::QName.new(NsV7, "Location")], [0, 1]],
+      ["location", ["AdCenterWrapper::LocationTarget", XSD::QName.new(NsV7, "Location")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Name")], [0, 1]],
-      ["segment", ["SegmentTarget", XSD::QName.new(NsV7, "Segment")], [0, 1]]
+      ["segment", ["AdCenterWrapper::SegmentTarget", XSD::QName.new(NsV7, "Segment")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AgeTarget,
+    :class => AdCenterWrapper::AgeTarget,
     :schema_name => XSD::QName.new(NsV7, "AgeTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfAgeTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfAgeTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAgeTargetBid,
+    :class => AdCenterWrapper::ArrayOfAgeTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfAgeTargetBid"),
     :schema_element => [
-      ["ageTargetBid", ["AgeTargetBid[]", XSD::QName.new(NsV7, "AgeTargetBid")], [0, nil]]
+      ["ageTargetBid", ["AdCenterWrapper::AgeTargetBid[]", XSD::QName.new(NsV7, "AgeTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AgeTargetBid,
+    :class => AdCenterWrapper::AgeTargetBid,
     :schema_name => XSD::QName.new(NsV7, "AgeTargetBid"),
     :schema_element => [
-      ["age", ["AgeRange", XSD::QName.new(NsV7, "Age")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["age", ["AdCenterWrapper::AgeRange", XSD::QName.new(NsV7, "Age")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AgeRange,
+    :class => AdCenterWrapper::AgeRange,
     :schema_name => XSD::QName.new(NsV7, "AgeRange")
   )
 
   LiteralRegistry.register(
-    :class => IncrementalBidPercentage,
+    :class => AdCenterWrapper::IncrementalBidPercentage,
     :schema_name => XSD::QName.new(NsV7, "IncrementalBidPercentage")
   )
 
   LiteralRegistry.register(
-    :class => BehavioralTarget,
+    :class => AdCenterWrapper::BehavioralTarget,
     :schema_name => XSD::QName.new(NsV7, "BehavioralTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfBehavioralTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfBehavioralTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBehavioralTargetBid,
+    :class => AdCenterWrapper::ArrayOfBehavioralTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfBehavioralTargetBid"),
     :schema_element => [
-      ["behavioralTargetBid", ["BehavioralTargetBid[]", XSD::QName.new(NsV7, "BehavioralTargetBid")], [0, nil]]
+      ["behavioralTargetBid", ["AdCenterWrapper::BehavioralTargetBid[]", XSD::QName.new(NsV7, "BehavioralTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BehavioralTargetBid,
+    :class => AdCenterWrapper::BehavioralTargetBid,
     :schema_name => XSD::QName.new(NsV7, "BehavioralTargetBid"),
     :schema_element => [
       ["behavioralName", ["SOAP::SOAPString", XSD::QName.new(NsV7, "BehavioralName")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DayTarget,
+    :class => AdCenterWrapper::DayTarget,
     :schema_name => XSD::QName.new(NsV7, "DayTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfDayTargetBid", XSD::QName.new(NsV7, "Bids")]],
+      ["bids", ["AdCenterWrapper::ArrayOfDayTargetBid", XSD::QName.new(NsV7, "Bids")]],
       ["targetAllDays", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllDays")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfDayTargetBid,
+    :class => AdCenterWrapper::ArrayOfDayTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfDayTargetBid"),
     :schema_element => [
-      ["dayTargetBid", ["DayTargetBid[]", XSD::QName.new(NsV7, "DayTargetBid")], [0, nil]]
+      ["dayTargetBid", ["AdCenterWrapper::DayTargetBid[]", XSD::QName.new(NsV7, "DayTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DayTargetBid,
+    :class => AdCenterWrapper::DayTargetBid,
     :schema_name => XSD::QName.new(NsV7, "DayTargetBid"),
     :schema_element => [
-      ["day", ["Day", XSD::QName.new(NsV7, "Day")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["day", ["AdCenterWrapper::Day", XSD::QName.new(NsV7, "Day")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeviceTarget,
+    :class => AdCenterWrapper::DeviceTarget,
     :schema_name => XSD::QName.new(NsV7, "DeviceTarget"),
     :schema_element => [
-      ["devices", ["ArrayOfDeviceType", XSD::QName.new(NsV7, "Devices")]]
+      ["devices", ["AdCenterWrapper::ArrayOfDeviceType", XSD::QName.new(NsV7, "Devices")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfDeviceType,
+    :class => AdCenterWrapper::ArrayOfDeviceType,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfDeviceType"),
     :schema_element => [
-      ["deviceType", ["DeviceType[]", XSD::QName.new(NsV7, "DeviceType")], [0, nil]]
+      ["deviceType", ["AdCenterWrapper::DeviceType[]", XSD::QName.new(NsV7, "DeviceType")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeviceType,
+    :class => AdCenterWrapper::DeviceType,
     :schema_name => XSD::QName.new(NsV7, "DeviceType")
   )
 
   LiteralRegistry.register(
-    :class => GenderTarget,
+    :class => AdCenterWrapper::GenderTarget,
     :schema_name => XSD::QName.new(NsV7, "GenderTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfGenderTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfGenderTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfGenderTargetBid,
+    :class => AdCenterWrapper::ArrayOfGenderTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfGenderTargetBid"),
     :schema_element => [
-      ["genderTargetBid", ["GenderTargetBid[]", XSD::QName.new(NsV7, "GenderTargetBid")], [0, nil]]
+      ["genderTargetBid", ["AdCenterWrapper::GenderTargetBid[]", XSD::QName.new(NsV7, "GenderTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GenderTargetBid,
+    :class => AdCenterWrapper::GenderTargetBid,
     :schema_name => XSD::QName.new(NsV7, "GenderTargetBid"),
     :schema_element => [
-      ["gender", ["GenderType", XSD::QName.new(NsV7, "Gender")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["gender", ["AdCenterWrapper::GenderType", XSD::QName.new(NsV7, "Gender")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GenderType,
+    :class => AdCenterWrapper::GenderType,
     :schema_name => XSD::QName.new(NsV7, "GenderType")
   )
 
   LiteralRegistry.register(
-    :class => HourTarget,
+    :class => AdCenterWrapper::HourTarget,
     :schema_name => XSD::QName.new(NsV7, "HourTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfHourTargetBid", XSD::QName.new(NsV7, "Bids")]],
+      ["bids", ["AdCenterWrapper::ArrayOfHourTargetBid", XSD::QName.new(NsV7, "Bids")]],
       ["targetAllHours", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllHours")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfHourTargetBid,
+    :class => AdCenterWrapper::ArrayOfHourTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfHourTargetBid"),
     :schema_element => [
-      ["hourTargetBid", ["HourTargetBid[]", XSD::QName.new(NsV7, "HourTargetBid")], [0, nil]]
+      ["hourTargetBid", ["AdCenterWrapper::HourTargetBid[]", XSD::QName.new(NsV7, "HourTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => HourTargetBid,
+    :class => AdCenterWrapper::HourTargetBid,
     :schema_name => XSD::QName.new(NsV7, "HourTargetBid"),
     :schema_element => [
-      ["hour", ["HourRange", XSD::QName.new(NsV7, "Hour")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["hour", ["AdCenterWrapper::HourRange", XSD::QName.new(NsV7, "Hour")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => HourRange,
+    :class => AdCenterWrapper::HourRange,
     :schema_name => XSD::QName.new(NsV7, "HourRange")
   )
 
   LiteralRegistry.register(
-    :class => LocationTarget,
+    :class => AdCenterWrapper::LocationTarget,
     :schema_name => XSD::QName.new(NsV7, "LocationTarget"),
     :schema_element => [
-      ["businessTarget", ["BusinessTarget", XSD::QName.new(NsV7, "BusinessTarget")], [0, 1]],
-      ["cityTarget", ["CityTarget", XSD::QName.new(NsV7, "CityTarget")], [0, 1]],
-      ["countryTarget", ["CountryTarget", XSD::QName.new(NsV7, "CountryTarget")], [0, 1]],
-      ["metroAreaTarget", ["MetroAreaTarget", XSD::QName.new(NsV7, "MetroAreaTarget")], [0, 1]],
-      ["radiusTarget", ["RadiusTarget", XSD::QName.new(NsV7, "RadiusTarget")], [0, 1]],
-      ["stateTarget", ["StateTarget", XSD::QName.new(NsV7, "StateTarget")], [0, 1]],
+      ["businessTarget", ["AdCenterWrapper::BusinessTarget", XSD::QName.new(NsV7, "BusinessTarget")], [0, 1]],
+      ["cityTarget", ["AdCenterWrapper::CityTarget", XSD::QName.new(NsV7, "CityTarget")], [0, 1]],
+      ["countryTarget", ["AdCenterWrapper::CountryTarget", XSD::QName.new(NsV7, "CountryTarget")], [0, 1]],
+      ["metroAreaTarget", ["AdCenterWrapper::MetroAreaTarget", XSD::QName.new(NsV7, "MetroAreaTarget")], [0, 1]],
+      ["radiusTarget", ["AdCenterWrapper::RadiusTarget", XSD::QName.new(NsV7, "RadiusTarget")], [0, 1]],
+      ["stateTarget", ["AdCenterWrapper::StateTarget", XSD::QName.new(NsV7, "StateTarget")], [0, 1]],
       ["targetAllLocations", ["SOAP::SOAPBoolean", XSD::QName.new(NsV7, "TargetAllLocations")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessTarget,
+    :class => AdCenterWrapper::BusinessTarget,
     :schema_name => XSD::QName.new(NsV7, "BusinessTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfBusinessTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfBusinessTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfBusinessTargetBid,
+    :class => AdCenterWrapper::ArrayOfBusinessTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfBusinessTargetBid"),
     :schema_element => [
-      ["businessTargetBid", ["BusinessTargetBid[]", XSD::QName.new(NsV7, "BusinessTargetBid")], [0, nil]]
+      ["businessTargetBid", ["AdCenterWrapper::BusinessTargetBid[]", XSD::QName.new(NsV7, "BusinessTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => BusinessTargetBid,
+    :class => AdCenterWrapper::BusinessTargetBid,
     :schema_name => XSD::QName.new(NsV7, "BusinessTargetBid"),
     :schema_element => [
       ["businessId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "BusinessId")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["radius", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Radius")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CityTarget,
+    :class => AdCenterWrapper::CityTarget,
     :schema_name => XSD::QName.new(NsV7, "CityTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfCityTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfCityTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCityTargetBid,
+    :class => AdCenterWrapper::ArrayOfCityTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfCityTargetBid"),
     :schema_element => [
-      ["cityTargetBid", ["CityTargetBid[]", XSD::QName.new(NsV7, "CityTargetBid")], [0, nil]]
+      ["cityTargetBid", ["AdCenterWrapper::CityTargetBid[]", XSD::QName.new(NsV7, "CityTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CityTargetBid,
+    :class => AdCenterWrapper::CityTargetBid,
     :schema_name => XSD::QName.new(NsV7, "CityTargetBid"),
     :schema_element => [
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsV7, "City")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CountryTarget,
+    :class => AdCenterWrapper::CountryTarget,
     :schema_name => XSD::QName.new(NsV7, "CountryTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfCountryTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfCountryTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfCountryTargetBid,
+    :class => AdCenterWrapper::ArrayOfCountryTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfCountryTargetBid"),
     :schema_element => [
-      ["countryTargetBid", ["CountryTargetBid[]", XSD::QName.new(NsV7, "CountryTargetBid")], [0, nil]]
+      ["countryTargetBid", ["AdCenterWrapper::CountryTargetBid[]", XSD::QName.new(NsV7, "CountryTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CountryTargetBid,
+    :class => AdCenterWrapper::CountryTargetBid,
     :schema_name => XSD::QName.new(NsV7, "CountryTargetBid"),
     :schema_element => [
       ["countryAndRegion", ["SOAP::SOAPString", XSD::QName.new(NsV7, "CountryAndRegion")]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MetroAreaTarget,
+    :class => AdCenterWrapper::MetroAreaTarget,
     :schema_name => XSD::QName.new(NsV7, "MetroAreaTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfMetroAreaTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfMetroAreaTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfMetroAreaTargetBid,
+    :class => AdCenterWrapper::ArrayOfMetroAreaTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfMetroAreaTargetBid"),
     :schema_element => [
-      ["metroAreaTargetBid", ["MetroAreaTargetBid[]", XSD::QName.new(NsV7, "MetroAreaTargetBid")], [0, nil]]
+      ["metroAreaTargetBid", ["AdCenterWrapper::MetroAreaTargetBid[]", XSD::QName.new(NsV7, "MetroAreaTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => MetroAreaTargetBid,
+    :class => AdCenterWrapper::MetroAreaTargetBid,
     :schema_name => XSD::QName.new(NsV7, "MetroAreaTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["metroArea", ["SOAP::SOAPString", XSD::QName.new(NsV7, "MetroArea")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => RadiusTarget,
+    :class => AdCenterWrapper::RadiusTarget,
     :schema_name => XSD::QName.new(NsV7, "RadiusTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfRadiusTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfRadiusTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfRadiusTargetBid,
+    :class => AdCenterWrapper::ArrayOfRadiusTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfRadiusTargetBid"),
     :schema_element => [
-      ["radiusTargetBid", ["RadiusTargetBid[]", XSD::QName.new(NsV7, "RadiusTargetBid")], [0, nil]]
+      ["radiusTargetBid", ["AdCenterWrapper::RadiusTargetBid[]", XSD::QName.new(NsV7, "RadiusTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => RadiusTargetBid,
+    :class => AdCenterWrapper::RadiusTargetBid,
     :schema_name => XSD::QName.new(NsV7, "RadiusTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["latitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LatitudeDegrees")]],
       ["longitudeDegrees", ["SOAP::SOAPDouble", XSD::QName.new(NsV7, "LongitudeDegrees")]],
       ["radius", ["SOAP::SOAPInt", XSD::QName.new(NsV7, "Radius")]]
@@ -4725,52 +4727,52 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => StateTarget,
+    :class => AdCenterWrapper::StateTarget,
     :schema_name => XSD::QName.new(NsV7, "StateTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfStateTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfStateTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfStateTargetBid,
+    :class => AdCenterWrapper::ArrayOfStateTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfStateTargetBid"),
     :schema_element => [
-      ["stateTargetBid", ["StateTargetBid[]", XSD::QName.new(NsV7, "StateTargetBid")], [0, nil]]
+      ["stateTargetBid", ["AdCenterWrapper::StateTargetBid[]", XSD::QName.new(NsV7, "StateTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => StateTargetBid,
+    :class => AdCenterWrapper::StateTargetBid,
     :schema_name => XSD::QName.new(NsV7, "StateTargetBid"),
     :schema_element => [
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["state", ["SOAP::SOAPString", XSD::QName.new(NsV7, "State")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SegmentTarget,
+    :class => AdCenterWrapper::SegmentTarget,
     :schema_name => XSD::QName.new(NsV7, "SegmentTarget"),
     :schema_element => [
-      ["bids", ["ArrayOfSegmentTargetBid", XSD::QName.new(NsV7, "Bids")]]
+      ["bids", ["AdCenterWrapper::ArrayOfSegmentTargetBid", XSD::QName.new(NsV7, "Bids")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfSegmentTargetBid,
+    :class => AdCenterWrapper::ArrayOfSegmentTargetBid,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfSegmentTargetBid"),
     :schema_element => [
-      ["segmentTargetBid", ["SegmentTargetBid[]", XSD::QName.new(NsV7, "SegmentTargetBid")], [0, nil]]
+      ["segmentTargetBid", ["AdCenterWrapper::SegmentTargetBid[]", XSD::QName.new(NsV7, "SegmentTargetBid")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SegmentTargetBid,
+    :class => AdCenterWrapper::SegmentTargetBid,
     :schema_name => XSD::QName.new(NsV7, "SegmentTargetBid"),
     :schema_element => [
-      ["cashBackInfo", ["CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
-      ["incrementalBid", ["IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
+      ["cashBackInfo", ["AdCenterWrapper::CashBackInfo", XSD::QName.new(NsV7, "CashBackInfo")], [0, 1]],
+      ["incrementalBid", ["AdCenterWrapper::IncrementalBidPercentage", XSD::QName.new(NsV7, "IncrementalBid")]],
       ["param1", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param1")], [0, 1]],
       ["param2", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param2")], [0, 1]],
       ["param3", ["SOAP::SOAPString", XSD::QName.new(NsV7, "Param3")], [0, 1]],
@@ -4781,7 +4783,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AddTargetResponse,
+    :class => AdCenterWrapper::AddTargetResponse,
     :schema_name => XSD::QName.new(NsV7, "AddTargetResponse"),
     :schema_element => [
       ["targetId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "TargetId")], [0, 1]]
@@ -4789,7 +4791,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetRequest,
+    :class => AdCenterWrapper::DeleteTargetRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -4797,13 +4799,13 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetResponse,
+    :class => AdCenterWrapper::DeleteTargetResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetTargetByAdGroupIdRequest,
+    :class => AdCenterWrapper::GetTargetByAdGroupIdRequest,
     :schema_name => XSD::QName.new(NsV7, "GetTargetByAdGroupIdRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -4811,104 +4813,104 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetTargetByAdGroupIdResponse,
+    :class => AdCenterWrapper::GetTargetByAdGroupIdResponse,
     :schema_name => XSD::QName.new(NsV7, "GetTargetByAdGroupIdResponse"),
     :schema_element => [
-      ["target", ["Target", XSD::QName.new(NsV7, "Target")], [0, 1]]
+      ["target", ["AdCenterWrapper::Target", XSD::QName.new(NsV7, "Target")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateTargetRequest,
+    :class => AdCenterWrapper::UpdateTargetRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateTargetRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
-      ["target", ["Target", XSD::QName.new(NsV7, "Target")], [0, 1]]
+      ["target", ["AdCenterWrapper::Target", XSD::QName.new(NsV7, "Target")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateTargetResponse,
+    :class => AdCenterWrapper::UpdateTargetResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateTargetResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => AddTargetsToLibraryRequest,
+    :class => AdCenterWrapper::AddTargetsToLibraryRequest,
     :schema_name => XSD::QName.new(NsV7, "AddTargetsToLibraryRequest"),
     :schema_element => [
-      ["targets", ["ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
+      ["targets", ["AdCenterWrapper::ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfTarget,
+    :class => AdCenterWrapper::ArrayOfTarget,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfTarget"),
     :schema_element => [
-      ["target", ["Target[]", XSD::QName.new(NsV7, "Target")], [0, nil]]
+      ["target", ["AdCenterWrapper::Target[]", XSD::QName.new(NsV7, "Target")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AddTargetsToLibraryResponse,
+    :class => AdCenterWrapper::AddTargetsToLibraryResponse,
     :schema_name => XSD::QName.new(NsV7, "AddTargetsToLibraryResponse"),
     :schema_element => [
-      ["targetIds", ["ArrayOflong", XSD::QName.new(NsV7, "TargetIds")], [0, 1]]
+      ["targetIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "TargetIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateTargetsInLibraryRequest,
+    :class => AdCenterWrapper::UpdateTargetsInLibraryRequest,
     :schema_name => XSD::QName.new(NsV7, "UpdateTargetsInLibraryRequest"),
     :schema_element => [
-      ["targets", ["ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
+      ["targets", ["AdCenterWrapper::ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => UpdateTargetsInLibraryResponse,
+    :class => AdCenterWrapper::UpdateTargetsInLibraryResponse,
     :schema_name => XSD::QName.new(NsV7, "UpdateTargetsInLibraryResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetsFromLibraryRequest,
+    :class => AdCenterWrapper::DeleteTargetsFromLibraryRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetsFromLibraryRequest"),
     :schema_element => [
-      ["targetIds", ["ArrayOflong", XSD::QName.new(NsV7, "TargetIds")], [0, 1]]
+      ["targetIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "TargetIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetsFromLibraryResponse,
+    :class => AdCenterWrapper::DeleteTargetsFromLibraryResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetsFromLibraryResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsInfoFromLibraryRequest,
+    :class => AdCenterWrapper::GetTargetsInfoFromLibraryRequest,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsInfoFromLibraryRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsInfoFromLibraryResponse,
+    :class => AdCenterWrapper::GetTargetsInfoFromLibraryResponse,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsInfoFromLibraryResponse"),
     :schema_element => [
-      ["targetsInfo", ["ArrayOfTargetInfo", XSD::QName.new(NsV7, "TargetsInfo")], [0, 1]]
+      ["targetsInfo", ["AdCenterWrapper::ArrayOfTargetInfo", XSD::QName.new(NsV7, "TargetsInfo")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfTargetInfo,
+    :class => AdCenterWrapper::ArrayOfTargetInfo,
     :schema_name => XSD::QName.new(NsV7, "ArrayOfTargetInfo"),
     :schema_element => [
-      ["targetInfo", ["TargetInfo[]", XSD::QName.new(NsV7, "TargetInfo")], [0, nil]]
+      ["targetInfo", ["AdCenterWrapper::TargetInfo[]", XSD::QName.new(NsV7, "TargetInfo")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => TargetInfo,
+    :class => AdCenterWrapper::TargetInfo,
     :schema_name => XSD::QName.new(NsV7, "TargetInfo"),
     :schema_element => [
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "Id")], [0, 1]],
@@ -4917,23 +4919,23 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsByIdsRequest,
+    :class => AdCenterWrapper::GetTargetsByIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsByIdsRequest"),
     :schema_element => [
-      ["targetIds", ["ArrayOflong", XSD::QName.new(NsV7, "TargetIds")], [0, 1]]
+      ["targetIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "TargetIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsByIdsResponse,
+    :class => AdCenterWrapper::GetTargetsByIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsByIdsResponse"),
     :schema_element => [
-      ["targets", ["ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
+      ["targets", ["AdCenterWrapper::ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetTargetToAdGroupRequest,
+    :class => AdCenterWrapper::SetTargetToAdGroupRequest,
     :schema_name => XSD::QName.new(NsV7, "SetTargetToAdGroupRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]],
@@ -4942,13 +4944,13 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => SetTargetToAdGroupResponse,
+    :class => AdCenterWrapper::SetTargetToAdGroupResponse,
     :schema_name => XSD::QName.new(NsV7, "SetTargetToAdGroupResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetFromAdGroupRequest,
+    :class => AdCenterWrapper::DeleteTargetFromAdGroupRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetFromAdGroupRequest"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AdGroupId")], [0, 1]]
@@ -4956,29 +4958,29 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetFromAdGroupResponse,
+    :class => AdCenterWrapper::DeleteTargetFromAdGroupResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetFromAdGroupResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsByAdGroupIdsRequest,
+    :class => AdCenterWrapper::GetTargetsByAdGroupIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsByAdGroupIdsRequest"),
     :schema_element => [
-      ["adGroupIds", ["ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
+      ["adGroupIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "AdGroupIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsByAdGroupIdsResponse,
+    :class => AdCenterWrapper::GetTargetsByAdGroupIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsByAdGroupIdsResponse"),
     :schema_element => [
-      ["targets", ["ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
+      ["targets", ["AdCenterWrapper::ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => SetTargetToCampaignRequest,
+    :class => AdCenterWrapper::SetTargetToCampaignRequest,
     :schema_name => XSD::QName.new(NsV7, "SetTargetToCampaignRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]],
@@ -4987,13 +4989,13 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => SetTargetToCampaignResponse,
+    :class => AdCenterWrapper::SetTargetToCampaignResponse,
     :schema_name => XSD::QName.new(NsV7, "SetTargetToCampaignResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetFromCampaignRequest,
+    :class => AdCenterWrapper::DeleteTargetFromCampaignRequest,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetFromCampaignRequest"),
     :schema_element => [
       ["campaignId", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "CampaignId")], [0, 1]]
@@ -5001,29 +5003,29 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => DeleteTargetFromCampaignResponse,
+    :class => AdCenterWrapper::DeleteTargetFromCampaignResponse,
     :schema_name => XSD::QName.new(NsV7, "DeleteTargetFromCampaignResponse"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsByCampaignIdsRequest,
+    :class => AdCenterWrapper::GetTargetsByCampaignIdsRequest,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsByCampaignIdsRequest"),
     :schema_element => [
-      ["campaignIds", ["ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
+      ["campaignIds", ["AdCenterWrapper::ArrayOflong", XSD::QName.new(NsV7, "CampaignIds")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetTargetsByCampaignIdsResponse,
+    :class => AdCenterWrapper::GetTargetsByCampaignIdsResponse,
     :schema_name => XSD::QName.new(NsV7, "GetTargetsByCampaignIdsResponse"),
     :schema_element => [
-      ["targets", ["ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
+      ["targets", ["AdCenterWrapper::ArrayOfTarget", XSD::QName.new(NsV7, "Targets")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -5031,24 +5033,24 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -5059,7 +5061,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOflong,
+    :class => AdCenterWrapper::ArrayOflong,
     :schema_name => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
       ["long", "SOAP::SOAPLong[]", [0, nil]]
@@ -5067,7 +5069,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfbase64Binary,
+    :class => AdCenterWrapper::ArrayOfbase64Binary,
     :schema_name => XSD::QName.new(NsArrays, "ArrayOfbase64Binary"),
     :schema_element => [
       ["base64Binary", "SOAP::SOAPBase64[]", [0, nil]]
@@ -5075,7 +5077,7 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfstring,
+    :class => AdCenterWrapper::ArrayOfstring,
     :schema_name => XSD::QName.new(NsArrays, "ArrayOfstring"),
     :schema_element => [
       ["string", "SOAP::SOAPString[]", [0, nil]]
@@ -5083,25 +5085,27 @@ module CampaignManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdComponent,
+    :class => AdCenterWrapper::AdComponent,
     :schema_name => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdComponent")
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdGroupNetwork,
+    :class => AdCenterWrapper::ArrayOfAdGroupNetwork,
     :schema_name => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "ArrayOfAdGroupNetwork"),
     :schema_element => [
-      ["adGroupNetwork", ["AdGroupNetwork[]", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork")], [0, nil]]
+      ["adGroupNetwork", ["AdCenterWrapper::AdGroupNetwork[]", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdGroupNetwork,
+    :class => AdCenterWrapper::AdGroupNetwork,
     :schema_name => XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupNetwork"),
     :schema_element => [
       ["adGroupId", ["SOAP::SOAPLong", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "AdGroupId")], [0, 1]],
-      ["network", ["Network", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "Network")], [0, 1]]
+      ["network", ["AdCenterWrapper::Network", XSD::QName.new(NsMicrosoftAdCenterAdvertiserCampaignManagementApiDataContracts, "Network")], [0, 1]]
     ]
   )
+
+end
 
 end

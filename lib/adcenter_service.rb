@@ -1,3 +1,4 @@
+require 'adcenter_wrapper_entities'
 require 'soap/header/simplehandler'
 
 class AdCenterService
@@ -7,7 +8,6 @@ class AdCenterService
   attr_accessor :required_credentials
   
   DEFAULT_REQUIRED_CREDENTIALS = %w[ ApplicationToken CustomerAccountId CustomerId UserName Password DeveloperToken ]
-  DEFAULT_SERVICE_NAMESPACE = %w[ ApplicationToken UserName Password DeveloperToken ]
 
   def initialize(endpoint, credentials)
     @service_namespace = 'https://adcenter.microsoft.com/v7'
@@ -48,7 +48,11 @@ class AdCenterService
         end
       # TODO: test generic SOAP error handling
       else
-        warn "Generic SOAP fault '#{detail.exceptionDetail.message}' encountered.\n"
+        if String == detail.class
+          warn fault.to_s
+        else
+          warn "Generic SOAP fault '#{detail.exceptionDetail.message}' encountered.\n"
+        end
       end
     end
     res

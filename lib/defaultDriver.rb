@@ -1,6 +1,8 @@
-require 'default.rb'
+require 'adcenter_wrapper_entities'
 require 'defaultMappingRegistry.rb'
 require 'soap/rpc/driver'
+
+module AdCenterWrapper
 
 class NotificationManagementSoap < ::SOAP::RPC::Driver
   DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/v6/NotificationManagement/NotificationManagement.asmx"
@@ -61,3 +63,5 @@ private
   end
 end
 
+
+end
