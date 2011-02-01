@@ -2,6 +2,7 @@ $: << File.expand_path(File.dirname(__FILE__))
 $: << File.expand_path(File.dirname(__FILE__) + "/../lib/")
 require 'test/unit'
 require 'yaml'
+require 'adcenter_wrapper_entities'
 require 'custom_assertions'
 
 test_credentials_file = File.expand_path(File.dirname(__FILE__) + "/test_credentials.yml")

@@ -22,7 +22,7 @@ require 'secure_data_management_service'
 class AdCenterClient
   VERSION = '7.0.2'
   include SOAP::RPC
-
+  
   attr_accessor :options
   # connection to administration service
   attr_accessor :administration_service 
@@ -38,6 +38,8 @@ class AdCenterClient
   attr_accessor :reporting_service 
   # connection to secure data management service
   attr_accessor :secure_data_management_service
+  # reference to wrapper entities
+  attr_accessor :entities
 
   # endpoints to be used in production
   ENDPOINTS_PRODUCTION = {
@@ -70,6 +72,7 @@ class AdCenterClient
       warn credentials.to_yaml
     end
     @options = opts
+    @entities = AdCenterWrapper
     @administration_service = AdministrationService.new(select_endpoint('administration_service', sandbox_flag), credentials)
     @campaign_management_service = CampaignManagementService.new(select_endpoint('campaign_management_service', sandbox_flag), credentials)
     @customer_billing_service = CustomerBillingService.new(select_endpoint('customer_billing_service', sandbox_flag), credentials)

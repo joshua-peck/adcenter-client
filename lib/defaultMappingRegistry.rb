@@ -1,5 +1,7 @@
-require 'default.rb'
+require 'adcenter_wrapper_entities'
 require 'soap/mapping'
+
+module AdCenterWrapper
 
 module DefaultMappingRegistry
   EncodedRegistry = ::SOAP::Mapping::EncodedRegistry.new
@@ -7,19 +9,19 @@ module DefaultMappingRegistry
   NsSyncapis = "http://adcenter.microsoft.com/syncapis"
 
   EncodedRegistry.register(
-    :class => ArrayOfNotification,
+    :class => AdCenterWrapper::ArrayOfNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "ArrayOfNotification"),
     :schema_element => [
-      ["notification", ["Notification[]", XSD::QName.new(NsSyncapis, "Notification")], [0, nil]]
+      ["notification", ["AdCenterWrapper::Notification[]", XSD::QName.new(NsSyncapis, "Notification")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => EditorialRejectionNotification,
+    :class => AdCenterWrapper::EditorialRejectionNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "EditorialRejectionNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -54,11 +56,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AccountSignupPaymentReceiptNotification,
+    :class => AdCenterWrapper::AccountSignupPaymentReceiptNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "AccountSignupPaymentReceiptNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -76,11 +78,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AccountClosedNotification,
+    :class => AdCenterWrapper::AccountClosedNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "AccountClosedNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -93,18 +95,18 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => UnableToChargeCreditCardNotification,
+    :class => AdCenterWrapper::UnableToChargeCreditCardNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "UnableToChargeCreditCardNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
       ["notificationDate", ["SOAP::SOAPDateTime", XSD::QName.new(NsSyncapis, "NotificationDate")]],
       ["accountId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "AccountId")]],
       ["accountNumber", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "AccountNumber")], [0, 1]],
-      ["accountFinancialStatus", ["AccountFinancialStatusType", XSD::QName.new(NsSyncapis, "AccountFinancialStatus")]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatusType", XSD::QName.new(NsSyncapis, "AccountFinancialStatus")]],
       ["creditCardTypeName", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "CreditCardTypeName")], [0, 1]],
       ["creditCardLastFour", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "CreditCardLastFour")], [0, 1]],
       ["preferredCurrencyCode", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "PreferredCurrencyCode")], [0, 1]],
@@ -113,11 +115,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => CreditCardExpiredNotification,
+    :class => AdCenterWrapper::CreditCardExpiredNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "CreditCardExpiredNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "CreditCardNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -132,11 +134,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ApproachingCreditCardExpirationNotification,
+    :class => AdCenterWrapper::ApproachingCreditCardExpirationNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "ApproachingCreditCardExpirationNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "CreditCardNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -151,11 +153,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => UserNameReminderNotification,
+    :class => AdCenterWrapper::UserNameReminderNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "UserNameReminderNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -167,11 +169,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => UserPasswordResetNotification,
+    :class => AdCenterWrapper::UserPasswordResetNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "UserPasswordResetNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -183,11 +185,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => NewUserAddedNotification,
+    :class => AdCenterWrapper::NewUserAddedNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "NewUserAddedNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -199,11 +201,11 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => NewCustomerSignupNotification,
+    :class => AdCenterWrapper::NewCustomerSignupNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "NewCustomerSignupNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -215,7 +217,7 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ApiUserAuthHeader,
+    :class => AdCenterWrapper::ApiUserAuthHeader,
     :schema_type => XSD::QName.new(NsSyncapis, "ApiUserAuthHeader"),
     :schema_element => [
       ["userName", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserName")], [0, 1]],
@@ -225,29 +227,29 @@ module DefaultMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => NotificationType,
+    :class => AdCenterWrapper::NotificationType,
     :schema_type => XSD::QName.new(NsSyncapis, "NotificationType")
   )
 
   EncodedRegistry.register(
-    :class => AccountFinancialStatusType,
+    :class => AdCenterWrapper::AccountFinancialStatusType,
     :schema_type => XSD::QName.new(NsSyncapis, "AccountFinancialStatusType")
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfNotification,
+    :class => AdCenterWrapper::ArrayOfNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "ArrayOfNotification"),
     :schema_element => [
-      ["notification", ["Notification[]", XSD::QName.new(NsSyncapis, "Notification")], [0, nil]]
+      ["notification", ["AdCenterWrapper::Notification[]", XSD::QName.new(NsSyncapis, "Notification")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => EditorialRejectionNotification,
+    :class => AdCenterWrapper::EditorialRejectionNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "EditorialRejectionNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -282,11 +284,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AccountSignupPaymentReceiptNotification,
+    :class => AdCenterWrapper::AccountSignupPaymentReceiptNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "AccountSignupPaymentReceiptNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -304,11 +306,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AccountClosedNotification,
+    :class => AdCenterWrapper::AccountClosedNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "AccountClosedNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -321,18 +323,18 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => UnableToChargeCreditCardNotification,
+    :class => AdCenterWrapper::UnableToChargeCreditCardNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "UnableToChargeCreditCardNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "Notification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
       ["notificationDate", ["SOAP::SOAPDateTime", XSD::QName.new(NsSyncapis, "NotificationDate")]],
       ["accountId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "AccountId")]],
       ["accountNumber", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "AccountNumber")], [0, 1]],
-      ["accountFinancialStatus", ["AccountFinancialStatusType", XSD::QName.new(NsSyncapis, "AccountFinancialStatus")]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatusType", XSD::QName.new(NsSyncapis, "AccountFinancialStatus")]],
       ["creditCardTypeName", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "CreditCardTypeName")], [0, 1]],
       ["creditCardLastFour", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "CreditCardLastFour")], [0, 1]],
       ["preferredCurrencyCode", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "PreferredCurrencyCode")], [0, 1]],
@@ -341,11 +343,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => CreditCardExpiredNotification,
+    :class => AdCenterWrapper::CreditCardExpiredNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "CreditCardExpiredNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "CreditCardNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -360,11 +362,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ApproachingCreditCardExpirationNotification,
+    :class => AdCenterWrapper::ApproachingCreditCardExpirationNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "ApproachingCreditCardExpirationNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "CreditCardNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -379,11 +381,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => UserNameReminderNotification,
+    :class => AdCenterWrapper::UserNameReminderNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "UserNameReminderNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -395,11 +397,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => UserPasswordResetNotification,
+    :class => AdCenterWrapper::UserPasswordResetNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "UserPasswordResetNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -411,11 +413,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => NewUserAddedNotification,
+    :class => AdCenterWrapper::NewUserAddedNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "NewUserAddedNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -427,11 +429,11 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => NewCustomerSignupNotification,
+    :class => AdCenterWrapper::NewCustomerSignupNotification,
     :schema_type => XSD::QName.new(NsSyncapis, "NewCustomerSignupNotification"),
     :schema_basetype => XSD::QName.new(NsSyncapis, "UserNotification"),
     :schema_element => [
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]],
       ["customerId", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "CustomerId")]],
       ["userLocale", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserLocale")], [0, 1]],
       ["recipientEmailAddress", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "RecipientEmailAddress")], [0, 1]],
@@ -443,7 +445,7 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ApiUserAuthHeader,
+    :class => AdCenterWrapper::ApiUserAuthHeader,
     :schema_type => XSD::QName.new(NsSyncapis, "ApiUserAuthHeader"),
     :schema_element => [
       ["userName", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserName")], [0, 1]],
@@ -453,17 +455,17 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => NotificationType,
+    :class => AdCenterWrapper::NotificationType,
     :schema_type => XSD::QName.new(NsSyncapis, "NotificationType")
   )
 
   LiteralRegistry.register(
-    :class => AccountFinancialStatusType,
+    :class => AdCenterWrapper::AccountFinancialStatusType,
     :schema_type => XSD::QName.new(NsSyncapis, "AccountFinancialStatusType")
   )
 
   LiteralRegistry.register(
-    :class => GetNotifications,
+    :class => AdCenterWrapper::GetNotifications,
     :schema_name => XSD::QName.new(NsSyncapis, "GetNotifications"),
     :schema_element => [
       ["aPIFlags", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "APIFlags")]]
@@ -471,15 +473,15 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetNotificationsResponse,
+    :class => AdCenterWrapper::GetNotificationsResponse,
     :schema_name => XSD::QName.new(NsSyncapis, "GetNotificationsResponse"),
     :schema_element => [
-      ["getNotificationsResult", ["ArrayOfNotification", XSD::QName.new(NsSyncapis, "GetNotificationsResult")], [0, 1]]
+      ["getNotificationsResult", ["AdCenterWrapper::ArrayOfNotification", XSD::QName.new(NsSyncapis, "GetNotificationsResult")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ApiUserAuthHeader,
+    :class => AdCenterWrapper::ApiUserAuthHeader,
     :schema_name => XSD::QName.new(NsSyncapis, "ApiUserAuthHeader"),
     :schema_element => [
       ["userName", ["SOAP::SOAPString", XSD::QName.new(NsSyncapis, "UserName")], [0, 1]],
@@ -489,24 +491,24 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetNotificationsByType,
+    :class => AdCenterWrapper::GetNotificationsByType,
     :schema_name => XSD::QName.new(NsSyncapis, "GetNotificationsByType"),
     :schema_element => [
       ["aPIFlags", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "APIFlags")]],
-      ["notificationType", ["NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]]
+      ["notificationType", ["AdCenterWrapper::NotificationType", XSD::QName.new(NsSyncapis, "NotificationType")]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetNotificationsByTypeResponse,
+    :class => AdCenterWrapper::GetNotificationsByTypeResponse,
     :schema_name => XSD::QName.new(NsSyncapis, "GetNotificationsByTypeResponse"),
     :schema_element => [
-      ["getNotificationsByTypeResult", ["ArrayOfNotification", XSD::QName.new(NsSyncapis, "GetNotificationsByTypeResult")], [0, 1]]
+      ["getNotificationsByTypeResult", ["AdCenterWrapper::ArrayOfNotification", XSD::QName.new(NsSyncapis, "GetNotificationsByTypeResult")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => GetArchivedNotifications,
+    :class => AdCenterWrapper::GetArchivedNotifications,
     :schema_name => XSD::QName.new(NsSyncapis, "GetArchivedNotifications"),
     :schema_element => [
       ["aPIFlags", ["SOAP::SOAPInt", XSD::QName.new(NsSyncapis, "APIFlags")]],
@@ -516,10 +518,12 @@ module DefaultMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetArchivedNotificationsResponse,
+    :class => AdCenterWrapper::GetArchivedNotificationsResponse,
     :schema_name => XSD::QName.new(NsSyncapis, "GetArchivedNotificationsResponse"),
     :schema_element => [
-      ["getArchivedNotificationsResult", ["ArrayOfNotification", XSD::QName.new(NsSyncapis, "GetArchivedNotificationsResult")], [0, 1]]
+      ["getArchivedNotificationsResult", ["AdCenterWrapper::ArrayOfNotification", XSD::QName.new(NsSyncapis, "GetArchivedNotificationsResult")], [0, 1]]
     ]
   )
+end
+
 end

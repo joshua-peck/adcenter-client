@@ -1,6 +1,8 @@
-require 'ReportingService.rb'
+require 'adcenter_wrapper_entities'
 require 'ReportingServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
+
+module AdCenterWrapper
 
 class IReportingService < ::SOAP::RPC::Driver
   DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/V7/Reporting/ReportingService.svc"
@@ -12,7 +14,7 @@ class IReportingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SubmitGenerateReportResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PollGenerateReport",
       "pollGenerateReport",
@@ -20,7 +22,7 @@ class IReportingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PollGenerateReportResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ]
   ]
 
@@ -53,3 +55,5 @@ private
   end
 end
 
+
+end

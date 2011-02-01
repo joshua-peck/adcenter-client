@@ -1,5 +1,7 @@
-require 'AdministrationService.rb'
+require 'adcenter_wrapper_entities'
 require 'soap/mapping'
+
+module AdCenterWrapper
 
 module AdministrationServiceMappingRegistry
   EncodedRegistry = ::SOAP::Mapping::EncodedRegistry.new
@@ -8,17 +10,17 @@ module AdministrationServiceMappingRegistry
   NsV7 = "https://adcenter.microsoft.com/v7"
 
   EncodedRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -26,15 +28,15 @@ module AdministrationServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -45,17 +47,17 @@ module AdministrationServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -63,15 +65,15 @@ module AdministrationServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -82,13 +84,13 @@ module AdministrationServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetAssignedQuotaRequest,
+    :class => AdCenterWrapper::GetAssignedQuotaRequest,
     :schema_name => XSD::QName.new(NsV7, "GetAssignedQuotaRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetAssignedQuotaResponse,
+    :class => AdCenterWrapper::GetAssignedQuotaResponse,
     :schema_name => XSD::QName.new(NsV7, "GetAssignedQuotaResponse"),
     :schema_element => [
       ["assignedQuota", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AssignedQuota")], [0, 1]]
@@ -96,13 +98,13 @@ module AdministrationServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => GetRemainingQuotaRequest,
+    :class => AdCenterWrapper::GetRemainingQuotaRequest,
     :schema_name => XSD::QName.new(NsV7, "GetRemainingQuotaRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
-    :class => GetRemainingQuotaResponse,
+    :class => AdCenterWrapper::GetRemainingQuotaResponse,
     :schema_name => XSD::QName.new(NsV7, "GetRemainingQuotaResponse"),
     :schema_element => [
       ["remainingQuota", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "RemainingQuota")], [0, 1]]
@@ -110,16 +112,16 @@ module AdministrationServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -127,15 +129,15 @@ module AdministrationServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -144,5 +146,7 @@ module AdministrationServiceMappingRegistry
       ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
     ]
   )
+
+end
 
 end

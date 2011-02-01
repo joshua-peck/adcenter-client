@@ -1,6 +1,8 @@
-require 'CampaignManagementService.rb'
+require 'adcenter_wrapper_entities'
 require 'CampaignManagementServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
+
+module AdCenterWrapper
 
 class ICampaignManagementService < ::SOAP::RPC::Driver
   DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/v7/CampaignManagement/CampaignManagementService.svc"
@@ -12,7 +14,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateBehavioralBidsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetCustomSegments",
       "getCustomSegments",
@@ -20,7 +22,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetCustomSegmentsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddSegments",
       "addSegments",
@@ -28,7 +30,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddSegmentsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteSegments",
       "deleteSegments",
@@ -36,7 +38,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteSegmentsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetSegmentsByIds",
       "getSegmentsByIds",
@@ -44,7 +46,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetSegmentsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetSegments",
       "getSegments",
@@ -52,7 +54,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetSegmentsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SetUsersToSegments",
       "setUsersToSegments",
@@ -60,7 +62,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SetUsersToSegmentsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteUsersFromSegment",
       "deleteUsersFromSegment",
@@ -68,7 +70,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteUsersFromSegmentResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetNormalizedStrings",
       "getNormalizedStrings",
@@ -76,7 +78,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetNormalizedStringsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetKeywordEditorialReasonsByIds",
       "getKeywordEditorialReasonsByIds",
@@ -84,7 +86,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetKeywordEditorialReasonsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdEditorialReasonsByIds",
       "getAdEditorialReasonsByIds",
@@ -92,7 +94,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdEditorialReasonsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetNetworksByAdGroupIds",
       "getNetworksByAdGroupIds",
@@ -100,7 +102,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetNetworksByAdGroupIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SetNetworksToAdGroups",
       "setNetworksToAdGroups",
@@ -108,7 +110,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SetNetworksToAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddAds",
       "addAds",
@@ -116,7 +118,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddAdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteAds",
       "deleteAds",
@@ -124,7 +126,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteAdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdsByEditorialStatus",
       "getAdsByEditorialStatus",
@@ -132,7 +134,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdsByEditorialStatusResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdsByIds",
       "getAdsByIds",
@@ -140,7 +142,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdsByAdGroupId",
       "getAdsByAdGroupId",
@@ -148,7 +150,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdsByAdGroupIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateAds",
       "updateAds",
@@ -156,7 +158,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateAdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PauseAds",
       "pauseAds",
@@ -164,7 +166,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PauseAdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "ResumeAds",
       "resumeAds",
@@ -172,7 +174,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "ResumeAdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddKeywords",
       "addKeywords",
@@ -180,7 +182,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddKeywordsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteKeywords",
       "deleteKeywords",
@@ -188,7 +190,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteKeywordsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetKeywordsByEditorialStatus",
       "getKeywordsByEditorialStatus",
@@ -196,7 +198,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetKeywordsByEditorialStatusResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetKeywordsByIds",
       "getKeywordsByIds",
@@ -204,7 +206,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetKeywordsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetKeywordsByAdGroupId",
       "getKeywordsByAdGroupId",
@@ -212,7 +214,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetKeywordsByAdGroupIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PauseKeywords",
       "pauseKeywords",
@@ -220,7 +222,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PauseKeywordsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "ResumeKeywords",
       "resumeKeywords",
@@ -228,7 +230,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "ResumeKeywordsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateKeywords",
       "updateKeywords",
@@ -236,7 +238,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateKeywordsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::EditorialApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"EditorialApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetKeywordEstimatesByBids",
       "getKeywordEstimatesByBids",
@@ -244,7 +246,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetKeywordEstimatesByBidsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddBusinesses",
       "addBusinesses",
@@ -252,7 +254,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddBusinessesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateBusinesses",
       "updateBusinesses",
@@ -260,7 +262,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateBusinessesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteBusinesses",
       "deleteBusinesses",
@@ -268,7 +270,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteBusinessesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetBusinessesInfo",
       "getBusinessesInfo",
@@ -276,7 +278,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetBusinessesInfoResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetBusinessesByIds",
       "getBusinessesByIds",
@@ -284,7 +286,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetBusinessesByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddSitePlacements",
       "addSitePlacements",
@@ -292,7 +294,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddSitePlacementsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteSitePlacements",
       "deleteSitePlacements",
@@ -300,7 +302,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteSitePlacementsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetSitePlacementsByIds",
       "getSitePlacementsByIds",
@@ -308,7 +310,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetSitePlacementsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetSitePlacementsByAdGroupId",
       "getSitePlacementsByAdGroupId",
@@ -316,7 +318,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetSitePlacementsByAdGroupIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PauseSitePlacements",
       "pauseSitePlacements",
@@ -324,7 +326,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PauseSitePlacementsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "ResumeSitePlacements",
       "resumeSitePlacements",
@@ -332,7 +334,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "ResumeSitePlacementsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateSitePlacements",
       "updateSitePlacements",
@@ -340,7 +342,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateSitePlacementsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetPlacementDetailsForUrls",
       "getPlacementDetailsForUrls",
@@ -348,7 +350,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetPlacementDetailsForUrlsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddBehavioralBids",
       "addBehavioralBids",
@@ -356,7 +358,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddBehavioralBidsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteBehavioralBids",
       "deleteBehavioralBids",
@@ -364,7 +366,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteBehavioralBidsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetBehavioralBidsByIds",
       "getBehavioralBidsByIds",
@@ -372,7 +374,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetBehavioralBidsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetBehavioralBidsByAdGroupId",
       "getBehavioralBidsByAdGroupId",
@@ -380,7 +382,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetBehavioralBidsByAdGroupIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PauseBehavioralBids",
       "pauseBehavioralBids",
@@ -388,7 +390,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PauseBehavioralBidsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "ResumeBehavioralBids",
       "resumeBehavioralBids",
@@ -396,7 +398,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "ResumeBehavioralBidsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddCampaigns",
       "addCampaigns",
@@ -404,7 +406,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddCampaignsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetCampaignsByAccountId",
       "getCampaignsByAccountId",
@@ -412,7 +414,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetCampaignsByAccountIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetCampaignsByIds",
       "getCampaignsByIds",
@@ -420,7 +422,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetCampaignsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PauseCampaigns",
       "pauseCampaigns",
@@ -428,7 +430,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PauseCampaignsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "ResumeCampaigns",
       "resumeCampaigns",
@@ -436,7 +438,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "ResumeCampaignsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteCampaigns",
       "deleteCampaigns",
@@ -444,7 +446,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteCampaignsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateCampaigns",
       "updateCampaigns",
@@ -452,7 +454,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateCampaignsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetCampaignsInfoByAccountId",
       "getCampaignsInfoByAccountId",
@@ -460,7 +462,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetCampaignsInfoByAccountIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetNegativeKeywordsByCampaignIds",
       "getNegativeKeywordsByCampaignIds",
@@ -468,7 +470,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetNegativeKeywordsByCampaignIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SetNegativeKeywordsToCampaigns",
       "setNegativeKeywordsToCampaigns",
@@ -476,7 +478,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SetNegativeKeywordsToCampaignsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddAdGroups",
       "addAdGroups",
@@ -484,7 +486,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteAdGroups",
       "deleteAdGroups",
@@ -492,7 +494,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdGroupsByIds",
       "getAdGroupsByIds",
@@ -500,7 +502,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdGroupsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdGroupsByCampaignId",
       "getAdGroupsByCampaignId",
@@ -508,7 +510,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdGroupsByCampaignIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "PauseAdGroups",
       "pauseAdGroups",
@@ -516,7 +518,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "PauseAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "ResumeAdGroups",
       "resumeAdGroups",
@@ -524,7 +526,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "ResumeAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SubmitAdGroupForApproval",
       "submitAdGroupForApproval",
@@ -532,7 +534,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SubmitAdGroupForApprovalResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateAdGroups",
       "updateAdGroups",
@@ -540,7 +542,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetAdGroupsInfoByCampaignId",
       "getAdGroupsInfoByCampaignId",
@@ -548,7 +550,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAdGroupsInfoByCampaignIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetNegativeKeywordsByAdGroupIds",
       "getNegativeKeywordsByAdGroupIds",
@@ -556,7 +558,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetNegativeKeywordsByAdGroupIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SetNegativeKeywordsToAdGroups",
       "setNegativeKeywordsToAdGroups",
@@ -564,7 +566,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SetNegativeKeywordsToAdGroupsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddTarget",
       "addTarget",
@@ -572,7 +574,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddTargetResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteTarget",
       "deleteTarget",
@@ -580,7 +582,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteTargetResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetTargetByAdGroupId",
       "getTargetByAdGroupId",
@@ -588,7 +590,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetTargetByAdGroupIdResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateTarget",
       "updateTarget",
@@ -596,7 +598,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateTargetResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "AddTargetsToLibrary",
       "addTargetsToLibrary",
@@ -604,7 +606,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "AddTargetsToLibraryResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "UpdateTargetsInLibrary",
       "updateTargetsInLibrary",
@@ -612,7 +614,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "UpdateTargetsInLibraryResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteTargetsFromLibrary",
       "deleteTargetsFromLibrary",
@@ -620,7 +622,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteTargetsFromLibraryResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetTargetsInfoFromLibrary",
       "getTargetsInfoFromLibrary",
@@ -628,7 +630,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetTargetsInfoFromLibraryResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetTargetsByIds",
       "getTargetsByIds",
@@ -636,7 +638,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetTargetsByIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SetTargetToAdGroup",
       "setTargetToAdGroup",
@@ -644,7 +646,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SetTargetToAdGroupResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteTargetFromAdGroup",
       "deleteTargetFromAdGroup",
@@ -652,7 +654,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteTargetFromAdGroupResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetTargetsByAdGroupIds",
       "getTargetsByAdGroupIds",
@@ -660,7 +662,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetTargetsByAdGroupIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "SetTargetToCampaign",
       "setTargetToCampaign",
@@ -668,7 +670,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "SetTargetToCampaignResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "DeleteTargetFromCampaign",
       "deleteTargetFromCampaign",
@@ -676,7 +678,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "DeleteTargetFromCampaignResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ],
     [ "GetTargetsByCampaignIds",
       "getTargetsByCampaignIds",
@@ -684,7 +686,7 @@ class ICampaignManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetTargetsByCampaignIdsResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
     ]
   ]
 
@@ -717,3 +719,5 @@ private
   end
 end
 
+
+end

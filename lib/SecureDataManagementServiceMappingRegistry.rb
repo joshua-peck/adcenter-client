@@ -1,5 +1,7 @@
-require 'SecureDataManagementService.rb'
+require 'adcenter_wrapper_entities'
 require 'soap/mapping'
+
+module AdCenterWrapper
 
 module SecureDataManagementServiceMappingRegistry
   EncodedRegistry = ::SOAP::Mapping::EncodedRegistry.new
@@ -10,10 +12,10 @@ module SecureDataManagementServiceMappingRegistry
   NsSecuredatamanagement = "https://adcenter.microsoft.com/api/securedatamanagement"
 
   EncodedRegistry.register(
-    :class => PaymentMethod,
+    :class => AdCenterWrapper::PaymentMethod,
     :schema_type => XSD::QName.new(NsEntities, "PaymentMethod"),
     :schema_element => [
-      ["address", ["Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
+      ["address", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]]
@@ -21,7 +23,7 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => Address,
+    :class => AdCenterWrapper::Address,
     :schema_type => XSD::QName.new(NsEntities, "Address"),
     :schema_element => [
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "City")], [0, 1]],
@@ -38,11 +40,11 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => CreditCardPaymentMethod,
+    :class => AdCenterWrapper::CreditCardPaymentMethod,
     :schema_type => XSD::QName.new(NsEntities, "CreditCardPaymentMethod"),
     :schema_basetype => XSD::QName.new(NsEntities, "PaymentMethod"),
     :schema_element => [
-      ["address", ["Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
+      ["address", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
@@ -52,22 +54,22 @@ module SecureDataManagementServiceMappingRegistry
       ["middleInitial", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "MiddleInitial")], [0, 1]],
       ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]],
       ["securityCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "SecurityCode")], [0, 1]],
-      ["type", ["CreditCardType", XSD::QName.new(NsEntities, "Type")], [0, 1]]
+      ["type", ["AdCenterWrapper::CreditCardType", XSD::QName.new(NsEntities, "Type")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -75,15 +77,15 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -94,25 +96,25 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => ApiFault,
+    :class => AdCenterWrapper::ApiFault,
     :schema_type => XSD::QName.new(NsC_Exception, "ApiFault"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]]
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => ArrayOfOperationError,
+    :class => AdCenterWrapper::ArrayOfOperationError,
     :schema_type => XSD::QName.new(NsC_Exception, "ArrayOfOperationError"),
     :schema_element => [
-      ["operationError", ["OperationError[]", XSD::QName.new(NsC_Exception, "OperationError")], [0, nil]]
+      ["operationError", ["AdCenterWrapper::OperationError[]", XSD::QName.new(NsC_Exception, "OperationError")], [0, nil]]
     ]
   )
 
   EncodedRegistry.register(
-    :class => OperationError,
+    :class => AdCenterWrapper::OperationError,
     :schema_type => XSD::QName.new(NsC_Exception, "OperationError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
@@ -122,15 +124,15 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => CreditCardType,
+    :class => AdCenterWrapper::CreditCardType,
     :schema_type => XSD::QName.new(NsEntities, "CreditCardType")
   )
 
   LiteralRegistry.register(
-    :class => PaymentMethod,
+    :class => AdCenterWrapper::PaymentMethod,
     :schema_type => XSD::QName.new(NsEntities, "PaymentMethod"),
     :schema_element => [
-      ["address", ["Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
+      ["address", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]]
@@ -138,7 +140,7 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => Address,
+    :class => AdCenterWrapper::Address,
     :schema_type => XSD::QName.new(NsEntities, "Address"),
     :schema_element => [
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "City")], [0, 1]],
@@ -155,11 +157,11 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => CreditCardPaymentMethod,
+    :class => AdCenterWrapper::CreditCardPaymentMethod,
     :schema_type => XSD::QName.new(NsEntities, "CreditCardPaymentMethod"),
     :schema_basetype => XSD::QName.new(NsEntities, "PaymentMethod"),
     :schema_element => [
-      ["address", ["Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
+      ["address", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
@@ -169,22 +171,22 @@ module SecureDataManagementServiceMappingRegistry
       ["middleInitial", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "MiddleInitial")], [0, 1]],
       ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]],
       ["securityCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "SecurityCode")], [0, 1]],
-      ["type", ["CreditCardType", XSD::QName.new(NsEntities, "Type")], [0, 1]]
+      ["type", ["AdCenterWrapper::CreditCardType", XSD::QName.new(NsEntities, "Type")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -192,15 +194,15 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -211,25 +213,25 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ApiFault,
+    :class => AdCenterWrapper::ApiFault,
     :schema_type => XSD::QName.new(NsC_Exception, "ApiFault"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]]
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfOperationError,
+    :class => AdCenterWrapper::ArrayOfOperationError,
     :schema_type => XSD::QName.new(NsC_Exception, "ArrayOfOperationError"),
     :schema_element => [
-      ["operationError", ["OperationError[]", XSD::QName.new(NsC_Exception, "OperationError")], [0, nil]]
+      ["operationError", ["AdCenterWrapper::OperationError[]", XSD::QName.new(NsC_Exception, "OperationError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => OperationError,
+    :class => AdCenterWrapper::OperationError,
     :schema_type => XSD::QName.new(NsC_Exception, "OperationError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
@@ -239,20 +241,20 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => CreditCardType,
+    :class => AdCenterWrapper::CreditCardType,
     :schema_type => XSD::QName.new(NsEntities, "CreditCardType")
   )
 
   LiteralRegistry.register(
-    :class => AddPaymentMethodRequest,
+    :class => AdCenterWrapper::AddPaymentMethodRequest,
     :schema_name => XSD::QName.new(NsSecuredatamanagement, "AddPaymentMethodRequest"),
     :schema_element => [
-      ["paymentMethod", ["PaymentMethod", XSD::QName.new(NsSecuredatamanagement, "PaymentMethod")], [0, 1]]
+      ["paymentMethod", ["AdCenterWrapper::PaymentMethod", XSD::QName.new(NsSecuredatamanagement, "PaymentMethod")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AddPaymentMethodResponse,
+    :class => AdCenterWrapper::AddPaymentMethodResponse,
     :schema_name => XSD::QName.new(NsSecuredatamanagement, "AddPaymentMethodResponse"),
     :schema_element => [
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsSecuredatamanagement, "PaymentMethodId")], [0, 1]]
@@ -260,10 +262,10 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => PaymentMethod,
+    :class => AdCenterWrapper::PaymentMethod,
     :schema_name => XSD::QName.new(NsEntities, "PaymentMethod"),
     :schema_element => [
-      ["address", ["Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
+      ["address", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]]
@@ -271,7 +273,7 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => Address,
+    :class => AdCenterWrapper::Address,
     :schema_name => XSD::QName.new(NsEntities, "Address"),
     :schema_element => [
       ["city", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "City")], [0, 1]],
@@ -288,10 +290,10 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => CreditCardPaymentMethod,
+    :class => AdCenterWrapper::CreditCardPaymentMethod,
     :schema_name => XSD::QName.new(NsEntities, "CreditCardPaymentMethod"),
     :schema_element => [
-      ["address", ["Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
+      ["address", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "Address")], [0, 1]],
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
@@ -301,26 +303,26 @@ module SecureDataManagementServiceMappingRegistry
       ["middleInitial", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "MiddleInitial")], [0, 1]],
       ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]],
       ["securityCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "SecurityCode")], [0, 1]],
-      ["type", ["CreditCardType", XSD::QName.new(NsEntities, "Type")], [0, 1]]
+      ["type", ["AdCenterWrapper::CreditCardType", XSD::QName.new(NsEntities, "Type")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => CreditCardType,
+    :class => AdCenterWrapper::CreditCardType,
     :schema_name => XSD::QName.new(NsEntities, "CreditCardType")
   )
 
   LiteralRegistry.register(
-    :class => AdApiFaultDetail,
+    :class => AdCenterWrapper::AdApiFaultDetail,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ApplicationFault,
+    :class => AdCenterWrapper::ApplicationFault,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
@@ -328,15 +330,15 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfAdApiError,
+    :class => AdCenterWrapper::ArrayOfAdApiError,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
     :schema_element => [
-      ["adApiError", ["AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => AdApiError,
+    :class => AdCenterWrapper::AdApiError,
     :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
@@ -347,24 +349,24 @@ module SecureDataManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => ApiFault,
+    :class => AdCenterWrapper::ApiFault,
     :schema_name => XSD::QName.new(NsC_Exception, "ApiFault"),
     :schema_element => [
       ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["operationErrors", ["ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]]
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => ArrayOfOperationError,
+    :class => AdCenterWrapper::ArrayOfOperationError,
     :schema_name => XSD::QName.new(NsC_Exception, "ArrayOfOperationError"),
     :schema_element => [
-      ["operationError", ["OperationError[]", XSD::QName.new(NsC_Exception, "OperationError")], [0, nil]]
+      ["operationError", ["AdCenterWrapper::OperationError[]", XSD::QName.new(NsC_Exception, "OperationError")], [0, nil]]
     ]
   )
 
   LiteralRegistry.register(
-    :class => OperationError,
+    :class => AdCenterWrapper::OperationError,
     :schema_name => XSD::QName.new(NsC_Exception, "OperationError"),
     :schema_element => [
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
@@ -372,5 +374,7 @@ module SecureDataManagementServiceMappingRegistry
       ["message", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Message")], [0, 1]]
     ]
   )
+
+end
 
 end

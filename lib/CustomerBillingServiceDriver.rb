@@ -1,6 +1,8 @@
-require 'CustomerBillingService.rb'
+require 'adcenter_wrapper_entities'
 require 'CustomerBillingServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
+
+module AdCenterWrapper
 
 class ICustomerBillingService < ::SOAP::RPC::Driver
   DefaultEndpointUrl = "https://sharedservices.adcenterapi.microsoft.com/Api/Billing/v7/CustomerBillingService.svc"
@@ -12,7 +14,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "GetInvoicesInfoResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ],
     [ "GetInvoices",
       "getInvoices",
@@ -20,7 +22,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "GetInvoicesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ],
     [ "GetDisplayInvoices",
       "getDisplayInvoices",
@@ -28,7 +30,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "GetDisplayInvoicesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ],
     [ "AddInsertionOrder",
       "addInsertionOrder",
@@ -36,7 +38,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "AddInsertionOrderResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ],
     [ "UpdateInsertionOrder",
       "updateInsertionOrder",
@@ -44,7 +46,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "UpdateInsertionOrderResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ],
     [ "GetInsertionOrdersByAccount",
       "getInsertionOrdersByAccount",
@@ -52,7 +54,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "GetInsertionOrdersByAccountResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ],
     [ "GetKOHIOInvoices",
       "getKOHIOInvoices",
@@ -60,7 +62,7 @@ class ICustomerBillingService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customerbilling", "GetKOHIOInvoicesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}, "AdCenterWrapper::ApiBatchFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiBatchFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customerbilling"}} }
     ]
   ]
 
@@ -93,3 +95,5 @@ private
   end
 end
 
+
+end

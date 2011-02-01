@@ -14,17 +14,21 @@ Interface to Microsoft (Yahoo!) adCenter SOAP API
 
 == SYNOPSIS:
 
-  creds = {
-    "ApplicationToken" =>  TESTDATA
-    "CustomerAccountId" =>  TESTDATA
-    "CustomerId" =>  TESTDATA
-    "DeveloperToken" =>  TESTDATA
-    "UserName" =>  TESTDATA
-    "Password" =>  TESTDATA
+  credentials = {
+    'UserName' => options[:username],
+    'Password' => options[:password],
+    'ApplicationToken' => '',
+    'DeveloperToken' => options[:token],
+    'CustomerId' => options[:customerid],
+    'CustomerAccountId' => options[:accountid] || ""
   }
-  @acc = AdCenterClient.new(creds, nil)
-  req = GetAssignedQuotaRequest.new
-  res = @acc.administration_service.getAssignedQuota(req)
+
+  @acc = AdCenterClient.new(credentials)
+  @svc = @acc.customer_management_service
+  @entities = @acc.entities
+
+  req = @entities::GetAccountsInfoRequest.new(credentials[:customerid])
+  res = @svc.getAccountsInfo(req)
 
 == REQUIREMENTS:
 
