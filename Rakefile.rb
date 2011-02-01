@@ -19,8 +19,8 @@ Hoe.spec 'adcenter-client' do |h|
   h.email = "jmp@joshpeck.org"
   h.author = "Josh Peck"
   h.url = "http://bleechack.github.com/adcenter-client/"
-  h.description = h.paragraphs_of('README.txt', 1..2).join("\n\n") 
-  h.changes = h.paragraphs_of('History.txt', 2..3).join("\n\n") 
+  h.description = h.paragraphs_of('README.txt', 2..3).join("\n\n") 
+  h.changes = h.paragraphs_of('History.txt', 0..4).join("\n\n") 
   h.remote_rdoc_dir = 'adcenter-client' 
   h.developer('Josh Peck', 'jmp@joshpeck.org')
   h.rubyforge_name = 'adcenter-client'
