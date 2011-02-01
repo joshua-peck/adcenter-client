@@ -22,7 +22,7 @@ OptionParser.new do |opts|
   opts.on("-c", "--customerid=n", "API account customer id") do |v|
     options[:customerid] = v.to_i.to_s
   end
-  opts.on("-a", "--accountid=n", "API account customer account id") do |v|
+  opts.on("-a", "--accountid=n", "API account customer account id (optional)") do |v|
     options[:accountid] = v.to_i.to_s
   end
 end.parse!
