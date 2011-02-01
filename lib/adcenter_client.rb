@@ -20,7 +20,7 @@ require 'reporting_service'
 require 'secure_data_management_service'
 
 class AdCenterClient
-  VERSION = '7.0.2'
+  VERSION = '7.0.3'
   include SOAP::RPC
   
   attr_accessor :options

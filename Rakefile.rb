@@ -24,8 +24,8 @@ Hoe.spec 'adcenter-client' do |h|
   h.remote_rdoc_dir = 'adcenter-client' 
   h.developer('Josh Peck', 'jmp@joshpeck.org')
   h.rubyforge_name = 'adcenter-client'
-  h.extra_deps << 'soap4r'
-  h.extra_deps << 'hoe'
+  h.extra_deps << [ 'soap4r', '>= 1.5.8' ]
+  h.extra_deps << [ 'hoe', '>= 2.8.0' ]
 end
 
 # vim: syntax=ruby
