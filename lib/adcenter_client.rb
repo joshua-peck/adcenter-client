@@ -23,6 +23,7 @@ class AdCenterClient
   VERSION = '7.0.3'
   include SOAP::RPC
   
+  # unused, but should be used to pass "other" options to the class
   attr_accessor :options
   # connection to administration service
   attr_accessor :administration_service 

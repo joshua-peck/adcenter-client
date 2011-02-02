@@ -1,12 +1,18 @@
 require 'adcenter_wrapper_entities'
 require 'soap/header/simplehandler'
 
+# Parent class for individual adCenter service classes
 class AdCenterService
+  # the endpoint to use when connecting to this service
   attr_accessor :endpoint
+  # the actual SOAP::RPC::Driver for the service
   attr_accessor :service
+  # sets the namespace to be used in service headers
   attr_accessor :service_namespace
+  # array of header fields required by the service
   attr_accessor :required_credentials
   
+  # list of required header fields for most services
   DEFAULT_REQUIRED_CREDENTIALS = %w[ ApplicationToken CustomerAccountId CustomerId UserName Password DeveloperToken ]
 
   def initialize(endpoint, credentials)
@@ -20,12 +26,20 @@ class AdCenterService
     @service.options["protocol.http.ssl_config.verify_mode"] = nil
   end
 
+  # sets up authentication header handlers
   def initialize_authentication_headers(creds)
     @required_credentials.each do |key|
       self.headerhandler << HeaderHandler.new(@service_namespace, key, creds[key])
     end
   end
 
+  # initializes the SOAP::RPC::Driver and does per-service configuration
+  def initialize_service
+    raise NotImplementedError.new("children of AdCenterService must implement #{__method__}")
+  end
+
+  # passes the calls to our service to the SOAP::RPC::driver version of the
+  # service as defined in @service
   def method_missing(method, *args)
     begin
       res = eval "@service.#{method}(*args)"
