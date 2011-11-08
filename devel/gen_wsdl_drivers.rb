@@ -3,7 +3,7 @@
 require 'optparse'
 require 'yaml'
 
-DEFAULT_DESTINATION_DIR = File.expand_path(File.dirname(__FILE__) + '/../lib/')
+DEFAULT_DESTINATION_DIR = File.expand_path(File.dirname(__FILE__) + '/lib-devel/')
 DEFAULT_WSDL_FILE = File.expand_path(File.dirname(__FILE__) + '/wsdl.yml')
 
 options = {}

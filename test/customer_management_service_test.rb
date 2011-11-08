@@ -4,8 +4,8 @@ require 'adcenter_client'
 
 class CustomerManagementServiceTest < Test::Unit::TestCase
   def setup
-    # $DEBUG = true
-    # assert_sandboxed(TEST_CREDENTIALS)
+    $DEBUG = true
+    assert_sandboxed(TEST_CREDENTIALS)
     @acc = AdCenterClient.new(TEST_CREDENTIALS, nil, false)
     @svc = @acc.customer_management_service
     @entities = @acc.entities

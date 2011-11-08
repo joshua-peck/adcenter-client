@@ -1,4 +1,5 @@
 require 'adcenter_wrapper_entities'
+require 'AdministrationService.rb'
 require 'soap/mapping'
 
 module AdCenterWrapper
@@ -7,7 +8,7 @@ module AdministrationServiceMappingRegistry
   EncodedRegistry = ::SOAP::Mapping::EncodedRegistry.new
   LiteralRegistry = ::SOAP::Mapping::LiteralRegistry.new
   NsAdapiMicrosoftCom = "https://adapi.microsoft.com"
-  NsV7 = "https://adcenter.microsoft.com/v7"
+  NsV8 = "https://adcenter.microsoft.com/v8"
 
   EncodedRegistry.register(
     :class => AdCenterWrapper::AdApiFaultDetail,
@@ -85,29 +86,29 @@ module AdministrationServiceMappingRegistry
 
   LiteralRegistry.register(
     :class => AdCenterWrapper::GetAssignedQuotaRequest,
-    :schema_name => XSD::QName.new(NsV7, "GetAssignedQuotaRequest"),
+    :schema_name => XSD::QName.new(NsV8, "GetAssignedQuotaRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
     :class => AdCenterWrapper::GetAssignedQuotaResponse,
-    :schema_name => XSD::QName.new(NsV7, "GetAssignedQuotaResponse"),
+    :schema_name => XSD::QName.new(NsV8, "GetAssignedQuotaResponse"),
     :schema_element => [
-      ["assignedQuota", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "AssignedQuota")], [0, 1]]
+      ["assignedQuota", ["SOAP::SOAPLong", XSD::QName.new(NsV8, "AssignedQuota")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
     :class => AdCenterWrapper::GetRemainingQuotaRequest,
-    :schema_name => XSD::QName.new(NsV7, "GetRemainingQuotaRequest"),
+    :schema_name => XSD::QName.new(NsV8, "GetRemainingQuotaRequest"),
     :schema_element => []
   )
 
   LiteralRegistry.register(
     :class => AdCenterWrapper::GetRemainingQuotaResponse,
-    :schema_name => XSD::QName.new(NsV7, "GetRemainingQuotaResponse"),
+    :schema_name => XSD::QName.new(NsV8, "GetRemainingQuotaResponse"),
     :schema_element => [
-      ["remainingQuota", ["SOAP::SOAPLong", XSD::QName.new(NsV7, "RemainingQuota")], [0, 1]]
+      ["remainingQuota", ["SOAP::SOAPLong", XSD::QName.new(NsV8, "RemainingQuota")], [0, 1]]
     ]
   )
 

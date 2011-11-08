@@ -1,4 +1,5 @@
 require 'adcenter_wrapper_entities'
+require 'CustomerBillingService.rb'
 require 'soap/mapping'
 
 module AdCenterWrapper
@@ -96,6 +97,17 @@ module CustomerBillingServiceMappingRegistry
   )
 
   EncodedRegistry.register(
+    :class => AdCenterWrapper::ApiBatchFault,
+    :schema_type => XSD::QName.new(NsC_Exception, "ApiBatchFault"),
+    :schema_basetype => XSD::QName.new(NsC_Exception, "ApiFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]],
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsC_Exception, "BatchErrors")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
     :class => AdCenterWrapper::ApiFault,
     :schema_type => XSD::QName.new(NsC_Exception, "ApiFault"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
@@ -120,17 +132,6 @@ module CustomerBillingServiceMappingRegistry
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
       ["details", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Details")], [0, 1]],
       ["message", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Message")], [0, 1]]
-    ]
-  )
-
-  EncodedRegistry.register(
-    :class => AdCenterWrapper::ApiBatchFault,
-    :schema_type => XSD::QName.new(NsC_Exception, "ApiBatchFault"),
-    :schema_basetype => XSD::QName.new(NsC_Exception, "ApiFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]],
-      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsC_Exception, "BatchErrors")], [0, 1]]
     ]
   )
 
@@ -279,6 +280,17 @@ module CustomerBillingServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::ApiBatchFault,
+    :schema_type => XSD::QName.new(NsC_Exception, "ApiBatchFault"),
+    :schema_basetype => XSD::QName.new(NsC_Exception, "ApiFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]],
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsC_Exception, "BatchErrors")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::ApiFault,
     :schema_type => XSD::QName.new(NsC_Exception, "ApiFault"),
     :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
@@ -303,17 +315,6 @@ module CustomerBillingServiceMappingRegistry
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
       ["details", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Details")], [0, 1]],
       ["message", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Message")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::ApiBatchFault,
-    :schema_type => XSD::QName.new(NsC_Exception, "ApiBatchFault"),
-    :schema_basetype => XSD::QName.new(NsC_Exception, "ApiFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]],
-      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsC_Exception, "BatchErrors")], [0, 1]]
     ]
   )
 
@@ -497,6 +498,23 @@ module CustomerBillingServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::GetAccountMonthlySpendRequest,
+    :schema_name => XSD::QName.new(NsCustomerbilling, "GetAccountMonthlySpendRequest"),
+    :schema_element => [
+      ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsCustomerbilling, "AccountId")], [0, 1]],
+      ["monthYear", ["SOAP::SOAPDateTime", XSD::QName.new(NsCustomerbilling, "MonthYear")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::GetAccountMonthlySpendResponse,
+    :schema_name => XSD::QName.new(NsCustomerbilling, "GetAccountMonthlySpendResponse"),
+    :schema_element => [
+      ["amount", ["SOAP::SOAPDouble", XSD::QName.new(NsCustomerbilling, "Amount")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::ArrayOflong,
     :schema_name => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
@@ -585,6 +603,16 @@ module CustomerBillingServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::ApiBatchFault,
+    :schema_name => XSD::QName.new(NsC_Exception, "ApiBatchFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
+      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]],
+      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsC_Exception, "BatchErrors")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::ApiFault,
     :schema_name => XSD::QName.new(NsC_Exception, "ApiFault"),
     :schema_element => [
@@ -608,16 +636,6 @@ module CustomerBillingServiceMappingRegistry
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
       ["details", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Details")], [0, 1]],
       ["message", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Message")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::ApiBatchFault,
-    :schema_name => XSD::QName.new(NsC_Exception, "ApiBatchFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["operationErrors", ["AdCenterWrapper::ArrayOfOperationError", XSD::QName.new(NsC_Exception, "OperationErrors")], [0, 1]],
-      ["batchErrors", ["AdCenterWrapper::ArrayOfBatchError", XSD::QName.new(NsC_Exception, "BatchErrors")], [0, 1]]
     ]
   )
 

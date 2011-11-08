@@ -16,7 +16,7 @@ class AdCenterService
   DEFAULT_REQUIRED_CREDENTIALS = %w[ ApplicationToken CustomerAccountId CustomerId UserName Password DeveloperToken ]
 
   def initialize(endpoint, credentials)
-    @service_namespace = 'https://adcenter.microsoft.com/v7'
+    @service_namespace = 'https://adcenter.microsoft.com/v8'
     @required_credentials = DEFAULT_REQUIRED_CREDENTIALS
     @endpoint = endpoint
     initialize_service(@endpoint)

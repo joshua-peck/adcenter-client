@@ -1,28 +1,28 @@
-require 'adcenter_wrapper_entities'
+require 'AdministrationService.rb'
 require 'AdministrationServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
 
 module AdCenterWrapper
 
 class IAdministrationService < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/V7/Administration/AdministrationService.svc"
+  DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/V8/Administration/AdministrationService.svc"
 
   Methods = [
     [ "GetAssignedQuota",
       "getAssignedQuota",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAssignedQuotaRequest"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetAssignedQuotaResponse"]] ],
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "GetAssignedQuotaRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "GetAssignedQuotaResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v8", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetRemainingQuota",
       "getRemainingQuota",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetRemainingQuotaRequest"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v7", "GetRemainingQuotaResponse"]] ],
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "GetRemainingQuotaRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "GetRemainingQuotaResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v7"}} }
+        :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v8", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ]
   ]
 

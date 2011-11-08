@@ -1,11 +1,11 @@
-require 'adcenter_wrapper_entities'
+require 'CustomerManagementService.rb'
 require 'CustomerManagementServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
 
 module AdCenterWrapper
 
 class ICustomerManagementService < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://sharedservices.adcenterapi.microsoft.com/Api/CustomerManagement/v7/CustomerManagementService.svc"
+  DefaultEndpointUrl = "https://sharedservices.adcenterapi.microsoft.com/Api/CustomerManagement/v8/CustomerManagementService.svc"
 
   Methods = [
     [ "GetAccountsInfo",
@@ -14,7 +14,15 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetAccountsInfoResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
+    ],
+    [ "FindAccounts",
+      "findAccounts",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "FindAccountsRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "FindAccountsResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "AddAccount",
       "addAccount",
@@ -22,7 +30,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "AddAccountResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "UpdateAccount",
       "updateAccount",
@@ -30,7 +38,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "UpdateAccountResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetCustomer",
       "getCustomer",
@@ -38,7 +46,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetCustomerResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "UpdateCustomer",
       "updateCustomer",
@@ -46,7 +54,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "UpdateCustomerResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "SignupCustomer",
       "signupCustomer",
@@ -54,7 +62,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "SignupCustomerResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetAccount",
       "getAccount",
@@ -62,7 +70,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetAccountResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetCustomersInfo",
       "getCustomersInfo",
@@ -70,7 +78,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetCustomersInfoResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "AddUser",
       "addUser",
@@ -78,7 +86,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "AddUserResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "DeleteAccount",
       "deleteAccount",
@@ -86,7 +94,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "DeleteAccountResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "DeleteCustomer",
       "deleteCustomer",
@@ -94,7 +102,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "DeleteCustomerResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "UpdateUser",
       "updateUser",
@@ -102,7 +110,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "UpdateUserResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "UpdateUserRoles",
       "updateUserRoles",
@@ -110,7 +118,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "UpdateUserRolesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetUser",
       "getUser",
@@ -118,7 +126,15 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetUserResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
+    ],
+    [ "GetCurrentUser",
+      "getCurrentUser",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetCurrentUserRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetCurrentUserResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "DeleteUser",
       "deleteUser",
@@ -126,7 +142,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "DeleteUserResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetUsersInfo",
       "getUsersInfo",
@@ -134,7 +150,7 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetUsersInfoResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ],
     [ "GetCustomerPilotFeature",
       "getCustomerPilotFeature",
@@ -142,7 +158,31 @@ class ICustomerManagementService < ::SOAP::RPC::Driver
         ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetCustomerPilotFeatureResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
-        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"ApiFaultFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:namespace=>nil, :encodingstyle=>"document", :name=>"AdApiFaultDetailFault", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement"}} }
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
+    ],
+    [ "GetPilotFeaturesCountries",
+      "getPilotFeaturesCountries",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetPilotFeaturesCountriesRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetPilotFeaturesCountriesResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
+    ],
+    [ "GetAccessibleCustomer",
+      "getAccessibleCustomer",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetAccessibleCustomerRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "GetAccessibleCustomerResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
+    ],
+    [ "FindAccountsOrCustomersInfo",
+      "findAccountsOrCustomersInfo",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "FindAccountsOrCustomersInfoRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/api/customermanagement", "FindAccountsOrCustomersInfoResponse"]] ],
+      { :request_style =>  :document, :request_use =>  :literal,
+        :response_style => :document, :response_use => :literal,
+        :faults => {"AdCenterWrapper::ApiFaultFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"ApiFaultFault"}, "AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/api/customermanagement", :namespace=>nil, :name=>"AdApiFaultDetailFault"}} }
     ]
   ]
 

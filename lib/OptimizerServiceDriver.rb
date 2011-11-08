@@ -1,25 +1,25 @@
-require 'ReportingService.rb'
-require 'ReportingServiceMappingRegistry.rb'
+require 'OptimizerService.rb'
+require 'OptimizerServiceMappingRegistry.rb'
 require 'soap/rpc/driver'
 
 module AdCenterWrapper
 
-class IReportingService < ::SOAP::RPC::Driver
-  DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/V8/Reporting/ReportingService.svc"
+class IOptimizerService < ::SOAP::RPC::Driver
+  DefaultEndpointUrl = "https://adcenterapi.microsoft.com/Api/Advertiser/V8/Optimizer/OptimizerService.svc"
 
   Methods = [
-    [ "SubmitGenerateReport",
-      "submitGenerateReport",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "SubmitGenerateReportRequest"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "SubmitGenerateReportResponse"]] ],
+    [ "GetBudgetOpportunities",
+      "getBudgetOpportunities",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "GetBudgetOpportunitiesRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "GetBudgetOpportunitiesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v8", :namespace=>nil, :name=>"AdApiFaultDetailFault"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v8", :namespace=>nil, :name=>"ApiFaultDetailFault"}} }
     ],
-    [ "PollGenerateReport",
-      "pollGenerateReport",
-      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "PollGenerateReportRequest"]],
-        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "PollGenerateReportResponse"]] ],
+    [ "ApplyBudgetOpportunities",
+      "applyBudgetOpportunities",
+      [ ["in", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "ApplyBudgetOpportunitiesRequest"]],
+        ["out", "parameters", ["::SOAP::SOAPElement", "https://adcenter.microsoft.com/v8", "ApplyBudgetOpportunitiesResponse"]] ],
       { :request_style =>  :document, :request_use =>  :literal,
         :response_style => :document, :response_use => :literal,
         :faults => {"AdCenterWrapper::AdApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v8", :namespace=>nil, :name=>"AdApiFaultDetailFault"}, "AdCenterWrapper::ApiFaultDetailFault"=>{:encodingstyle=>"document", :use=>"literal", :ns=>"https://adcenter.microsoft.com/v8", :namespace=>nil, :name=>"ApiFaultDetailFault"}} }
@@ -29,8 +29,8 @@ class IReportingService < ::SOAP::RPC::Driver
   def initialize(endpoint_url = nil)
     endpoint_url ||= DefaultEndpointUrl
     super(endpoint_url, nil)
-    self.mapping_registry = ReportingServiceMappingRegistry::EncodedRegistry
-    self.literal_mapping_registry = ReportingServiceMappingRegistry::LiteralRegistry
+    self.mapping_registry = OptimizerServiceMappingRegistry::EncodedRegistry
+    self.literal_mapping_registry = OptimizerServiceMappingRegistry::LiteralRegistry
     init_methods
   end
 
