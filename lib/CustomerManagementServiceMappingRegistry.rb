@@ -1,4 +1,5 @@
 require 'adcenter_wrapper_entities'
+require 'CustomerManagementService.rb'
 require 'soap/mapping'
 
 module AdCenterWrapper
@@ -27,7 +28,8 @@ module CustomerManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Name")], [0, 1]],
       ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]]
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -39,7 +41,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -50,9 +52,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
-      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]]
+      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -65,7 +68,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -76,9 +79,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
-      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]]
+      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -91,7 +95,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -102,9 +106,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
       ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]],
       ["agencyContactName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AgencyContactName")], [0, 1]],
       ["agencyCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "AgencyCustomerId")], [0, 1]],
       ["salesHouseCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "SalesHouseCustomerId")], [0, 1]]
@@ -116,16 +121,18 @@ module CustomerManagementServiceMappingRegistry
     :schema_type => XSD::QName.new(NsEntities, "Customer"),
     :schema_element => [
       ["customerAddress", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "CustomerAddress")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::CustomerFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["customerFinancialStatus", ["AdCenterWrapper::CustomerFinancialStatus", XSD::QName.new(NsEntities, "CustomerFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["industry", ["AdCenterWrapper::Industry", XSD::QName.new(NsEntities, "Industry")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
       ["lastModifiedTime", ["SOAP::SOAPDateTime", XSD::QName.new(NsEntities, "LastModifiedTime")], [0, 1]],
-      ["market", ["AdCenterWrapper::Market", XSD::QName.new(NsEntities, "Market")], [0, 1]],
+      ["marketCountry", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "MarketCountry")], [0, 1]],
+      ["marketLanguage", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "MarketLanguage")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Name")], [0, 1]],
       ["serviceLevel", ["AdCenterWrapper::ServiceLevel", XSD::QName.new(NsEntities, "ServiceLevel")], [0, 1]],
-      ["status", ["AdCenterWrapper::CustomerLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
-      ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]]
+      ["customerLifeCycleStatus", ["AdCenterWrapper::CustomerLifeCycleStatus", XSD::QName.new(NsEntities, "CustomerLifeCycleStatus")], [0, 1]],
+      ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
+      ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]]
     ]
   )
 
@@ -162,7 +169,7 @@ module CustomerManagementServiceMappingRegistry
       ["password", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Password")], [0, 1]],
       ["secretAnswer", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "SecretAnswer")], [0, 1]],
       ["secretQuestion", ["AdCenterWrapper::SecretQuestion", XSD::QName.new(NsEntities, "SecretQuestion")], [0, 1]],
-      ["status", ["AdCenterWrapper::UserStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["userLifeCycleStatus", ["AdCenterWrapper::UserLifeCycleStatus", XSD::QName.new(NsEntities, "UserLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
       ["userName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "UserName")], [0, 1]]
     ]
@@ -231,6 +238,45 @@ module CustomerManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
+    :class => AdCenterWrapper::ArrayOfPilotFeature,
+    :schema_type => XSD::QName.new(NsEntities, "ArrayOfPilotFeature"),
+    :schema_element => [
+      ["pilotFeature", ["AdCenterWrapper::PilotFeature[]", XSD::QName.new(NsEntities, "PilotFeature")], [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::PilotFeature,
+    :schema_type => XSD::QName.new(NsEntities, "PilotFeature"),
+    :schema_element => [
+      ["id", ["SOAP::SOAPInt", XSD::QName.new(NsEntities, "Id")], [0, 1]],
+      ["countries", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsEntities, "Countries")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::ArrayOfAccountInfoWithCustomerData,
+    :schema_type => XSD::QName.new(NsEntities, "ArrayOfAccountInfoWithCustomerData"),
+    :schema_element => [
+      ["accountInfoWithCustomerData", ["AdCenterWrapper::AccountInfoWithCustomerData[]", XSD::QName.new(NsEntities, "AccountInfoWithCustomerData")], [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::AccountInfoWithCustomerData,
+    :schema_type => XSD::QName.new(NsEntities, "AccountInfoWithCustomerData"),
+    :schema_element => [
+      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
+      ["customerName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CustomerName")], [0, 1]],
+      ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "AccountId")], [0, 1]],
+      ["accountName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AccountName")], [0, 1]],
+      ["accountNumber", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AccountNumber")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
     :class => AdCenterWrapper::ArrayOflong,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
@@ -243,6 +289,51 @@ module CustomerManagementServiceMappingRegistry
     :schema_type => XSD::QName.new(NsArrays, "ArrayOfint"),
     :schema_element => [
       ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::ArrayOfstring,
+    :schema_type => XSD::QName.new(NsArrays, "ArrayOfstring"),
+    :schema_element => [
+      ["string", "SOAP::SOAPString[]", [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::AdApiFaultDetail,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
+    :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::ApplicationFault,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::ArrayOfAdApiError,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
+    :schema_element => [
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+    ]
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::AdApiError,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
+    :schema_element => [
+      ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
+      ["detail", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Detail")], [0, 1]],
+      ["errorCode", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "ErrorCode")], [0, 1]],
+      ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
     ]
   )
 
@@ -275,45 +366,13 @@ module CustomerManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AdCenterWrapper::ApplicationFault,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
-    ]
-  )
-
-  EncodedRegistry.register(
-    :class => AdCenterWrapper::AdApiFaultDetail,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
-    :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
-    ]
-  )
-
-  EncodedRegistry.register(
-    :class => AdCenterWrapper::ArrayOfAdApiError,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
-    :schema_element => [
-      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
-    ]
-  )
-
-  EncodedRegistry.register(
-    :class => AdCenterWrapper::AdApiError,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
-    :schema_element => [
-      ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
-      ["detail", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Detail")], [0, 1]],
-      ["errorCode", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "ErrorCode")], [0, 1]],
-      ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
-    ]
-  )
-
-  EncodedRegistry.register(
     :class => AdCenterWrapper::AccountLifeCycleStatus,
     :schema_type => XSD::QName.new(NsEntities, "AccountLifeCycleStatus")
+  )
+
+  EncodedRegistry.register(
+    :class => AdCenterWrapper::ApplicationType,
+    :schema_type => XSD::QName.new(NsEntities, "ApplicationType")
   )
 
   EncodedRegistry.register(
@@ -357,11 +416,6 @@ module CustomerManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AdCenterWrapper::Market,
-    :schema_type => XSD::QName.new(NsEntities, "Market")
-  )
-
-  EncodedRegistry.register(
     :class => AdCenterWrapper::ServiceLevel,
     :schema_type => XSD::QName.new(NsEntities, "ServiceLevel")
   )
@@ -377,11 +431,6 @@ module CustomerManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AdCenterWrapper::ApplicationType,
-    :schema_type => XSD::QName.new(NsEntities, "ApplicationType")
-  )
-
-  EncodedRegistry.register(
     :class => AdCenterWrapper::LCID,
     :schema_type => XSD::QName.new(NsEntities, "LCID")
   )
@@ -392,8 +441,8 @@ module CustomerManagementServiceMappingRegistry
   )
 
   EncodedRegistry.register(
-    :class => AdCenterWrapper::UserStatus,
-    :schema_type => XSD::QName.new(NsEntities, "UserStatus")
+    :class => AdCenterWrapper::UserLifeCycleStatus,
+    :schema_type => XSD::QName.new(NsEntities, "UserLifeCycleStatus")
   )
 
   EncodedRegistry.register(
@@ -416,7 +465,8 @@ module CustomerManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Name")], [0, 1]],
       ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]]
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -428,7 +478,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -439,9 +489,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
-      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]]
+      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -454,7 +505,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -465,9 +516,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
-      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]]
+      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -480,7 +532,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -491,9 +543,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
       ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]],
       ["agencyContactName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AgencyContactName")], [0, 1]],
       ["agencyCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "AgencyCustomerId")], [0, 1]],
       ["salesHouseCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "SalesHouseCustomerId")], [0, 1]]
@@ -505,16 +558,18 @@ module CustomerManagementServiceMappingRegistry
     :schema_type => XSD::QName.new(NsEntities, "Customer"),
     :schema_element => [
       ["customerAddress", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "CustomerAddress")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::CustomerFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["customerFinancialStatus", ["AdCenterWrapper::CustomerFinancialStatus", XSD::QName.new(NsEntities, "CustomerFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["industry", ["AdCenterWrapper::Industry", XSD::QName.new(NsEntities, "Industry")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
       ["lastModifiedTime", ["SOAP::SOAPDateTime", XSD::QName.new(NsEntities, "LastModifiedTime")], [0, 1]],
-      ["market", ["AdCenterWrapper::Market", XSD::QName.new(NsEntities, "Market")], [0, 1]],
+      ["marketCountry", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "MarketCountry")], [0, 1]],
+      ["marketLanguage", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "MarketLanguage")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Name")], [0, 1]],
       ["serviceLevel", ["AdCenterWrapper::ServiceLevel", XSD::QName.new(NsEntities, "ServiceLevel")], [0, 1]],
-      ["status", ["AdCenterWrapper::CustomerLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
-      ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]]
+      ["customerLifeCycleStatus", ["AdCenterWrapper::CustomerLifeCycleStatus", XSD::QName.new(NsEntities, "CustomerLifeCycleStatus")], [0, 1]],
+      ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
+      ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]]
     ]
   )
 
@@ -551,7 +606,7 @@ module CustomerManagementServiceMappingRegistry
       ["password", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Password")], [0, 1]],
       ["secretAnswer", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "SecretAnswer")], [0, 1]],
       ["secretQuestion", ["AdCenterWrapper::SecretQuestion", XSD::QName.new(NsEntities, "SecretQuestion")], [0, 1]],
-      ["status", ["AdCenterWrapper::UserStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["userLifeCycleStatus", ["AdCenterWrapper::UserLifeCycleStatus", XSD::QName.new(NsEntities, "UserLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
       ["userName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "UserName")], [0, 1]]
     ]
@@ -620,6 +675,45 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfPilotFeature,
+    :schema_type => XSD::QName.new(NsEntities, "ArrayOfPilotFeature"),
+    :schema_element => [
+      ["pilotFeature", ["AdCenterWrapper::PilotFeature[]", XSD::QName.new(NsEntities, "PilotFeature")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::PilotFeature,
+    :schema_type => XSD::QName.new(NsEntities, "PilotFeature"),
+    :schema_element => [
+      ["id", ["SOAP::SOAPInt", XSD::QName.new(NsEntities, "Id")], [0, 1]],
+      ["countries", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsEntities, "Countries")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfAccountInfoWithCustomerData,
+    :schema_type => XSD::QName.new(NsEntities, "ArrayOfAccountInfoWithCustomerData"),
+    :schema_element => [
+      ["accountInfoWithCustomerData", ["AdCenterWrapper::AccountInfoWithCustomerData[]", XSD::QName.new(NsEntities, "AccountInfoWithCustomerData")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::AccountInfoWithCustomerData,
+    :schema_type => XSD::QName.new(NsEntities, "AccountInfoWithCustomerData"),
+    :schema_element => [
+      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
+      ["customerName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CustomerName")], [0, 1]],
+      ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "AccountId")], [0, 1]],
+      ["accountName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AccountName")], [0, 1]],
+      ["accountNumber", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AccountNumber")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::ArrayOflong,
     :schema_type => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
@@ -632,6 +726,51 @@ module CustomerManagementServiceMappingRegistry
     :schema_type => XSD::QName.new(NsArrays, "ArrayOfint"),
     :schema_element => [
       ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfstring,
+    :schema_type => XSD::QName.new(NsArrays, "ArrayOfstring"),
+    :schema_element => [
+      ["string", "SOAP::SOAPString[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::AdApiFaultDetail,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
+    :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ApplicationFault,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfAdApiError,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
+    :schema_element => [
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::AdApiError,
+    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
+    :schema_element => [
+      ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
+      ["detail", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Detail")], [0, 1]],
+      ["errorCode", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "ErrorCode")], [0, 1]],
+      ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
     ]
   )
 
@@ -664,45 +803,13 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::ApplicationFault,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::AdApiFaultDetail,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
-    :schema_basetype => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::ArrayOfAdApiError,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
-    :schema_element => [
-      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::AdApiError,
-    :schema_type => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
-    :schema_element => [
-      ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
-      ["detail", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Detail")], [0, 1]],
-      ["errorCode", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "ErrorCode")], [0, 1]],
-      ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
     :class => AdCenterWrapper::AccountLifeCycleStatus,
     :schema_type => XSD::QName.new(NsEntities, "AccountLifeCycleStatus")
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ApplicationType,
+    :schema_type => XSD::QName.new(NsEntities, "ApplicationType")
   )
 
   LiteralRegistry.register(
@@ -746,11 +853,6 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::Market,
-    :schema_type => XSD::QName.new(NsEntities, "Market")
-  )
-
-  LiteralRegistry.register(
     :class => AdCenterWrapper::ServiceLevel,
     :schema_type => XSD::QName.new(NsEntities, "ServiceLevel")
   )
@@ -766,11 +868,6 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::ApplicationType,
-    :schema_type => XSD::QName.new(NsEntities, "ApplicationType")
-  )
-
-  LiteralRegistry.register(
     :class => AdCenterWrapper::LCID,
     :schema_type => XSD::QName.new(NsEntities, "LCID")
   )
@@ -781,8 +878,8 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::UserStatus,
-    :schema_type => XSD::QName.new(NsEntities, "UserStatus")
+    :class => AdCenterWrapper::UserLifeCycleStatus,
+    :schema_type => XSD::QName.new(NsEntities, "UserLifeCycleStatus")
   )
 
   LiteralRegistry.register(
@@ -794,13 +891,33 @@ module CustomerManagementServiceMappingRegistry
     :class => AdCenterWrapper::GetAccountsInfoRequest,
     :schema_name => XSD::QName.new(NsCustomermanagement, "GetAccountsInfoRequest"),
     :schema_element => [
-      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsCustomermanagement, "CustomerId")], [0, 1]]
+      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsCustomermanagement, "CustomerId")], [0, 1]],
+      ["onlyParentAccounts", ["SOAP::SOAPBoolean", XSD::QName.new(NsCustomermanagement, "OnlyParentAccounts")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
     :class => AdCenterWrapper::GetAccountsInfoResponse,
     :schema_name => XSD::QName.new(NsCustomermanagement, "GetAccountsInfoResponse"),
+    :schema_element => [
+      ["accountsInfo", ["AdCenterWrapper::ArrayOfAccountInfo", XSD::QName.new(NsCustomermanagement, "AccountsInfo")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::FindAccountsRequest,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "FindAccountsRequest"),
+    :schema_element => [
+      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsCustomermanagement, "CustomerId")], [0, 1]],
+      ["accountFilter", ["SOAP::SOAPString", XSD::QName.new(NsCustomermanagement, "AccountFilter")], [0, 1]],
+      ["topN", ["SOAP::SOAPInt", XSD::QName.new(NsCustomermanagement, "TopN")], [0, 1]],
+      ["applicationScope", ["AdCenterWrapper::ApplicationType", XSD::QName.new(NsCustomermanagement, "ApplicationScope")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::FindAccountsResponse,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "FindAccountsResponse"),
     :schema_element => [
       ["accountsInfo", ["AdCenterWrapper::ArrayOfAccountInfo", XSD::QName.new(NsCustomermanagement, "AccountsInfo")], [0, 1]]
     ]
@@ -1039,6 +1156,20 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::GetCurrentUserRequest,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "GetCurrentUserRequest"),
+    :schema_element => []
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::GetCurrentUserResponse,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "GetCurrentUserResponse"),
+    :schema_element => [
+      ["user", ["AdCenterWrapper::User", XSD::QName.new(NsCustomermanagement, "User")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::DeleteUserRequest,
     :schema_name => XSD::QName.new(NsCustomermanagement, "DeleteUserRequest"),
     :schema_element => [
@@ -1058,7 +1189,7 @@ module CustomerManagementServiceMappingRegistry
     :schema_name => XSD::QName.new(NsCustomermanagement, "GetUsersInfoRequest"),
     :schema_element => [
       ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsCustomermanagement, "CustomerId")], [0, 1]],
-      ["statusFilter", ["AdCenterWrapper::UserStatus", XSD::QName.new(NsCustomermanagement, "StatusFilter")], [0, 1]]
+      ["statusFilter", ["AdCenterWrapper::UserLifeCycleStatus", XSD::QName.new(NsCustomermanagement, "StatusFilter")], [0, 1]]
     ]
   )
 
@@ -1087,6 +1218,55 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::GetPilotFeaturesCountriesRequest,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "GetPilotFeaturesCountriesRequest"),
+    :schema_element => []
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::GetPilotFeaturesCountriesResponse,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "GetPilotFeaturesCountriesResponse"),
+    :schema_element => [
+      ["pilotFeatures", ["AdCenterWrapper::ArrayOfPilotFeature", XSD::QName.new(NsCustomermanagement, "PilotFeatures")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::GetAccessibleCustomerRequest,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "GetAccessibleCustomerRequest"),
+    :schema_element => [
+      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsCustomermanagement, "CustomerId")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::GetAccessibleCustomerResponse,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "GetAccessibleCustomerResponse"),
+    :schema_element => [
+      ["accessibleCustomer", ["AdCenterWrapper::Customer", XSD::QName.new(NsCustomermanagement, "AccessibleCustomer")], [0, 1]],
+      ["validFields", ["SOAP::SOAPInt", XSD::QName.new(NsCustomermanagement, "ValidFields")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::FindAccountsOrCustomersInfoRequest,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "FindAccountsOrCustomersInfoRequest"),
+    :schema_element => [
+      ["filter", ["SOAP::SOAPString", XSD::QName.new(NsCustomermanagement, "Filter")], [0, 1]],
+      ["topN", ["SOAP::SOAPInt", XSD::QName.new(NsCustomermanagement, "TopN")], [0, 1]],
+      ["applicationScope", ["AdCenterWrapper::ApplicationType", XSD::QName.new(NsCustomermanagement, "ApplicationScope")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::FindAccountsOrCustomersInfoResponse,
+    :schema_name => XSD::QName.new(NsCustomermanagement, "FindAccountsOrCustomersInfoResponse"),
+    :schema_element => [
+      ["accountInfoWithCustomerData", ["AdCenterWrapper::ArrayOfAccountInfoWithCustomerData", XSD::QName.new(NsCustomermanagement, "AccountInfoWithCustomerData")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::ArrayOfAccountInfo,
     :schema_name => XSD::QName.new(NsEntities, "ArrayOfAccountInfo"),
     :schema_element => [
@@ -1101,13 +1281,19 @@ module CustomerManagementServiceMappingRegistry
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Name")], [0, 1]],
       ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]]
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
   LiteralRegistry.register(
     :class => AdCenterWrapper::AccountLifeCycleStatus,
     :schema_name => XSD::QName.new(NsEntities, "AccountLifeCycleStatus")
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ApplicationType,
+    :schema_name => XSD::QName.new(NsEntities, "ApplicationType")
   )
 
   LiteralRegistry.register(
@@ -1118,7 +1304,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -1129,9 +1315,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
-      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]]
+      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -1173,7 +1360,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -1184,9 +1371,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
-      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]]
+      ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
     ]
   )
 
@@ -1198,7 +1386,7 @@ module CustomerManagementServiceMappingRegistry
       ["billToCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "BillToCustomerId")], [0, 1]],
       ["countryCode", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CountryCode")], [0, 1]],
       ["currencyType", ["AdCenterWrapper::CurrencyType", XSD::QName.new(NsEntities, "CurrencyType")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["accountFinancialStatus", ["AdCenterWrapper::AccountFinancialStatus", XSD::QName.new(NsEntities, "AccountFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["language", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "Language")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
@@ -1209,9 +1397,10 @@ module CustomerManagementServiceMappingRegistry
       ["paymentMethodId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PaymentMethodId")], [0, 1]],
       ["paymentMethodType", ["AdCenterWrapper::PaymentMethodType", XSD::QName.new(NsEntities, "PaymentMethodType")], [0, 1]],
       ["primaryUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "PrimaryUserId")], [0, 1]],
-      ["status", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
       ["timeZone", ["AdCenterWrapper::TimeZoneType", XSD::QName.new(NsEntities, "TimeZone")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]],
       ["agencyContactName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AgencyContactName")], [0, 1]],
       ["agencyCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "AgencyCustomerId")], [0, 1]],
       ["salesHouseCustomerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "SalesHouseCustomerId")], [0, 1]]
@@ -1223,16 +1412,18 @@ module CustomerManagementServiceMappingRegistry
     :schema_name => XSD::QName.new(NsEntities, "Customer"),
     :schema_element => [
       ["customerAddress", ["AdCenterWrapper::Address", XSD::QName.new(NsEntities, "CustomerAddress")], [0, 1]],
-      ["financialStatus", ["AdCenterWrapper::CustomerFinancialStatus", XSD::QName.new(NsEntities, "FinancialStatus")], [0, 1]],
+      ["customerFinancialStatus", ["AdCenterWrapper::CustomerFinancialStatus", XSD::QName.new(NsEntities, "CustomerFinancialStatus")], [0, 1]],
       ["id", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "Id")], [0, 1]],
       ["industry", ["AdCenterWrapper::Industry", XSD::QName.new(NsEntities, "Industry")], [0, 1]],
       ["lastModifiedByUserId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "LastModifiedByUserId")], [0, 1]],
       ["lastModifiedTime", ["SOAP::SOAPDateTime", XSD::QName.new(NsEntities, "LastModifiedTime")], [0, 1]],
-      ["market", ["AdCenterWrapper::Market", XSD::QName.new(NsEntities, "Market")], [0, 1]],
+      ["marketCountry", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "MarketCountry")], [0, 1]],
+      ["marketLanguage", ["AdCenterWrapper::LanguageType", XSD::QName.new(NsEntities, "MarketLanguage")], [0, 1]],
       ["name", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Name")], [0, 1]],
       ["serviceLevel", ["AdCenterWrapper::ServiceLevel", XSD::QName.new(NsEntities, "ServiceLevel")], [0, 1]],
-      ["status", ["AdCenterWrapper::CustomerLifeCycleStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
-      ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]]
+      ["customerLifeCycleStatus", ["AdCenterWrapper::CustomerLifeCycleStatus", XSD::QName.new(NsEntities, "CustomerLifeCycleStatus")], [0, 1]],
+      ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
+      ["number", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Number")], [0, 1]]
     ]
   )
 
@@ -1264,11 +1455,6 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::Market,
-    :schema_name => XSD::QName.new(NsEntities, "Market")
-  )
-
-  LiteralRegistry.register(
     :class => AdCenterWrapper::ServiceLevel,
     :schema_name => XSD::QName.new(NsEntities, "ServiceLevel")
   )
@@ -1294,7 +1480,7 @@ module CustomerManagementServiceMappingRegistry
       ["password", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "Password")], [0, 1]],
       ["secretAnswer", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "SecretAnswer")], [0, 1]],
       ["secretQuestion", ["AdCenterWrapper::SecretQuestion", XSD::QName.new(NsEntities, "SecretQuestion")], [0, 1]],
-      ["status", ["AdCenterWrapper::UserStatus", XSD::QName.new(NsEntities, "Status")], [0, 1]],
+      ["userLifeCycleStatus", ["AdCenterWrapper::UserLifeCycleStatus", XSD::QName.new(NsEntities, "UserLifeCycleStatus")], [0, 1]],
       ["timeStamp", ["SOAP::SOAPBase64", XSD::QName.new(NsEntities, "TimeStamp")], [0, 1]],
       ["userName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "UserName")], [0, 1]]
     ]
@@ -1324,11 +1510,6 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::ApplicationType,
-    :schema_name => XSD::QName.new(NsEntities, "ApplicationType")
-  )
-
-  LiteralRegistry.register(
     :class => AdCenterWrapper::LCID,
     :schema_name => XSD::QName.new(NsEntities, "LCID")
   )
@@ -1349,8 +1530,8 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
-    :class => AdCenterWrapper::UserStatus,
-    :schema_name => XSD::QName.new(NsEntities, "UserStatus")
+    :class => AdCenterWrapper::UserLifeCycleStatus,
+    :schema_name => XSD::QName.new(NsEntities, "UserLifeCycleStatus")
   )
 
   LiteralRegistry.register(
@@ -1393,6 +1574,45 @@ module CustomerManagementServiceMappingRegistry
   )
 
   LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfPilotFeature,
+    :schema_name => XSD::QName.new(NsEntities, "ArrayOfPilotFeature"),
+    :schema_element => [
+      ["pilotFeature", ["AdCenterWrapper::PilotFeature[]", XSD::QName.new(NsEntities, "PilotFeature")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::PilotFeature,
+    :schema_name => XSD::QName.new(NsEntities, "PilotFeature"),
+    :schema_element => [
+      ["id", ["SOAP::SOAPInt", XSD::QName.new(NsEntities, "Id")], [0, 1]],
+      ["countries", ["AdCenterWrapper::ArrayOfstring", XSD::QName.new(NsEntities, "Countries")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfAccountInfoWithCustomerData,
+    :schema_name => XSD::QName.new(NsEntities, "ArrayOfAccountInfoWithCustomerData"),
+    :schema_element => [
+      ["accountInfoWithCustomerData", ["AdCenterWrapper::AccountInfoWithCustomerData[]", XSD::QName.new(NsEntities, "AccountInfoWithCustomerData")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::AccountInfoWithCustomerData,
+    :schema_name => XSD::QName.new(NsEntities, "AccountInfoWithCustomerData"),
+    :schema_element => [
+      ["customerId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "CustomerId")], [0, 1]],
+      ["customerName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "CustomerName")], [0, 1]],
+      ["accountId", ["SOAP::SOAPLong", XSD::QName.new(NsEntities, "AccountId")], [0, 1]],
+      ["accountName", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AccountName")], [0, 1]],
+      ["accountNumber", ["SOAP::SOAPString", XSD::QName.new(NsEntities, "AccountNumber")], [0, 1]],
+      ["accountLifeCycleStatus", ["AdCenterWrapper::AccountLifeCycleStatus", XSD::QName.new(NsEntities, "AccountLifeCycleStatus")], [0, 1]],
+      ["pauseReason", ["SOAP::SOAPUnsignedByte", XSD::QName.new(NsEntities, "PauseReason")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
     :class => AdCenterWrapper::ArrayOflong,
     :schema_name => XSD::QName.new(NsArrays, "ArrayOflong"),
     :schema_element => [
@@ -1405,6 +1625,50 @@ module CustomerManagementServiceMappingRegistry
     :schema_name => XSD::QName.new(NsArrays, "ArrayOfint"),
     :schema_element => [
       ["int", "SOAP::SOAPInt[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfstring,
+    :schema_name => XSD::QName.new(NsArrays, "ArrayOfstring"),
+    :schema_element => [
+      ["string", "SOAP::SOAPString[]", [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::AdApiFaultDetail,
+    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
+      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ApplicationFault,
+    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
+    :schema_element => [
+      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::ArrayOfAdApiError,
+    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
+    :schema_element => [
+      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
+    ]
+  )
+
+  LiteralRegistry.register(
+    :class => AdCenterWrapper::AdApiError,
+    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
+    :schema_element => [
+      ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
+      ["detail", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Detail")], [0, 1]],
+      ["errorCode", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "ErrorCode")], [0, 1]],
+      ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
     ]
   )
 
@@ -1432,42 +1696,6 @@ module CustomerManagementServiceMappingRegistry
       ["code", ["SOAP::SOAPInt", XSD::QName.new(NsC_Exception, "Code")], [0, 1]],
       ["details", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Details")], [0, 1]],
       ["message", ["SOAP::SOAPString", XSD::QName.new(NsC_Exception, "Message")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::ApplicationFault,
-    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ApplicationFault"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::AdApiFaultDetail,
-    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiFaultDetail"),
-    :schema_element => [
-      ["trackingId", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "TrackingId")], [0, 1]],
-      ["errors", ["AdCenterWrapper::ArrayOfAdApiError", XSD::QName.new(NsAdapiMicrosoftCom, "Errors")], [0, 1]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::ArrayOfAdApiError,
-    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "ArrayOfAdApiError"),
-    :schema_element => [
-      ["adApiError", ["AdCenterWrapper::AdApiError[]", XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError")], [0, nil]]
-    ]
-  )
-
-  LiteralRegistry.register(
-    :class => AdCenterWrapper::AdApiError,
-    :schema_name => XSD::QName.new(NsAdapiMicrosoftCom, "AdApiError"),
-    :schema_element => [
-      ["code", ["SOAP::SOAPInt", XSD::QName.new(NsAdapiMicrosoftCom, "Code")], [0, 1]],
-      ["detail", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Detail")], [0, 1]],
-      ["errorCode", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "ErrorCode")], [0, 1]],
-      ["message", ["SOAP::SOAPString", XSD::QName.new(NsAdapiMicrosoftCom, "Message")], [0, 1]]
     ]
   )
 end
