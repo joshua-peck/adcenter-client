@@ -39,7 +39,7 @@ class AdCenterService
         end
       # TODO: test apiFaultDetail
       elsif detail.respond_to?('apiFaultDetail')
-        operationErrors = detail.operationErrors.operationError
+        operationErrors = detail.apiFaultDetail.operationErrors
         if !operationErrors.respond_to?('each')
           operationErrors = [operationErrors]
         end
